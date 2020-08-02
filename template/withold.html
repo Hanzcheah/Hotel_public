@@ -1,0 +1,69 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+    <script src="/static/js/jquery-ui.js"></script>
+    <script src="/static/js/jquery.ui.datepicker.validation.js"></script> 
+        <link href="/static/css/jquery-ui.css" rel="stylesheet">  
+            <script type="text/javascript">
+      $(function () {
+                $('.datepicker').datepicker();
+         });
+        </script> 
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+</br>
+</br>
+
+
+
+
+<div>
+<form method="POST" action="" enctype="multipart/form-data">
+    {{depforms.as_p}}
+    <br>
+<!--         {{ frondest.description }} -->
+        <br>
+    <input type='submit' value='Add'>{% csrf_token%} </form>
+</div>
+</br>
+</br>
+
+
+<!-- 
+<div class="col-sm-12">
+
+
+
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Room</th>
+                  <th>From</th>
+                  <th>To</th>
+                                                                     
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in depforminfo %}
+                <tr>
+                  <td> {{ i.itemname }}</td>
+
+                  <td> {{ i.itemprice }}</td>
+          
+                  <td><a href={% url 'delete_15' i.pk %}> {{ i.pk }}</a></td>                         
+
+                </tr>
+                {% endfor %}
+
+               </tbody>
+            </table>
+            </div> -->
+
+
+</div>
+
+
+
+{% endblock %}

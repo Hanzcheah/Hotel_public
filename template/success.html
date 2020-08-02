@@ -1,0 +1,60 @@
+{% extends 'booking/base2.html' %}
+{% block content %}   
+<script type='text/javascript'>
+ var sa = 'innbparkhotel';
+ window.onload = function() {
+  m = document.createElement('IFRAME');
+  m.setAttribute('src', "https://www.onlinepayment.com.my/MOLPay/API/chkstat/returnipn.php?treq=0&sa=" + sa);
+  m.setAttribute('seamless', 'seamless');
+  m.setAttribute('width', 0);
+  m.setAttribute('height', 0);
+  m.setAttribute('frameborder', 0);
+  m.setAttribute('scrolling', 'no');
+  m.setAttribute('style', 'border:none !important;');
+  document.body.appendChild(m);
+ };
+
+
+
+
+{if successbig == "Thank You" }
+
+    {% if user55 %}
+
+    window.setTimeout(function(){
+        window.location.href = 'https://www.innbparkhotel.com/customerportal/'
+    }, 3000);
+
+    {%  else %}
+    window.setTimeout(function(){
+        window.location.href = 'https://innbparkhotel.com/'
+    }, 3000);
+    {% endif %}
+
+{%  endif %}
+
+
+
+
+</script>
+<body>
+<div class="container">
+<div class="container-fluid">
+<div class="row" style="text-align:center">
+
+<h1>{{sucesssbig}}</h1>
+<Br>
+<br>
+<br>
+{{success}}
+
+
+
+
+</div>
+</div>
+</div>
+</body>
+</html>
+
+{% endblock %}

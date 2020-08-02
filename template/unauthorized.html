@@ -1,0 +1,15 @@
+{% extends 'booking/base4.html' %}
+{% block content %}   
+
+
+<div class="col-lg-12 col-centered">
+<div id="login">
+
+<div style="color:red; text-align:center;  "><h3>UNAUTHORIZED ACCESS</h3></div>
+        
+ <div style=" text-align:center;  "><a href={% url 'detail' %}>       back </a></div>
+        {{user_ip}}
+    </div>
+</div>
+
+{% endblock %}

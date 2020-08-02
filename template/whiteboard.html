@@ -1,0 +1,232 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="table-responsive">
+            <h2 class="sub-header">Tasks </h2>
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Description
+                  </th>
+                 <th>Room no
+                  </th>
+                  <th>For</th>
+                  <th>By</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for room in whitewhite %}
+
+                {% if room.complete is True %}
+                <tr>
+                  <td style="width:60%"> <strike>{{ room.texts }}</strike></td>
+                                    <td>{{room.room_number}}</td>
+                   <td>{{room.forstaff}}</td>
+                  <td> {{ room.staff }}</td>
+                  <td><button type="button" class="btn btn-default btn-sm" href="javascript:void(0)" onclick="testfun13('{{room.pk}}')"><span class="glyphicon glyphicon-ok"></span> Completed </button></td>
+                     <td><button type="button" class="btn btn-default btn-sm" href="javascript:void(0)" onclick="testfun14('{{room.pk}}')"> <span class="glyphicon glyphicon-trash"></span>Remove</button></td>         
+
+                </tr>
+                {% else %}
+                                <tr>
+                  <td style="width:60%"> {{ room.texts }}</td>
+                  <td>{{room.room_number}}</td>
+                  <td>{{room.forstaff}}</td>
+                  <td> {{ room.staff }}</td>
+                                 <td><button type="button" class="btn btn-default btn-sm" href="javascript:void(0)" onclick="testfun13('{{room.pk}}')"><span class="glyphicon glyphicon-ok"></span> Completed </button></td>
+               <td><button type="button" class="btn btn-default btn-sm" href="javascript:void(0)" onclick="testfun14('{{room.pk}}')"> <span class="glyphicon glyphicon-trash"></span>Remove</button></td>
+
+                </tr>
+                {% endif %}
+                {% endfor %}
+
+                <tr>
+                  <td style="width:60%"><form method="POST" id="testf" ><input style="width:100%" name="startdate"></input>
+                  </td>
+                                    <td>
+                                      <select name="roomno">
+                                      <option value="None"></option>
+  {% for i in roomnum %}
+    <option value="{{i.room_number}}">{{i.room_number}}</option>
+    {% endfor %}
+ 
+  </select>
+
+</td>
+  <td>
+
+                                      <select name="forstaff1">
+                                      <option value="None"></option>
+  {% for j in forst %}
+    <option value="{{j}}">{{j}}</option>
+    {% endfor %}
+ 
+  </select>
+
+
+  </td>
+
+  <td></td>
+  <td></td>
+                                 <td><button type="submit" form="testf" value="Submit" class="btn btn-default btn-sm" ><span class="glyphicon glyphicon-plus"></span> Add</button>{% csrf_token%}</form></td>
+
+
+               </tbody>
+            </table>
+
+</div>
+
+
+<script>
+function testfun13(event){
+// ev.preventDefault();
+
+       // console.log(date);
+
+// var countr = "{{customerno.country}}" ;
+
+
+
+var jest = "1351351351351";
+
+
+
+var url = "https://innbparkhotel.com/whiteboardscomplete/";
+var method = "POST";
+var postData = JSON.stringify({
+        "bk": event,
+        "jest":jest
+        })
+
+var request = new XMLHttpRequest();
+request.onload = function () {
+   var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   var data = request.responseText; // Returned data, e.g., an HTML document.
+console.log(status);
+}
+
+request.open(method, url, true);
+console.log(postData);
+
+request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+// Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+// Or... whatever
+
+// test =$('meta[name="token"]').attr('content')
+// request.setRequestHeader("X-CSRFToken", test);
+// Actually sends the request to the server.
+request.send(postData);
+setTimeout(function(){
+    window.location.reload();
+},1000); 
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function testfun14(event){
+// ev.preventDefault();
+
+       // console.log(date);
+
+// var countr = "{{customerno.country}}" ;
+
+
+
+
+
+var jest = "1351351351351";
+
+
+
+var url = "https://innbparkhotel.com/whiteboardsrem/";
+var method = "POST";
+var postData = JSON.stringify({
+        "bk": event,
+        "jest":jest
+        })
+
+var request = new XMLHttpRequest();
+request.onload = function () {
+   var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   var data = request.responseText; // Returned data, e.g., an HTML document.
+console.log(status);
+}
+
+request.open(method, url, true);
+console.log(postData);
+
+request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+// Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+// Or... whatever
+
+// test =$('meta[name="token"]').attr('content')
+// request.setRequestHeader("X-CSRFToken", test);
+// Actually sends the request to the server.
+request.send(postData);
+setTimeout(function(){
+    window.location.reload();
+},1000); 
+
+}
+
+
+
+</script>
+
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+  var socket = io.connect('https://ldeifynode.com/');
+  socket.on('greetings', function (data) {
+console.log(data);
+
+
+
+// yourUrl="https://innbparkhotel.com/logauthen/"
+
+// var xhr = new XMLHttpRequest();
+// xhr.open("POST", yourUrl, true);
+// xhr.setRequestHeader('Content-Type', 'application/json');
+// xhr.send(JSON.stringify({
+//     'username': '{{ user.get_username }}',
+//     'user2':'a15*&sdlfi34110&v9dAlkjvzlka#jsdf35jwdklfh142@',
+//     'datatoken':data
+
+// }));
+
+
+
+
+
+
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

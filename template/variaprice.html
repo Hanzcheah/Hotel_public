@@ -1,0 +1,206 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+<form method="GET" action="{% url 'variablepricing1' %}">
+<div class="col-sm-3">	
+<input class="datepicker" name="date">
+</input>
+</div>
+<div class="col-sm-2">  
+    <input type='submit' value='Submit'> 
+</div>
+</form>
+<br>
+<br>
+
+<!-- {{status}}
+{{all_bookings}} -->
+<h2 class="sub-header">Booking</h2>
+<!-- <div class="table-responsive">
+<table class="table table-striped"> -->
+
+</td>
+
+<br>
+<div class="table-responsive">
+<table class="table table-striped" style="text-align:center;">
+
+<thead>
+<tr>
+<td>{{startdate}}</td>
+<td>{{qin_date0}}</td>
+<td>{{qin_date1}}</td>
+<td>{{qin_date2}}</td>
+<td>{{qin_date3}}</td>
+<td>{{qin_date4}}</td>
+<td>{{qin_date5}}</td>
+<td>{{qin_date6}}</td>
+</tr>
+</thead>
+{%for r in roomtypes%}
+<tr>
+<td>{{r.room_type_name}}</td>
+
+{% if startdate == 0 %}
+
+<td id="{{qin0}}"><input class="{{r.room_type_name}}{{qin0}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price0}}"></input>  
+    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin0}}')"> Submit</button>
+</td>
+<td id="{{qin1}}"><input class="{{r.room_type_name}}{{qin1}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price1}}" ></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin1}}')"> Submit</button></td>
+<td id="{{qin2}}"><input class="{{r.room_type_name}}{{qin2}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price2}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin2}}')"> Submit</button></td>
+<td id="{{qin3}}"><input class="{{r.room_type_name}}{{qin3}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price3}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin3}}')"> Submit</button></td>
+<td id="{{qin4}}"><input class="{{r.room_type_name}}{{qin4}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price4}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin4}}')"> Submit</button></td>
+<td id="{{qin5}}"><input class="{{r.room_type_name}}{{qin5}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price5}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin5}}')"> Submit</button></td>
+<td id="{{qin6}}"><input class="{{r.room_type_name}}{{qin6}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price6}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin6}}')"> Submit</button></td>
+
+{% elif startdate == 1 %}
+<td id="{{qin1}}"><input class="{{r.room_type_name}}{{qin1}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price1}}"></input>  
+    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin1}}')"> Submit</button>
+</td>
+<td id="{{qin2}}"><input class="{{r.room_type_name}}{{qin2}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price2}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin2}}')"> Submit</button></td>
+<td id="{{qin3}}"><input class="{{r.room_type_name}}{{qin3}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price3}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin3}}')"> Submit</button></td>
+<td id="{{qin4}}"><input class="{{r.room_type_name}}{{qin4}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price4}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin4}}')"> Submit</button></td>
+<td id="{{qin5}}"><input class="{{r.room_type_name}}{{qin5}}"  style="width:60px !important;text-align:center" placeholder="{{r.room_price5}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin5}}')"> Submit</button></td>
+<td id="{{qin6}}"><input class="{{r.room_type_name}}{{qin6}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price6}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin6}}')"> Submit</button></td>
+<td id="{{qin0}}"><input class="{{r.room_type_name}}{{qin0}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price0}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin0}}')"> Submit</button></td>
+
+{% elif startdate == 2 %}
+<td id="{{qin2}}"><input  class="{{r.room_type_name}}{{qin2}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price2}}"></input>  
+    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin2}}')"> Submit</button>
+</td>
+<td id="{{qin3}}"><input class="{{r.room_type_name}}{{qin3}}"  style="width:60px !important; text-align:center" placeholder="{{r.room_price3}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin3}}')"> Submit</button></td>
+<td id="{{qin4}}"><input class="{{r.room_type_name}}{{qin4}}"  style="width:60px !important; text-align:center" placeholder="{{r.room_price4}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin4}}')"> Submit</button> </button></td>
+<td id="{{qin5}}"><input class="{{r.room_type_name}}{{qin5}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price5}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin5}}')"> Submit</button></td>
+<td id="{{qin6}}"><input  class="{{r.room_type_name}}{{qin6}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price6}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin6}}')"> Submit</button></td>
+<td id="{{qin0}}"><input class="{{r.room_type_name}}{{qin0}}"  style="width:60px !important;text-align:center" placeholder="{{r.room_price0}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin0}}')"> Submit</button></td>
+<td id="{{qin1}}"><input  class="{{r.room_type_name}}{{qin1}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price1}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin1}}')"> Submit</button></td>
+
+{% elif startdate == 3 %}
+<td id="{{qin3}}"><input class="{{r.room_type_name}}{{qin3}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price3}}"></input>  
+    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin3}}')"> Submit</button>
+</td>
+<td id="{{qin4}}"><input class="{{r.room_type_name}}{{qin4}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price4}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin4}}')"> Submit</button></td>
+<td id="{{qin5}}"><input class="{{r.room_type_name}}{{qin5}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price5}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin5}}')"> Submit</button></td>
+<td id="{{qin6}}"><input class="{{r.room_type_name}}{{qin6}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price6}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin6}}')"> Submit</button></td>
+<td id="{{qin0}}"><input class="{{r.room_type_name}}{{qin0}}"  style="width:60px !important;text-align:center" placeholder="{{r.room_price0}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin0}}')"> Submit</button></td>
+<td id="{{qin1}}"><input class="{{r.room_type_name}}{{qin1}}"  style="width:60px !important;text-align:center" placeholder="{{r.room_price1}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin1}}')"> Submit</button></td>
+<td id="{{qin2}}"><input  class="{{r.room_type_name}}{{qin2}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price2}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin2}}')"> Submit</button></td>
+
+{% elif startdate == 4 %}
+
+<td id="{{qin4}}"><input class="{{r.room_type_name}}{{qin4}}"  style="width:60px !important; text-align:center" placeholder="{{r.room_price4}}"></input>  
+    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin4}}')"> Submit</button>
+</td>
+<td id="{{qin5}}"><input class="{{r.room_type_name}}{{qin5}}"  style="width:60px !important; text-align:center" placeholder="{{r.room_price5}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin5}}')"> Submit</button></td>
+<td id="{{qin6}}"><input class="{{r.room_type_name}}{{qin6}}"  style="width:60px !important; text-align:center" placeholder="{{r.room_price6}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin6}}')"> Submit</button></td>
+<td id="{{qin0}}"><input class="{{r.room_type_name}}{{qin0}}"  style="width:60px !important; text-align:center" placeholder="{{r.room_price0}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin0}}')"> Submit</button></td>
+<td id="{{qin1}}"><input class="{{r.room_type_name}}{{qin1}}"  style="width:60px !important;text-align:center" placeholder="{{r.room_price1}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin1}}')"> Submit</button></td>
+<td id="{{qin2}}"><input class="{{r.room_type_name}}{{qin2}}"  style="width:60px !important;text-align:center" placeholder="{{r.room_price2}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin2}}')"> Submit</button></td>
+<td id="{{qin3}}"><input class="{{r.room_type_name}}{{qin3}}"  style="width:60px !important;text-align:center" placeholder="{{r.room_price3}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin3}}')"> Submit</button></td>
+
+{% elif startdate == 5 %}
+<td id="{{qin5}}"><input class="{{r.room_type_name}}{{qin5}}"  style="width:60px !important; text-align:center" placeholder="{{r.room_price5}}"></input>  
+    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin5}}')"> Submit</button>
+</td>
+<td id="{{qin6}}"><input class="{{r.room_type_name}}{{qin6}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price6}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin6}}')"> Submit</button></td>
+<td id="{{qin0}}"><input class="{{r.room_type_name}}{{qin0}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price0}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin0}}')"> Submit</button></td>
+<td id="{{qin1}}"><input class="{{r.room_type_name}}{{qin1}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price1}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin1}}')"> Submit</button></td>
+<td id="{{qin2}}"><input class="{{r.room_type_name}}{{qin2}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price2}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin2}}')"> Submit</button></td>
+<td id="{{qin3}}"><input class="{{r.room_type_name}}{{qin3}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price3}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin3}}')"> Submit</button></td>
+<td id="{{qin4}}"><input class="{{r.room_type_name}}{{qin4}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price4}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin4}}')"> Submit</button></td>
+
+{% elif startdate == 6 %}
+<td id="{{qin6}}"><input class="{{r.room_type_name}}{{qin6}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price6}}"></input>  
+    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin6}}')"> Submit</button>
+</td>
+<td  id="{{qin0}}"><input class="{{r.room_type_name}}{{qin0}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price0}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin0}}')"> Submit</button></td>
+<td id="{{qin1}}"><input class="{{r.room_type_name}}{{qin1}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price1}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin1}}')"> Submit</button></td>
+<td id="{{qin2}}"><input class="{{r.room_type_name}}{{qin2}}" style="width:60px !important; text-align:center" placeholder="{{r.room_price2}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin2}}')"> Submit</button></td>
+<td id="{{qin3}}"><input class="{{r.room_type_name}}{{qin3}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price3}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin3}}')"> Submit</button></td>
+<td id="{{qin4}}"><input class="{{r.room_type_name}}{{qin4}}"  style="width:60px !important;text-align:center" placeholder="{{r.room_price4}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin4}}')"> Submit</button></td>
+<td id="{{qin5}}"><input class="{{r.room_type_name}}{{qin5}}" style="width:60px !important;text-align:center" placeholder="{{r.room_price5}}"></input>    <button style="width:70px !important" onclick="click1('{{r.room_type_name}}','{{qin5}}')"> Submit</button></td>
+{% endif %}
+</tr>
+{%endfor%}
+
+</table>
+</div>
+<!-- {{room.booking__checkin_date}}
+ -->
+
+ </ul>
+<!-- </table>
+</div> -->
+</div>
+
+
+
+<script>
+function click1(ev1, ev2){
+// datee = ev.target.id
+// classs = ev.target.class
+console.log("CLICKED");
+console.log(ev1);
+console.log(ev2);
+var ev3 = ev1 + ev2
+console.log(ev3)
+var value =document.getElementsByClassName(ev3)[0].value;
+if(value==""){
+    alert("undefined    ");
+}
+else if(isNaN(value)){
+    alert("please enter number    ");
+}
+else{
+    if(value>500){
+    alert("value too large    ");
+    }
+    else if(value<20){
+            alert("value too small    ");
+    }
+else{
+
+
+    var url = "https://innbparkhotel.com/variapriceapi/";
+    var method = "POST";
+    var postData = JSON.stringify({
+            "room": ev1,
+            "date": ev2,
+            "va":value
+            })
+
+    var request = new XMLHttpRequest();
+    request.onload = function () {
+           var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+           var data = request.responseText; // Returned data, e.g., an HTML document.
+        console.log(status);
+        console.log(postData);
+        }
+
+    request.open(method, url, true);
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    request.send(postData);
+        alert("Price Changed  ");
+}
+}
+
+
+}
+
+
+
+</script>
+
+
+
+
+
+<!-- 
+var targetDiv = document.getElementById("foo").getElementsByClassName("bar")[0];
+targetDiv.innerHTML = "Goodbye world!"; -->
+
+
+{% endblock %}

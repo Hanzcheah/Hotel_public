@@ -1,0 +1,49 @@
+{% extends 'booking/base2.html' %}
+{% block content %}   
+
+<body>
+
+<div class="container">
+<div class="container-fluid">
+
+
+
+<FORM method="post" name="ePayment" action="">
+<INPUT type="hidden" name="MerchantCode" value={{ MerchantCode }}>
+<INPUT type="hidden" name="PaymentId" value="2">
+<INPUT type="hidden" name="RefNo" value={{ RefNo }}>
+<INPUT type="hidden" name="Amount" value={{ Amount }}>
+<INPUT type="hidden" name="Currency" value={{ Currency }}>
+<INPUT type="hidden" name="ProdDesc" value={{ ProdDesc }}>
+<INPUT type="hidden" name="UserName" value={{ UserName }}>
+<INPUT type="hidden" name="UserEmail" value={{ UserEmail }}>
+<INPUT type="hidden" name="UserContact" value={{ UserContact }}>
+<INPUT type="hidden" name="Remark" value="">
+<INPUT type="hidden" name="Lang" value="UTF-8">
+<INPUT type="hidden" name="Signature" value={{ Signature }}>
+<INPUT type="hidden" name="ResponseURL" value={{ ResponseURL }}>
+<INPUT type="hidden" name="BackendURL" value={{ BackendURL}}>
+<INPUT type="submit" value="Proceed with Payment" name="Submit"> </FORM>
+
+        </div>
+        </div>
+
+
+<script type = "text/javascript">
+
+
+
+</script>
+<!-- {% for each in de %}
+	{{ each.room_type_name }}   --- {{each.room_type_name.room_max_people}}</br>	
+
+{% endfor %} -->
+
+<!-- {{ test }} -->
+
+</div>
+</div>
+</body>
+</html>
+
+{% endblock %}

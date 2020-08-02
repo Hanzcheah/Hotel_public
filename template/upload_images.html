@@ -1,0 +1,43 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+<script>
+    function myFunction(t) {
+        document.getElementById("hiddeninput").value=t;
+      var copyText = document.getElementById("hiddeninput");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999)
+      document.execCommand("copy");
+      alert("Copied URL: " + copyText.value);
+    }
+    </script>
+<input  type="text" id = "hiddeninput" style="display:none;"></input>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+<div class="row" style="margin-bottom:30px;">
+
+<form method="POST" action enctype="multipart/form-data">
+    {% csrf_token %}
+    <input id="id_image" name="image" type="file">
+    </input>
+    <Br>
+<input type="submit" value="Upload">
+</form>
+</div>
+
+<div class="row">
+    {% for a in allimages %}
+    <div class="col-sm-3" style="max-height:20%; max-width:20%">
+        <div >
+      <img src="{{a.url}}" style="max-height:100%; max-width:100%">  </img>
+    </div>
+      <br>
+      <a href="#" onclick="myFunction('{{a.url}}')">Copy</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.innbparkhotel.com/delete_image/?pk={{a.name}}">Remove</a>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</div>
+
+{% endblock %}
