@@ -1,0 +1,50 @@
+{% extends 'booking/base2.html' %}
+{% block content %}  
+<body>
+    
+<div class="container h">
+<div class="col-lg-5 col-centered">
+      <form class="form" role="form" method="GET" action="">
+
+        <div class="form-group" > 
+        <div style="margin-top:30px; margin-left:1%; margin-bottom:-5px; font-size:20px;text-align:center"><strong>Check for Availability</strong></div>
+        {% for field in dateform %}
+        {% if field.errors %} 
+        <div class="control-group error">
+            <div style= "margin:10px;"></div>
+            <label class="control-label col-sm-12 form5">{{ field.label }}</label> 
+              <div class="col-sm-12">{{ field }}</br>
+                <span class="help-inline" style="color:red;">
+                  {% for error in  field.errors %}{{ error }}{% endfor %}
+                </span>
+              </div>
+        </div>
+        {% else %}
+        <div class="control-group">
+          <div style= "margin:10px;"></div>
+            <label class="control-label col-sm-12 form5">{{ field.label }}</label> 
+              <div class="col-sm-12 ">{{ field }}
+                {% if field.help_text %}
+                  <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                    {% endif %}
+              </div>
+        </div>
+            {% endif %}
+        {% endfor %}
+      <div class="col-sm-12 " >
+        <button type="submit" class="btn btn-primary" >BOOK</button>
+      </div>
+</div>
+      </form> 
+</div>
+</div>
+</div>
+
+
+</body>
+
+
+
+         {% endblock %}        
+
+
