@@ -1,0 +1,123 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+//   <script>
+// $(document).ready(function($) 
+//     { 
+//         $("#myTable").tablesorter(); 
+//     } 
+// ); 
+    
+// </script>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+<form class="form" role="form" method="GET" >
+<div class="row">
+<div class="col-sm-4">
+  Name:
+  <input type="text" name="firstname" >
+  <br><br>
+  </div>
+<!-- <div class="col-sm-4">  
+  Last name:
+  <input type="text" name="lastname" >
+  <br><br>
+  </div>
+<div class="col-sm-4">  
+  Email:
+  <input type="text" name="email" >
+  <br><br>
+</div>
+  <div class="col-sm-3">
+  Phone:
+  <input type="text" name="phno" >
+  <br><br>
+  </div> -->
+<div class="col-sm-4">
+Reference Number:
+  <input type="text" name="referenceno" >  
+  <br><br>
+  </div>
+      <div class="col-sm-4" style="margin-top:-5px;">
+        <button type="submit" class="btn btn-primary" >Search</button>
+      </div>
+      </div>
+
+      </form>
+
+<br>
+<h2 class="sub-header">Invoices</h2>
+          <div class="table-responsive">
+            <table  id ="myTable" class="table table-striped">
+              <thead>
+                <tr>
+                  <th><a href="#">Last Name ^ </a></th>
+                  <th><a href="#">First Name ^ </a></th>
+                  <th><a href="#">Email ^ </a></th>
+                  <th><a href="#">Phone Number ^ </a></th>
+                  <th><a href="#">Country ^ </a></th>
+                  <th><a href="#">Count ^ </a></th>
+                <th><a href="#">Id ^ </a></th>
+                                                                     
+                </tr>
+              </thead>
+              <tbody class="infinite-container">
+              	{% for customer in all_invoices %}
+                <tr class="infinite-item">
+                  <td> {{ customer.last_name }}</td>
+                  <td> {{ customer.first_name }}</td>
+                  <td> {{ customer.email }}</td>
+                  <td> {{ customer.phone_number }}</td>
+                  <td> {{ customer.country }}</td>
+                  <td> <a href="/pointlog/?pk={{customer.pk}}">{{ customer.numbertime }}</a></td>
+
+
+                 <td><a href="/edit14/{{customer.pk}}">{{ customer.pk }}</a></td>                         
+<!--                   <td><a href={% url 'edit_1' customer.pk %}>Edit</a></td>  
+                  <td><a href={% url 'delete_1' customer.pk %}>Delete</a></td> -->
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+ </div>
+
+
+<div class="row">
+<div class="col-sm-10" id="basic-waypoint"></div>
+<div class="pagination col-sm-2 ">
+<!--     <span class="step-links">
+        {% if allbookings.has_previous %}
+            <a href="?page={{ allbookings.previous_page_number }}"><<</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ allbookings.number }} of {{ allbookings.paginator.num_pages }}
+        </span> -->
+
+        {% if all_invoices.has_next %}
+            <a class="infinite-more-link" href="?page={{ all_invoices.next_page_number }}">Loading ... </a>
+        {% endif %}
+    </span>
+</div>
+
+</div>
+           
+</div>
+
+
+
+  <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.loading').hide();
+      }
+    });
+</script>
+
+
+{% endblock %}

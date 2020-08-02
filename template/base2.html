@@ -1,0 +1,374 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://innbparkhotel.com/static/favicon.ico">
+    <title>InnB Park Hotel </title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">    
+    <link href="/static/css/jquery-ui.css" rel="stylesheet">
+    <link href="/static/css/base.css?v=1" rel="stylesheet">        
+
+  <script>window.jQuery || document.write('<script src="/static/js/jquery.min.js"><\/script>')</script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/holder.min.js"></script>           
+    <script src="/static/js/jquery-ui.js"></script>
+    <script src="/static/js/jquery.ui.datepicker.validation.js"></script>    
+ 
+
+<script type="text/javascript">
+      $(function () {
+
+var now = new Date(); 
+var dateToday =new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),  now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+dateToday.setHours(dateToday.getHours()-4);
+// var Datetwo = dateToday.getUTCHours()+8
+// dd = dateToday.setDate(dateToday.getDate()-1);
+console.log(dateToday)
+var dates = $("#from, #to").datepicker({
+    // defaultDate: "+1w",
+    // changeMonth: true,
+    numberOfMonths: 1,
+    minDate: dateToday,
+    onSelect: function(selectedDate) {
+        var option = this.id == "from" ? "minDate" : "maxDate",
+            instance = $(this).data("datepicker"),
+            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+        dates.not(this).datepicker("option", option, date);
+    }
+});
+
+
+         });
+        </script> 
+
+
+  </head>
+  <body>
+  <div class="full">
+  <nav class="navbar navbar-default">
+        <div class="container">
+
+
+    <ul class="nav navbar-right-bottom">
+
+
+
+{% if user55 %}
+<li class="loginusername"><a href={% url 'logout_customer_view' %}><span class="glyphicon glyphicon-log-out"></span>   &nbsp;Logout</a></li>
+<li class="loginusername"><a href={% url 'customerportal' %}><span class="glyphicon glyphicon-user"></span>   &nbsp;{{user55.first_name}}</a></li>
+
+{% else %}
+
+
+        <li class="loginusername"><a href={% url 'customerlogin' %}><span class="glyphicon glyphicon-log-in"></span>   &nbsp; Customer Login</a></li>
+        <li class="loginusername"><a href={% url 'customerregister' %}><span class="glyphicon glyphicon-edit"></span>   &nbsp; Register</a></li>
+
+        <!-- <li class="loginusername"><a href="/test2"><span class="glyphicon glyphicon-log-in"></span>   &nbsp; Customer Login</a></li>
+        <li class="loginusername"><a href="/test2"><span class="glyphicon glyphicon-edit"></span>   &nbsp; Register</a></li> -->
+
+{%endif%}
+             <li>+60&#51; 2856 7257  </li>
+<!-- <li>+6011 1005 9626</li> -->
+             <li>102-106, Jalan Imbi, Bukit Bintang, 55100 Kuala Lumpur</li>
+      </ul>
+        </div>
+
+        <div class="container-fluid">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <ul class="nav navbar-nav">
+                  <li>
+                  <a class="navbar-brand" href="https://innbparkhotel.com/"><img class="logoimg"  src="/static/images/innbparklogo3.png"></a>
+                  </li>
+                </ul>
+            </div> 
+
+<!--             <a href={% url 'loginauth' %}><div class="navbar-special"> <strong>Book Now</strong></div></a> -->
+
+            <div class="collapse navbar-collapse" id="myNavbar">
+
+              <ul class="nav navbar-nav">
+
+<!--                 <li><a href="{% url 'rooms' %}">Our Story</a></li> -->
+                <li><a href="{% url 'rooms' %}">Our Rooms</a></li>
+        <!--         <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Page 1-1</a></li>
+                    <li><a href="#">Page 1-2</a></li>
+                    <li><a href="#">Page 1-3</a></li>
+                  </ul>
+                </li> -->
+<!--                 <li><a href="#">Dining</a></li> -->
+                <li><a href="{% url 'events' %}">Events</a></li>
+                <li><a href="{%url 'contactus'%}">Contact Us</a></li>
+                <li><a href="{% url 'blogmainpage' %}">Blog</a></li>
+
+
+
+
+
+                {% if user55 %}
+
+        
+                <li class="showmobileonly"><a href={% url 'logout_customer_view' %}>Logout</a></li>
+                <li class="showmobileonly"><a href={% url 'customerportal' %}>{{user55.first_name}}</a></li>
+        
+                
+                {% else %}
+                
+                
+                
+                <li class="showmobileonly"><a href={% url 'customerlogin' %}>Customer Login</a></li>
+                <li class="showmobileonly"><a href={% url 'customerregister' %}>Register</a></li>
+                
+                
+                {%endif%}
+
+
+
+
+<!-- 
+                <li class="showmobileonly"><a href={% url 'customerlogin' %}>Customer Login</a></li>
+                <li class="showmobileonly"><a href={% url 'customerregister' %}>Register</a></li> -->
+              </ul>
+<!--               <ul class="nav navbar-nav navbar-right">  
+                <li> <a href="#" onclick="testfunction();">Book Now</a></li>
+              </ul>  -->
+
+
+
+
+      <ul class="nav navbar-nav navbar-right"> 
+     <li><a style="border:0px; padding:0px; margin:50px 20px 0px 0px; background: transparent;" href="https://www.instagram.com/innbpark/?hl=en" ><img width="30px"  height="30px" src="/static/images/instagram4.png" /></a></li> 
+      <li><a style="border:0px; padding:0px; margin:50px 10px 0px 0px; background: transparent;" href="https://www.facebook.com/Innbparkhotel/" ><img width="30px" height="30px" src="/static/images/ico_facebook.png" /></a></li> 
+      <li> <a href="{% url 'addbooking' %}" >Book Now</a></li>
+        
+      </ul> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>  
+        </div>
+        </div>
+      </nav>
+
+
+    <!-- <div class="container">
+     
+      <form class="form-horizontal" role="form" method="GET" action="">
+        <div class="form-group"> 
+        {% for field in dateform %}
+        {% if field.errors %} 
+        <div class="control-group error">
+            <div style= "margin:10px;"></div>
+            <label class="control-label col-sm-2 form3">{{ field.label }}</label> 
+              <div class="col-sm-2 form1">{{ field }}</br>
+                <span class="help-inline">
+                  {% for error in  field.errors %}{{ error }}{% endfor %}
+                </span>
+              </div>
+        </div>
+        {% else %}
+        <div class="control-group">
+          <div style= "margin:10px;"></div>
+            <label class="control-label col-sm-2 form3">{{ field.label }}</label> 
+              <div class="col-sm-2 form1">{{ field }}
+                {% if field.help_text %}
+                  <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                    {% endif %}
+              </div>
+        </div>
+            {% endif %}
+        {% endfor %}
+      <div style= "margin:10px;"></div>
+      <div class="col-sm-1 form1">
+        <button type="submit" class="btn btn-primary" >BOOK</button>
+      </div>
+
+      </form>
+    </div>
+    </div>-->
+
+
+
+
+
+
+
+
+
+  {% block content %}
+  
+  {% endblock %}
+    <div id="myModal2" class="modal2">
+
+      <!-- Modal content -->
+      <div class="modal-content2">
+        <div class="modal-header2">
+          <span class="close2">&times;</span>
+
+        </div>
+        <div class="modal-body2">
+
+         
+          <form class="form" role="form" method="GET" action="">
+
+            <div class="form-group"> 
+              <div style="margin-top:30px; margin-left:2%; margin-bottom:-5px; font-size:20px"><strong>Check for Availability</strong>
+              </div>
+              {% for field in dateform %}
+              {% if field.errors %} 
+              <div class="control-group error">
+                  <div style= "margin:10px;"></div>
+                  <label class="control-label col-sm-12 form5">{{ field.label }}</label> 
+                    <div class="col-sm-12">{{ field }}</br>
+                      <span class="help-inline">
+                        {% for error in  field.errors %}{{ error }}{% endfor %}
+                      </span>
+                    </div>
+              </div>
+              {% else %}
+              <div class="control-group">
+              <div style= "margin:10px;"></div>
+                <label class="control-label col-sm-12 form5">{{ field.label }}</label> 
+                  <div class="col-sm-12 ">{{ field }}
+                    {% if field.help_text %}
+                      <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                        {% endif %}
+                  </div>
+              </div>
+                {% endif %}
+              {% endfor %}
+              <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary" >BOOK</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+</div>
+  </body> 
+
+<div class="row" style="margin-top:100px;">
+
+    <footer style="margin-top:-138px">
+    <div class="container-fluid dark">
+
+    <div class="row">
+
+
+      <ul class="navbar-nav2">
+<!--         <li><a href="{% url 'rooms' %}"><strong>InnB Park Hotel</strong></a></li> -->
+        <li><a href="https://innbparkhotel.com#aboutus">About Us</a></li>
+        <li><a href="{% url 'contactus'%}">Contact Us</a></li>
+        <li><a href="{% url 'privacypolicy' %}">Privacy Policy</a></li>
+        <li><a href="{% url 'termscond' %}">Terms & Condition</a></li>
+        <li><a href="{% url 'hotelpolicies' %}">Hotel Policy</a></li>
+
+
+        {% if user.get_username %}
+                 <li><a href="{% url 'detail' %}">Dashboard</a></li>
+        {% else %}
+
+
+        <li><a href="{% url 'loginauth' %}">Staff Login</a></li>   
+        {% endif %}
+
+
+
+
+            <li ><a style="border:0px; padding: 10px 00px 0 0; margin:00px 10px 0px 0px; background: transparent;" href="https://www.facebook.com/Innbparkhotel/" ><img width="25px" height="25px" src="/static/images/ico_facebook.png" /></a></li>
+                        <li ><a style="border:0px;  padding: 10px 00px 0 0; margin:0px 10px 0px 0px; background: transparent;" href="https://www.instagram.com/innbpark/?hl=en" ><img width="25px"  height="25px" src="/static/images/instagram4.png" /></a></li>
+
+
+
+
+
+
+
+        <li class="navbar-nav2right">Copyright 2016 &#169; InnB Park Hotel operated by Apocity Sdn Bhd 198401014712 (127268-X)</li>
+
+      </ul>
+  
+
+    </div>  
+    </div>
+</footer>
+</div>
+<script>
+
+
+
+// var modal2 = document.getElementById('myModal2');
+
+// // Get the button that opens the modal
+// var btn = document.getElementById("myBtn");
+
+// // Get the <span> element that closes the modal
+
+// var span2 = document.getElementsByClassName("close2")[0];
+
+// // When the 
+ // clicks the button, open the modal 
+
+// function testfunction() {
+//     modal2.style.display = "block";
+// }
+// // When the user clicks on <span> (x), close the modal
+
+
+// span2.onclick = function() {
+//     modal2.style.display = "none";
+// }
+
+
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//     if (event.target == modal3) {
+//         modal.style.display = "none";
+      
+//     }
+//     else if (event.target == modal2){
+//             modal2.style.display = "none"; 
+// }
+// }
+</script>
+
+
+</html>
+
+
+
+

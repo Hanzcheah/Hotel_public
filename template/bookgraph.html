@@ -1,0 +1,356 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+<form method="GET" action="{% url 'bookingdetail' %}">
+<div class="col-sm-3">
+<input class="datepicker" name="date">
+</input>
+</div>
+<div class="col-sm-2">  
+    <input type='submit' value='Submit'> 
+</div>
+</form>
+<br>
+<br>
+
+<!-- {{status}}
+{{all_bookings}} -->
+<h2 class="sub-header">Booking</h2>
+<!-- <div class="table-responsive">
+<table class="table table-striped"> -->
+
+
+{% regroup  all_bookings by room_type_name__room_type_name as room_type_name___room_type_namelist %}
+
+{% for room_type_name__room_type_name in room_type_name___room_type_namelist %}
+<br>
+<br>
+<strong>{{room_type_name__room_type_name.grouper}}</strong>
+<br>
+<br>
+<div class="table-responsive">
+<table class="table table-striped" style="text-align:center;">
+
+<thead>
+<tr>
+<td><strong>Room Number</strong></td>
+<td>Room Status</td>
+<td>{{qin_date0}}</td>
+<td>{{qin_date1}}</td>
+<td>{{qin_date2}}</td>
+<td>{{qin_date3}}</td>
+<td>{{qin_date4}}</td>
+<td>{{qin_date5}}</td>
+<td>{{qin_date6}}</td>
+</tr>
+</thead>
+
+
+{% for item in room_type_name__room_type_name.list %}
+
+<tr>
+
+<td>
+<a href="http://innbparkhotel.com/edit6/{{item.id}}">{{item.room_number_as_int}}</a>
+<!-- {{item.booking__checkin_date}} -->
+  </td>
+  <td>
+<!--     <a href="javascript:void(0)" onclick="roomstatus( '{{item.status0}}' , '{{item.id}}' );" > -->
+  {{item.status0}}</a>
+  </td>
+  {% if item.0 %}
+<td style = "padding:0; margin:0;">
+<div id ="{{item.id0}}" style="background-color:#FF0000; margin:0;height:38px; padding:8px; " draggable="true" ondragstart="drag(event)" >
+<a href="/customer/?pk={{item.customer0}}" style="color:#ffffff">{{item.0|truncatechars:10}} {{id0}}</a>
+</div>
+</td>
+  {% else %}
+<td style = "padding:0; margin:0;">
+<div id ="{{qate0}}" ondrop="drop(event, {{item.room_number}} )" ondragover="allowDrop(event)" style="background-color:#00FF36; padding:8px; margin:0;height:38px; ">
+Vacant
+</div>
+
+</td>
+
+{% endif %}
+  
+ {% if item.1%}
+<td style = "padding:0; margin:0;">
+<div id ="{{item.id1}}" style="background-color:#FF0000;  margin:0;height:38px; padding:8px; " draggable="true" ondragstart="drag(event)" >
+<a href="/customer/?pk={{item.customer1}}" style="color:#ffffff">{{item.1|truncatechars:10}}</a>
+</div>
+</td>
+  {% else %}
+
+<td style = "padding:0; margin:0;">
+<div id ="{{qate1}}" ondrop="drop(event, {{item.room_number}} )" ondragover="allowDrop(event)" style="background-color:#00FF36; padding:8px; margin:0;height:38px; ">
+Vacant
+
+</div>
+</td>
+
+
+{% endif %}
+
+ {% if item.2 %}
+<td style = "padding:0; margin:0;">
+<div id ="{{item.id2}}" style="background-color:#FF0000;  margin:0;height:38px; padding:8px; " draggable="true" ondragstart="drag(event)" >
+<a href="/customer/?pk={{item.customer2}}" style="color:#ffffff">{{item.2|truncatechars:10}}</a>
+</div>
+</td>
+  {% else %}
+<td style = "padding:0; margin:0;">
+<div id ="{{qate2}}" ondrop="drop(event, {{item.room_number}} )" ondragover="allowDrop(event)" style="background-color:#00FF36; padding:8px; margin:0;height:38px; ">
+Vacant
+
+</div>
+</td>
+
+
+{% endif %}
+
+
+ {% if item.3 %}
+<td style = "padding:0; margin:0;">
+<div id ="{{item.id3}}" style="background-color:#FF0000; margin:0;height:38px; padding:8px; " draggable="true" ondragstart="drag(event)" >
+<a href="/customer/?pk={{item.customer3}}" style="color:#ffffff">{{item.3|truncatechars:10}}</a>
+</div>
+</td>
+  {% else %}
+<td style = "padding:0; margin:0;">
+<div id ="{{qate3}}" ondrop="drop(event, {{item.room_number}} )" ondragover="allowDrop(event)" style="background-color:#00FF36; padding:8px; margin:0;height:38px; ">
+Vacant
+
+</div>
+</td>
+
+{% endif %}
+
+ {% if item.4 %}
+<td style = "padding:0; margin:0;">
+<div id ="{{item.id4}}" style="background-color:#FF0000; margin:0;height:38px; padding:8px; " draggable="true" ondragstart="drag(event)" >
+<a href="/customer/?pk={{item.customer4}}" style="color:#ffffff">{{item.4|truncatechars:10}}</a>
+</div>
+</td>
+  {% else %}
+<td style = "padding:0; margin:0;">
+<div id ="{{qate4}}" ondrop="drop(event, {{item.room_number}})" ondragover="allowDrop(event)" style="background-color:#00FF36; padding:8px; margin:0;height:38px; ">
+Vacant
+
+</div>
+</td>
+
+{% endif %}
+
+
+ {% if item.5 %}
+<td style = "padding:0; margin:0;">
+<div id ="{{item.id5}}" style="background-color:#FF0000; margin:0;height:38px; padding:8px; " draggable="true" ondragstart="drag(event)" >
+<a href="/customer/?pk={{item.customer5}}" style="color:#ffffff">{{item.5|truncatechars:10}}</a>
+</div>
+</td>
+  {% else %}
+<td style = "padding:0; margin:0;">
+<div id ="{{qate5}}" ondrop="drop(event, {{item.room_number}} )" ondragover="allowDrop(event)" style="background-color:#00FF36; padding:8px; margin:0;height:38px; ">
+Vacant
+
+</div>
+</td>
+
+
+{% endif %}
+
+
+ {% if item.6 %}
+<td style = "padding:0; margin:0;">
+<div id ="{{item.id6}}" style="background-color:#FF0000; margin:0;height:38px; padding:8px; " draggable="true" ondragstart="drag(event)" >
+<a href="/customer/?pk={{item.customer6}}" style="color:#ffffff">{{item.6|truncatechars:10}}</a>
+</div>
+</td>
+  {% else %}
+<td style = "padding:0; margin:0;">
+<div id ="{{qate6}}" ondrop="drop(event, {{item.room_number}} )" ondragover="allowDrop(event)" style="background-color:#00FF36; padding:8px; margin:0;height:38px; ">
+
+Vacant
+
+</div>
+</td>
+
+
+{% endif %}
+
+</tr>
+{% endfor %}
+
+</table>
+</div>
+<!-- {{room.booking__checkin_date}}
+ -->
+ {% endfor %}
+ </ul>
+<!-- </table>
+</div> -->
+</div>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+    console.log(ev.target.id)
+}
+  
+function drop(ev, room) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+       console.log(room);
+       room_ = room
+       // console.log(date);
+    ev.target.style = null;
+ev.target.innerHTML = '';
+    ev.target.appendChild(document.getElementById(data));
+    console.log(data);
+    bookingno = data;
+    console.log(ev.target.id);
+    datee = ev.target.id
+
+
+var x = confirm("Are you sure you want to change this booking to room " + room_ + " and start on " + datee +  " ?");
+
+ if (x){
+var url = "http://innbparkhotel.com/apiapi1/";
+var method = "POST";
+var postData = JSON.stringify({
+        "room": room_,
+        "date": datee,
+        "bookingno": bookingno
+        })
+
+var request = new XMLHttpRequest();
+request.onload = function () {
+   var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   var data = request.responseText; // Returned data, e.g., an HTML document.
+console.log(status);
+}
+
+request.open(method, url, true);
+console.log(postData);
+
+request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+// Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+// Or... whatever
+
+// test =$('meta[name="token"]').attr('content')
+// request.setRequestHeader("X-CSRFToken", test);
+// Actually sends the request to the server.
+request.send(postData);
+
+location.reload();
+
+}else{
+  console.log("cancelled");
+  location.reload();
+}
+
+
+}
+
+// function drop(ev, room) {
+//     ev.preventDefault();
+//     var data = ev.dataTransfer.getData("text");
+//        console.log(room);
+//        room_ = room
+//        // console.log(date);
+//     ev.target.style = null;
+// ev.target.innerHTML = '';
+//     ev.target.appendChild(document.getElementById(data));
+//     console.log(data);
+//     bookingno = data;
+//     console.log(ev.target.id);
+//     datee = ev.target.id
+// var url = "http://innbparkhotel.com/apiapi1/";
+// var method = "POST";
+// var postData = JSON.stringify({
+//         "room": room_,
+//         "date": datee,
+//         "bookingno": bookingno
+//         })
+
+// var request = new XMLHttpRequest();
+// request.onload = function () {
+//    var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+//    var data = request.responseText; // Returned data, e.g., an HTML document.
+// console.log(status);
+// }
+
+// request.open(method, url, true);
+// console.log(postData);
+
+// request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+// // Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+// // Or... whatever
+
+// // test =$('meta[name="token"]').attr('content')
+// // request.setRequestHeader("X-CSRFToken", test);
+// // Actually sends the request to the server.
+// request.send(postData);
+
+// location.reload();
+
+// }
+
+
+
+
+
+
+
+
+function roomstatus(ev, room) {
+    // ev.preventDefault();
+
+       // console.log(date);
+
+var url = "http://innbparkhotel.com/apiapi4/";
+var method = "POST";
+var postData = JSON.stringify({
+        "room": room,
+        "stat": ev,
+
+        })
+
+var request = new XMLHttpRequest();
+request.onload = function () {
+   var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   var data = request.responseText; // Returned data, e.g., an HTML document.
+console.log(status);
+}
+
+request.open(method, url, true);
+console.log(postData);
+
+request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+// Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+// Or... whatever
+
+// test =$('meta[name="token"]').attr('content')
+// request.setRequestHeader("X-CSRFToken", test);
+// Actually sends the request to the server.
+request.send(postData);
+
+// location.reload();
+setTimeout(function(){
+    window.location.reload();
+},100); 
+}
+
+
+
+
+
+</script>
+{% endblock %}

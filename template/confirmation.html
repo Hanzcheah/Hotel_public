@@ -1,0 +1,102 @@
+{% extends 'booking/base2.html' %}
+{% block content %}   
+
+{{ Signature }}
+<body>
+
+<div class="container">
+<div class="container-fluid eighty ">
+
+	<div class = "col-sm-12">
+
+        
+           <div class="table-responsive">
+<!--             <h2 class="sub-header">Details &nbsp &nbsp<a href="" class="btn btn-primary" >Edit</a> </h2> -->
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <td class="col-md-2"> First Name</td>                    
+                  <td>{{ bbb.first_name }}</td>        
+                </tr>
+                <tr>
+                  <td class="col-md-2"> Last Name</td>                    
+                  <td>{{ bbb.last_name }}</td>        
+                </tr> 
+                <tr>
+                  <td class="col-md-2">Phone Number</td>                    
+                  <td>{{ bbb.phone_number }}</td>        
+                </tr>                               
+                <tr>
+                  <td class="col-md-2">Email</td>                    
+                  <td>{{ bbb.email }}</td>        
+                </tr>
+                <tr>
+                  <td class="col-md-2">Check In</td>                    
+                  <td>{{ bbb.checkin_date  }}</td>        
+                </tr>
+                <tr>
+                  <td class="col-md-2">Check Out</td>                    
+                  <td>{{ bbb.checkout_date  }}</td>        
+                </tr>                
+                <tr>
+                  <td class="col-md-2">Total Payment</td>                    
+                  <td>${{ paymentprice  }}</td>        
+                </tr>    
+                <tr>
+                  <td class="col-md-2">Comments</td>                    
+                  <td>{{ bbb.additional_comments  }}</td>        
+                </tr> 
+                <tr>
+
+                </tr>  
+                <tr>
+                  <td class="col-md-2"><div style="margin-top:7px">Payment Method</div></td>                    
+                  <td><form method="POST" action=""><select class="form-control" id="paymentmethod" name="paymentmethod">
+                           <option value="2">Credit Card</option>
+    <option value="48">Paypal</option>
+</select>
+
+                  </td>        
+                </tr>        
+
+               </tbody>
+            </table>
+
+</div>
+
+            <div class= "col-sm-6 col-centered"><input type="submit" value="Proceed to Payment" class="btn btn-primary" ></input>{% csrf_token%}</div>  </div> </form>
+
+        </div>
+        </div>
+
+
+
+<!-- <FORM method="post" name="ePayment" action="https://www.mobile88.com/ePayment/entry.asp">
+<INPUT type="hidden" name="MerchantCode" value={{ MerchantCode }}>
+<INPUT type="hidden" name="PaymentId" value="2">
+<INPUT type="hidden" name="RefNo" value={{ MerchantCode }}>
+<INPUT type="hidden" name="Amount" value={{ MerchantCode }}>
+<INPUT type="hidden" name="Currency" value={{ MerchantCode }}>
+<INPUT type="hidden" name="ProdDesc" value={{ MerchantCode }}>
+<INPUT type="hidden" name="UserName" value={{ bbb.last_name }}>
+<INPUT type="hidden" name="UserEmail" value={{ bbb.email }}>
+<INPUT type="hidden" name="UserContact" value={{ MerchantCode }}>
+<INPUT type="hidden" name="Remark" value="">
+<INPUT type="hidden" name="Lang" value="UTF-8">
+<INPUT type="hidden" name="Signature" value={{ MerchantCode }}>
+<INPUT type="hidden" name="ResponseURL" value={{ MerchantCode }}>
+<INPUT type="hidden" name="BackendURL" value={{ MerchantCode }}>
+<INPUT type="submit" value="Proceed with Payment" name="Submit"> </FORM> -->
+<!-- {% for each in de %}
+	{{ each.room_type_name }}   --- {{each.room_type_name.room_max_people}}</br>	
+
+{% endfor %} -->
+
+<!-- {{ test }} -->
+
+</div>
+</div>
+</body>
+</html>
+
+{% endblock %}

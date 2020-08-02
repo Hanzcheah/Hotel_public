@@ -1,0 +1,90 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+//   <script>
+// $(document).ready(function($) 
+//     { 
+//         $("#myTable").tablesorter(); 
+//     } 
+// ); 
+    
+// </script>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+<form class="form" role="form" method="GET" >
+<div class="row">
+<div class="col-sm-4">
+  Name:
+  <input type="text" name="firstname" >
+  <br><br>
+  </div>
+<!-- <div class="col-sm-4">  
+  Last name:
+  <input type="text" name="lastname" >
+  <br><br>
+  </div>
+<div class="col-sm-4">  
+  Email:
+  <input type="text" name="email" >
+  <br><br>
+</div>
+  <div class="col-sm-3">
+  Phone:
+  <input type="text" name="phno" >
+  <br><br>
+  </div> -->
+<div class="col-sm-4">
+Reference Number:
+  <input type="text" name="referenceno" >  
+  <br><br>
+  </div>
+      <div class="col-sm-4" style="margin-top:-5px;">
+        <button type="submit" class="btn btn-primary" >Search</button>
+      </div>
+      </div>
+
+      </form>
+
+<br>
+<h2 class="sub-header">Invoices</h2>
+          <div class="table-responsive">
+            <table  id ="myTable" class="table table-striped">
+              <thead>
+                <tr>
+                  <th><a href="#">Price</a></th>
+                  <th><a href="#">Date </a></th>
+                  <th><a href="#">Room </a></th>
+
+
+                <th><a href="#">Id ^ </a></th>
+                                                                     
+                </tr>
+              </thead>
+              <tbody class="infinite-container">
+              	{% for customer in all_invoices %}
+                <tr class="infinite-item">
+                  <td> {{ customer.price }}</td>
+                  <td> {{ customer.date }}</td>
+                  <td> {{ customer.roomtype }}</td>
+
+       
+                  <td><a href="/delete18/{{customer.pk}}"> {{ customer.pk }}</a></td>                         
+<!--                   <td><a href={% url 'edit_1' customer.pk %}>Edit</a></td>  
+                  <td><a href={% url 'delete_1' customer.pk %}>Delete</a></td> -->
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+ </div>
+
+
+
+           
+</div>
+
+
+
+
+
+{% endblock %}

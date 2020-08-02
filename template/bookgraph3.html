@@ -1,0 +1,912 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+<Style>
+.visible1 {
+  -webkit-animation-name: test1;
+  -webkit-animation-duration:1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+}
+
+
+@-webkit-keyframes test1 {
+  from {opacity: 0;}
+  to {opacity:1;
+  	}
+}
+
+/* Standard syntax */
+@keyframes test1 {
+  from {opacity: 0;}
+  to {opacity:1;
+  }
+}
+
+
+
+
+.hidden1 {
+  -webkit-animation-name: test2;
+  -webkit-animation-duration:1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+}
+
+
+@-webkit-keyframes test2 {
+  from {opacity: 1;}
+  to {opacity:0;
+  	visibility:hidden;
+
+
+    }
+}
+
+/* Standard syntax */
+@keyframes test2 {
+  from {opacity: 1;}
+  to {opacity:0;
+
+  	visibility:hidden;}
+
+
+
+}
+
+#alertbutton2:hover { color:#FFFFFF !important; background-color: #B22222;  }
+#alertbutton:hover { color:#FFFFFF !important; background-color: #B22222 !important;  }
+
+
+
+
+</Style>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <button href="javascript:void(0)" onclick="newonclick121()" style="position:absolute; right: 20px; 
+  top:0px; color:#B22222; background-color:white;padding:15px 15px 15px 15px; border: 1px solid #B22222;visibility: hidden;
+  border-radius: 5px;" id="alertbutton"> 
+Alerts!
+
+  </button>
+  <div style="position:absolute; right: 20px; width:50%;
+  top: 0px; color:#B22222; background-color:white;padding:20px 32px 20px 20px; border: 1px solid #B22222;visibility: hidden;overflow: hidden;
+  border-radius: 5px; z-index:99;" id="alert">
+
+
+<button href="javascript:void(0)" onclick="newonclick()" style="position:absolute; right: 5px; margin-top:5px;
+  top:0px; color:#B22222; padding:0px 5px 5px 5px; border: 0px solid #B22222;visibility: hidden;
+  border-radius: 5px;" id="alertbutton2"> 
+x
+
+  </button>
+
+
+<!--     Test alert
+    </br>test
+    </br>test
+        </br>test
+            </br>test
+    </br>test -->
+
+  </div>
+
+<form method="GET" action="{% url 'bookingdetail2' %}">
+<div class="col-sm-3">Date Starting from: &nbsp;
+<input class="datepicker" name="date">
+</input>
+</div>
+<div class="col-sm-2">  
+    <input type='submit' value='Change'> 
+</div>
+</form>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+ 
+<!-- <h2 class="sub-header">Booking {{todaydatestrftime}}</h2> -->
+
+
+
+{% regroup  all_bookings by room_type_name__room_type_name as room_type_name___room_type_namelist %}
+
+{% for room_type_name__room_type_name in room_type_name___room_type_namelist %}
+<br>
+<br>
+<strong>{{room_type_name__room_type_name.grouper}}</strong>
+<br>
+<br>
+<div class="table-responsive">
+
+
+
+
+
+<div class="row" style="width:1460px;" >
+
+
+<div style=" width:120px; float:left;margin-left:20px; height:30px; padding:5px; "><strong>Room Number</strong></div>
+
+
+<div style=" width:120px; float:left;height:30px; padding:5px; border-left:solid 1px #C0C0C0; border-left:solid 1px #C0C0C0;">Room Status</div>
+
+{% for b in date_ %}
+
+<div style = "float:left; padding:5px; margin:0; width:120px !important; overflow:visible !important; white-space: nowrap; border-left:solid 1px #C0C0C0; height:30px;  z-index:0;"> {{b}}</div>
+
+{% endfor %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row" style="width:1460px;" >
+
+<div style=" width:120px; float:left;margin-left:20px; height:30px; padding:5px; "><strong></strong></div>
+
+
+<div style=" width:120px; float:left;height:30px; padding:5px; border-left:solid 1px #C0C0C0; border-left:solid 1px #C0C0C0;">Vacancy</div>
+
+{% for z in dateformat %}
+
+<div style = "float:left; padding:5px; margin:0; width:120px !important; overflow:visible !important; white-space: nowrap; border-left:solid 1px #C0C0C0; height:30px;  z-index:0;" id="{{z}}{{room_type_name__room_type_name.grouper}}"> </div>
+
+{% endfor %}
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% for item in room_type_name__room_type_name.list %}
+<div class="row" id="{{item.room_number_as_int}}" style="border-top:1px solid #C0C0C0; width:1460px;">
+
+
+<div style=" width:120px; float:left;margin-left:20px; height:30px;padding:5px;">
+<a href="https://innbparkhotel.com/edit6/{{item.id}}">{{item.room_number_as_int}}</a>
+<!-- {{item.booking__checkin_date}} -->
+  </div>
+  <div style=" width:120px; float:left; border-left:solid 1px #C0C0C0; padding:5px;">
+<!--     <a href="javascript:void(0)" onclick="roomstatus( '{{item.status0}}' , '{{item.id}}' );" > -->
+  {{item.status}}</a>
+  </div>
+
+
+
+
+
+
+
+
+{% for a in dateformat %}
+
+<div style = "float:left; padding:0; margin:0; width:120px !important; overflow:visible !important; white-space: nowrap; border-left:solid 1px #C0C0C0; height:30px;  z-index:0;" class ="{{a}} col-sm-1">
+<div id ="{{a}}" ondrop="drop(event, {{item.room_number}} )" ondragover="allowDrop(event)" style="padding:8px; margin:0;height:38px; ">
+
+</div>
+
+</div>
+
+{% endfor %}
+
+
+</div>
+
+
+
+
+
+
+<div class="row" id="{{item.room_number_as_int}}" style="width:1460px;">
+
+
+<div style=" width:120px; float:left;margin-left:20px; height:30px; ">
+&nbsp;
+
+  </div>
+  <div style=" width:120px; float:left;height:30px; border-left:solid 1px #C0C0C0;">
+    &nbsp;
+
+
+  </div>
+
+
+
+
+
+
+
+
+{% for a in dateformat %}
+
+<div style = "padding:0; margin:0; width:120px !important; overflow:visible !important; white-space: nowrap; border-left:solid 1px #C0C0C0; height:30px;  z-index:0;float:left;" class ="{{a}} col-sm-1">
+<div id ="{{a}}" ondrop="drop(event, {{item.room_number}} )" ondragover="allowDrop(event)" style="padding:8px; margin:0;height:38px; ">
+&nbsp;
+</div>
+
+</div>
+
+{% endfor %}
+
+
+</div>
+
+
+
+
+
+
+
+
+{% endfor %}
+
+
+</div>
+ {% endfor %}
+
+
+</div>
+<script>
+
+
+function daydiff(first, second) {
+    return Math.round((second-first)/(1000*60*60*24));
+}
+
+
+
+
+
+
+{% for a in room %}
+var newDiv = document.createElement('div');
+newDiv.id = '{{a.pk}}';
+newDiv.className='check';
+newDiv.draggable="true";
+newDiv.addEventListener('dragstart', function drag(ev) {
+    ev.dataTransfer.setData("text",'{{a.pk}}');
+});
+
+
+
+
+
+
+
+newDiv.innerHTML = '<a href="https://innbparkhotel.com/customer/?pk={{a.cust33}}" style="color:white; ">{{a.first_name}}</a>';
+
+
+var date = Date.parse("{{a.checkin_date1}}".replace(/^(\d\d)(\d\d)(\d{4})$/, "$3-$2-$1") );
+
+var date2 = Date.parse("{{a.checkout_date1}}".replace(/^(\d\d)(\d\d)(\d{4})$/, "$3-$2-$1") );
+
+var date3 = Date.parse("{{qate0}}".replace(/^(\d\d)(\d\d)(\d{4})$/, "$3-$2-$1") );
+
+var date4 = date3 + (11* 86400000)
+
+
+
+{%if a.earlyout is True %}
+    if(date<date3){
+                date = date3
+
+
+
+
+              var td = document.getElementById("{{a.room_number_as_int}}").getElementsByClassName("{{qate0}}")[0]
+
+
+              if ($(td).find('.check').length !==0){
+
+
+                      var alertdiv = document.getElementById("alert")
+                      alertdiv.innerHTML += "2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}</br>";
+                      alertdiv.style.visibility = "visible";
+                        var alertdiv2 = document.getElementById("alertbutton")
+                                alertdiv2.style.visibility = "visible";
+                                  var alertdiv3 = document.getElementById("alertbutton2")
+                                alertdiv3.style.visibility = "visible";
+                      console.log("tested");
+
+              }else{
+
+                      newDiv.style="background-color: green; opacity:0.6; z-index:98; margin-top:25px; position:absolute; padding-top:5px; padding-left:8px; height:30px; border-radius: 5px;margin-left:-10px !important;"
+
+
+
+if(date2>date4){
+date2 = date4
+};
+
+// console.log("{{a.checkin_date1}}");
+
+// console.log("{{a.checkout_date1}}");
+var wd = ((daydiff(date,date2))*115)+"px"
+// console.log(wd)
+
+newDiv.style.width= wd;
+// console.log(daydiff(date,date2));
+
+
+
+// if ($(td).find('.check').length !==0){
+
+// var alertdiv = document.getElementById("alert")
+// alertdiv.innerHTML += "2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}</br>";
+// alertdiv.style.visibility = "visible";
+//   var alertdiv2 = document.getElementById("alertbutton")
+//           alertdiv2.style.visibility = "visible";
+//             var alertdiv3 = document.getElementById("alertbutton2")
+//           alertdiv3.style.visibility = "visible";
+
+
+// // alert("2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}")
+// };
+
+
+
+td.innerHTML='';
+
+
+
+$('a').attr('draggable', 'false');
+var tableWidth = $('.{{a.checkin_date1}}').width();
+// console.log(tableWidth);
+td.append(newDiv);
+              };
+
+
+
+    } else{
+
+            var td = document.getElementById("{{a.room_number_as_int}}").getElementsByClassName("{{a.checkin_date1}}")[0]
+
+
+          if ($(td).find('.check').length !==0){
+
+
+                  var alertdiv = document.getElementById("alert")
+                  alertdiv.innerHTML += "2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}</br>";
+                  alertdiv.style.visibility = "visible";
+                    var alertdiv2 = document.getElementById("alertbutton")
+                            alertdiv2.style.visibility = "visible";
+                              var alertdiv3 = document.getElementById("alertbutton2")
+                            alertdiv3.style.visibility = "visible";
+                  console.log("tested");
+          // alert("2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}")
+          }else{
+
+                newDiv.style="background-color: green; opacity:0.6; z-index:98; margin-top:25px; margin-left:2px; position:absolute; padding-top:5px; padding-left:8px; height:30px; border-radius: 5px;"
+
+if(date2>date4){
+date2 = date4
+};
+
+// console.log("{{a.checkin_date1}}");
+
+// console.log("{{a.checkout_date1}}");
+var wd = ((daydiff(date,date2))*115)+"px"
+// console.log(wd)
+
+newDiv.style.width= wd;
+// console.log(daydiff(date,date2));
+
+
+
+// if ($(td).find('.check').length !==0){
+
+// var alertdiv = document.getElementById("alert")
+// alertdiv.innerHTML += "2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}</br>";
+// alertdiv.style.visibility = "visible";
+//   var alertdiv2 = document.getElementById("alertbutton")
+//           alertdiv2.style.visibility = "visible";
+//             var alertdiv3 = document.getElementById("alertbutton2")
+//           alertdiv3.style.visibility = "visible";
+
+
+// // alert("2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}")
+// };
+
+
+
+td.innerHTML='';
+
+
+
+$('a').attr('draggable', 'false');
+var tableWidth = $('.{{a.checkin_date1}}').width();
+// console.log(tableWidth);
+td.append(newDiv);
+          };
+
+
+    };
+
+
+
+
+
+{% else %}
+
+if(date<date3){
+  date = date3
+
+
+
+
+var td = document.getElementById("{{a.room_number_as_int}}").getElementsByClassName("{{qate0}}")[0]
+
+
+
+
+if ($(td).find('.check').length !==0){
+
+// td.textContent = '';
+
+
+var alertdiv = document.getElementById("alert")
+alertdiv.innerHTML += "2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}</br>";
+alertdiv.style.visibility = "visible";
+  var alertdiv2 = document.getElementById("alertbutton")
+          alertdiv2.style.visibility = "visible";
+            var alertdiv3 = document.getElementById("alertbutton2")
+          alertdiv3.style.visibility = "visible";
+
+
+
+console.log("tested");
+// alert("2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}")
+};
+
+
+
+
+
+
+newDiv.style="background-color: red; opacity:0.6; z-index:99; margin-top:5px; position:absolute; padding-top:5px; padding-left:8px; height:30px; border-radius: 5px;margin-left:-10px !important;"
+
+
+if(date2>date4){
+date2 = date4
+};
+
+// console.log("{{a.checkin_date1}}");
+
+// console.log("{{a.checkout_date1}}");
+var wd = ((daydiff(date,date2))*115)+"px"
+// console.log(wd)
+
+newDiv.style.width= wd;
+// console.log(daydiff(date,date2));
+
+
+
+// if ($(td).find('.check').length !==0){
+
+// var alertdiv = document.getElementById("alert")
+// alertdiv.innerHTML += "2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}</br>";
+// alertdiv.style.visibility = "visible";
+//   var alertdiv2 = document.getElementById("alertbutton")
+//           alertdiv2.style.visibility = "visible";
+//             var alertdiv3 = document.getElementById("alertbutton2")
+//           alertdiv3.style.visibility = "visible";
+
+
+// // alert("2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}")
+// };
+
+
+
+td.innerHTML='';
+
+
+
+$('a').attr('draggable', 'false');
+var tableWidth = $('.{{a.checkin_date1}}').width();
+// console.log(tableWidth);
+td.append(newDiv);
+
+
+
+} else{
+
+  var td = document.getElementById("{{a.room_number_as_int}}").getElementsByClassName("{{a.checkin_date1}}")[0]
+
+
+
+if ($(td).find('.check').length !==0){
+
+// td.textContent ='';
+
+console.log("tested");
+
+
+
+var alertdiv = document.getElementById("alert")
+alertdiv.innerHTML += "2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}</br>";
+alertdiv.style.visibility = "visible";
+  var alertdiv2 = document.getElementById("alertbutton")
+          alertdiv2.style.visibility = "visible";
+            var alertdiv3 = document.getElementById("alertbutton2")
+          alertdiv3.style.visibility = "visible";
+// alert("2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}")
+};
+
+
+
+newDiv.style="background-color: red; opacity:0.6; z-index:99; margin-top:5px; margin-left:2px; position:absolute; padding-top:5px; padding-left:8px; height:30px; border-radius: 5px;"
+
+
+
+
+
+if(date2>date4){
+date2 = date4
+};
+
+// console.log("{{a.checkin_date1}}");
+
+// console.log("{{a.checkout_date1}}");
+var wd = ((daydiff(date,date2))*115)+"px"
+// console.log(wd)
+
+newDiv.style.width= wd;
+// console.log(daydiff(date,date2));
+
+
+
+// if ($(td).find('.check').length !==0){
+
+// var alertdiv = document.getElementById("alert")
+// alertdiv.innerHTML += "2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}</br>";
+// alertdiv.style.visibility = "visible";
+//   var alertdiv2 = document.getElementById("alertbutton")
+//           alertdiv2.style.visibility = "visible";
+//             var alertdiv3 = document.getElementById("alertbutton2")
+//           alertdiv3.style.visibility = "visible";
+
+
+// // alert("2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}")
+// };
+
+
+
+td.innerHTML='';
+
+
+
+$('a').attr('draggable', 'false');
+var tableWidth = $('.{{a.checkin_date1}}').width();
+// console.log(tableWidth);
+td.append(newDiv);
+
+
+
+
+
+
+
+
+};
+
+
+
+
+{% endif %}
+
+
+
+
+
+// if(date2>date4){
+// date2 = date4
+// };
+
+// // console.log("{{a.checkin_date1}}");
+
+// // console.log("{{a.checkout_date1}}");
+// var wd = ((daydiff(date,date2))*115)+"px"
+// // console.log(wd)
+
+// newDiv.style.width= wd;
+// // console.log(daydiff(date,date2));
+
+
+
+// // if ($(td).find('.check').length !==0){
+
+// // var alertdiv = document.getElementById("alert")
+// // alertdiv.innerHTML += "2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}</br>";
+// // alertdiv.style.visibility = "visible";
+// //   var alertdiv2 = document.getElementById("alertbutton")
+// //           alertdiv2.style.visibility = "visible";
+// //             var alertdiv3 = document.getElementById("alertbutton2")
+// //           alertdiv3.style.visibility = "visible";
+
+
+// // // alert("2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}")
+// // };
+
+
+
+// td.innerHTML='';
+
+
+
+// $('a').attr('draggable', 'false');
+// var tableWidth = $('.{{a.checkin_date1}}').width();
+// // console.log(tableWidth);
+// td.append(newDiv);
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% for b in newst %}
+console.log("{{b.vaca}}")
+{% for c in b.vaca %}
+// var newDiv = document.createElement('div');
+// newDiv.id = '{{a.pk}}';
+// newDiv.className='check';
+// newDiv.draggable="true";
+// newDiv.addEventListener('dragstart', function drag(ev) {
+//     ev.dataTransfer.setData("text",'{{a.pk}}');
+// });
+
+
+
+
+
+
+
+// newDiv.innerHTML = '{{c.vacancy}}';
+
+
+// var date = Date.parse("{{a.checkin_date1}}".replace(/^(\d\d)(\d\d)(\d{4})$/, "$3-$2-$1") );
+
+// var date2 = Date.parse("{{a.checkout_date1}}".replace(/^(\d\d)(\d\d)(\d{4})$/, "$3-$2-$1") );
+
+// var date3 = Date.parse("{{qate0}}".replace(/^(\d\d)(\d\d)(\d{4})$/, "$3-$2-$1") );
+
+// var date4 = date3 + (11* 86400000)
+
+
+
+//   console.log("{{a.first_name}}");
+//     console.log("{{a.room_number_as_int}}");
+// if(date<date3){
+//   date = date3
+
+var td = document.getElementById("{{c.date}}{{b.name}}")
+// td.style="opacity:0.8; z-index:99; margin-top:0px; color:black; position:absolute; padding-top:0px; padding-left:10px; height:20px; margin-left:10px !important;"
+
+
+
+if("{{c.vacancy}}"<3){
+
+
+var alertdiv = document.getElementById("alert")
+alertdiv.innerHTML += "{{c.vacancy}} room(s) vacant only for {{b.name}}"+ " at " +"{{c.date}}</br>";
+  var alertdiv2 = document.getElementById("alertbutton")
+          alertdiv2.style.visibility = "visible";
+
+
+alertdiv.style.visibility = "visible";
+
+            var alertdiv3 = document.getElementById("alertbutton2")
+          alertdiv3.style.visibility = "visible";
+
+// alert("{{c.vacancy}} room(s) vacant only for {{b.name}}"+ " at " +"{{c.date}}")
+td.innerHTML = '<span style="color:#B22222"><Strong>{{c.vacancy}}</strong></span>';
+}
+else{
+
+  td.innerHTML = '<Strong>{{c.vacancy}}</strong>';
+}
+// } else{
+
+//   var td = document.getElementById("{{a.room_number_as_int}}").getElementsByClassName("{{a.checkin_date1}}")[0]
+
+// newDiv.style="background-color: red; opacity:0.6; z-index:99; margin-top:5px; margin-left:2px; position:absolute; padding-top:5px; padding-left:8px; height:30px; border-radius: 5px;"
+
+// };
+
+
+// if(date2>date4){
+// date2 = date4
+// };
+
+// // console.log("{{a.checkin_date1}}");
+
+// // console.log("{{a.checkout_date1}}");
+// var wd = ((daydiff(date,date2))*115)+"px"
+// // console.log(wd)
+
+// newDiv.style.width= wd;
+// // console.log(daydiff(date,date2));
+
+
+
+// if ($(td).find('.check').length !==0){
+// alert("2 bookings on "+ "{{a.checkin_date1}}"+ " room " +"{{a.room_number_as_int}}")
+// };
+
+
+
+// td.innerHTML='';
+
+
+
+// $('a').attr('draggable', 'false');
+// var tableWidth = $('.{{a.checkin_date1}}').width();
+// // console.log(tableWidth);
+// td.append(newDiv);
+{% endfor %}
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+// function drag(ev) {
+//     ev.dataTransfer.setData("text", ev.target.id);
+//     console.log(ev.target.id)
+// }
+  
+function drop(ev, room) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+       console.log(data);
+       room_ = room
+       // console.log(date);
+    ev.target.style = null;
+ev.target.innerHTML = '';
+    ev.target.appendChild(document.getElementById(data));
+    console.log(data);
+    bookingno = data;
+    console.log(ev.target.id);
+    datee = ev.target.id
+
+
+var x = confirm("Are you sure you want to change this booking to room " + room_ + " and start on " + datee +  " ?");
+
+ if (x){
+var url = "https://innbparkhotel.com/apiapi1/";
+var method = "POST";
+var postData = JSON.stringify({
+        "room": room_,
+        "date": datee,
+        "bookingno": bookingno
+        })
+
+var request = new XMLHttpRequest();
+request.onload = function () {
+   var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   var data = request.responseText; // Returned data, e.g., an HTML document.
+console.log(status);
+
+}
+
+request.open(method, url, true);
+console.log(postData);
+
+request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+request.send(postData);
+$(".loader").fadeIn("slow"); 
+location.reload();
+
+}else{
+  console.log("cancelled");
+  location.reload();
+}
+
+
+}
+
+function newonclick() {
+
+  var alertdiv = document.getElementById("alert")
+  var alertdiv2 = document.getElementById("alertbutton")
+  var alertdiv3 = document.getElementById("alertbutton2")
+  var gg =alertdiv.style.visibility 
+  // if(gg=="hidden"){
+  // 	alertdiv.className ='visible1';
+  //   alertdiv.style.visibility = "visible";
+  //   alertdiv2.style.right="470px";
+  //   alertdiv2.innerHTML="x"
+  // }else{
+  	alertdiv.className ='hidden1';
+        alertdiv3.className ='hidden1';
+            alertdiv2.style.right="20px";
+                alertdiv2.innerHTML="Alerts!"
+  // }
+
+
+
+}
+
+
+function newonclick121() {
+
+  var alertdiv = document.getElementById("alert")
+  // var alertdiv2 = document.getElementById("alertbutton")
+  var alertdiv3 = document.getElementById("alertbutton2")
+  var gg =alertdiv.style.visibility 
+  // if(gg=="hidden"){
+  	alertdiv.className ='visible1';
+    alertdiv.style.visibility = "visible";
+    alertdiv3.className='visible1';
+    // alertdiv2.style.right="470px";
+    // alertdiv2.innerHTML="x"
+  // }else{
+  // 	alertdiv.className ='hidden1';
+  //       // alertdiv.style.visibility = "hidden";
+  //           alertdiv2.style.right="20px";
+  //               alertdiv2.innerHTML="Alerts!"
+  // }
+
+
+
+}
+
+</script>
+{% endblock %}

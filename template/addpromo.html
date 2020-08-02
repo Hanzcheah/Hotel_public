@@ -1,0 +1,73 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+	<a type="submit" class="btn btn-primary" href="/edit13">Add Promo</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% if active is True %}
+<div style="width:300px; height:50px;overflow: hidden;">
+
+<button style="border-color:#337ab7; box-shadow:0px;border-style: solid;color:#337ab7; background-color:white;float:left; height:40px;  margin-left:50px; padding-left:20px;border-radius:5px;display: inline-block;" onclick="location.href='https://innbparkhotel.com/addpromo/?inactive=in'">Inactive</button>
+<button style="border-style: solid;border-color:#337ab7;color:white; background-color:#337ab7;float:left; height:40px; margin-left:-120px; border-radius:5px;display: inline-block; z-index:20">Active</button>
+
+</div>
+{% else%}
+<div style="width:300px;height:30px;text-align:left;">
+<button style="border-style: solid;border-color:#337ab7; color:#337ab7;float:left; display: inline-block; height:40px;  padding-right:15px;  border-radius:5px;background-color:white " href="https://innbparkhotel.com/addpromo/" onclick="location.href='https://innbparkhotel.com/addpromo/'">Active</button>
+<button style="border-style: solid;border-color:#337ab7;color:white; background-color:#337ab7;float:left; height:40px; margin-left:-10px; border-radius:5px; display: inline-block; ">Inactive</button>
+</div>
+{% endif %}
+<div> 
+<br>
+<br>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Code</th>
+			<th>Discount percentage</th>
+			<th>Fixed Discount</th>
+			<th>Description</th>
+			<th>One Time Only</th>
+			<th>Room type</th>									<th>Number of days before</th>
+									<th>Number of rooms</th>
+															<th>Number of days discount </th>
+						<th>Start Date</th>
+			<th>End Date</th>
+		</tr>
+	</thead>
+
+{% for p in Promo %}
+<tr><td>
+{{p.code}}</td>
+<td>{{p.discountper}}</td>
+<td>{{p.discountfix}}</td>
+<td>{{p.description}}</td>
+<td>{{p.onetimeonly}}</td>
+<td>{{p.roomtype}}</td>
+<td>{{p.daysbefore}}</td>
+<td>{{p.roomeffectiveno}}</td>
+<td>{{p.dayseffective}}</td>
+<td>{{p.startdate}}</td>
+<td>{{p.enddate}}</td>
+<td><a href="{% url 'edit_15' %}?pk={{p.pk}}">edit </a></td>
+<td><a href={% url 'delete_7' p.pk %}>delete </a></td>
+{% if active is True %}
+{% else %}
+<td><a href={% url 'delete_77' p.pk %}>delete(do not press) </a></td>
+{% endif%}
+</tr>
+
+{% endfor %}
+</table>
+</div>
+</div>
+{% endblock %}

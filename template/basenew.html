@@ -1,0 +1,1610 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta property="og:image" content="https://www.innbparkhotel.com/static/images/cardpic.jpg" />
+  <meta property="og:description" content="InnB Park Hotel is situated in the Kuala Lumpur Bukit Bintang area and strives to provide the best service and set the highest hygiene standards for hotels in Malaysia " />
+  <meta property="og:title" content="InnB Park Hotel" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://innbparkhotel.com/static/favicon.ico">
+    <title>InnB Park Hotel</title> 
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <meta name="description" content="Welcome to InnB Park Hotel, Kuala Lumpur Malaysia. Comfort and innovations that brings you away from the ambience of the city into another realm of comfort and tranquility. We are situated within walking distance of several shopping centres within Kuala Lumpur's Golden Triangle, allowing convenient access to Petronas Twin Towers, the KL tower or the Pavillion." /> 
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">    
+    <link href="/static/css/jquery-ui.css" rel="stylesheet">
+    <link href="/static/css/base.css?v=1" rel="stylesheet">   
+      
+
+  <script>window.jQuery || document.write('<script src="/static/js/jquery.min.js"><\/script>')</script>
+    <script src="/static/js/bootstrap.js"></script>     
+    <script src="/static/js/holder.min.js"></script>           
+    <script src="/static/js/jquery-ui.js"></script>
+    <script src="/static/js/jquery.ui.datepicker.validation.js"></script>    
+
+ 
+
+    <script type="text/javascript">
+      $(function () {
+
+var now = new Date(); 
+var dateToday =new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),  now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+dateToday.setHours(dateToday.getHours()-4);
+// var Datetwo = dateToday.getUTCHours()+8
+// dd = dateToday.setDate(dateToday.getDate()-1);   
+console.log(dateToday)
+var dates = $("#from, #to").datepicker({
+    // defaultDate: "+1w",
+    // changeMonth: true,
+    numberOfMonths: 1,
+    minDate: dateToday,
+    onSelect: function(selectedDate) {
+        var option = this.id == "from" ? "minDate" : "maxDate",
+            instance = $(this).data("datepicker"),
+            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+        dates.not(this).datepicker("option", option, date);
+    }
+});
+
+
+         });
+
+
+
+
+
+
+
+
+
+$(window).scroll(function() {
+
+    if ($(this).scrollTop()>0)
+     {
+        $('.hoverarrow').fadeOut();
+                $('.hoverarrow2').fadeOut();
+     }
+    else
+     {
+      $('.hoverarrow').fadeIn();
+            $('.hoverarrow2').fadeIn();
+     }
+ });
+
+
+
+
+
+
+
+
+        </script> 
+
+<meta name="google-site-verification" content="77O2WsXVSYrPWw0oXwO7fB5L4ezWq2AndjKNuXR0mnY" />
+<script>
+$(document).ready(function(){
+
+
+
+
+
+
+
+
+
+
+$(function(){
+  $(".image5").fadeIn(1000);
+  setTimeout(flashOne,5000);
+});
+
+function flashOne () {
+
+$(".image5").fadeOut(1000);
+  $(".image2").fadeIn(1000);
+  setTimeout(flashTwo,5000);
+}
+
+function flashTwo () {
+$(".image2").fadeOut(1000);
+  $(".image3").fadeIn(1000);
+  setTimeout(flashThree,5000);
+}
+
+function flashThree () {
+$(".image3").fadeOut(1000);
+  $(".image4").fadeIn(1000);
+  setTimeout(flashFour,5000);
+}
+
+
+function flashFour () {
+$(".image4").fadeOut(1000);
+  $(".image5").fadeIn(1000);
+  setTimeout(flashOne,5000);
+}
+
+
+
+
+
+
+
+});
+
+
+
+// var window_size = window.matchMedia('(max-width: 768px)');
+// console.log(window_size);
+    if (window.matchMedia('(max-width: 767px)').matches) {
+        console.log($('.navbar').width())
+
+
+           $(document).scroll(function() {
+              var y = $(this).scrollTop();
+                if (y > 310) {
+                    $('.navbar-special').fadeIn();
+                } else {
+                      $('.navbar-special').fadeOut();
+                }
+            });
+                 // is mobile device
+
+       }
+
+
+
+  // $(".b").click(function(){
+  //      clearInterval(timer);
+  //        timer=setInterval(function(){
+  //   $('.image3').fadeIn(1000).delay(6000).fadeOut(1000);
+  //   $('.image4').fadeIn(1000).delay(8000).fadeOut(1000);  
+  //   $('.image5').fadeIn(1000).delay(10000).fadeOut(1000);  
+  //   $('.image2').fadeIn(1000).delay(12000).fadeOut(1000);   
+  // }, 14000); 
+  //      });
+
+
+
+
+
+
+
+
+
+
+
+</script>
+  </head>
+
+<script>
+$(window).on('load', function () {      //Do the code in the {}s when the window has loaded 
+  $(".loader").fadeOut("slow");  //Fade out the #loader div
+});
+</script>
+<div class="loader">
+
+
+<div id="fountainG">
+    <div class="fountaine">Loading.. please wait</div>
+  <div id="fountainG_1" class="fountainG"></div>
+  <div id="fountainG_2" class="fountainG"></div>
+  <div id="fountainG_3" class="fountainG"></div>
+  <div id="fountainG_4" class="fountainG"></div>
+  <div id="fountainG_5" class="fountainG"></div>
+  <div id="fountainG_6" class="fountainG"></div>
+  <div id="fountainG_7" class="fountainG"></div>
+  <div id="fountainG_8" class="fountainG"></div>
+</div>
+</div>
+
+
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+
+    <ul class="nav navbar-right-bottom">
+
+{% if user55 %}
+<li class="loginusername"><a href={% url 'logout_customer_view' %}><span class="glyphicon glyphicon-log-out"></span>   &nbsp;Logout</a></li>
+<li class="loginusername"><a href={% url 'customerportal' %}><span class="glyphicon glyphicon-user"></span>   &nbsp;{{user55.first_name}}</a></li>
+
+{% else %}
+
+
+
+
+        <li class="loginusername"><a href={% url 'customerlogin' %}><span class="glyphicon glyphicon-log-in"></span>   &nbsp; Customer Login</a></li>
+        <li class="loginusername"><a href={% url 'customerregister' %}><span class="glyphicon glyphicon-edit"></span>   &nbsp; Register</a></li>
+        <!-- <li class="loginusername"><a href="/test2"><span class="glyphicon glyphicon-log-in"></span>   &nbsp; Customer Login</a></li>
+        <li class="loginusername"><a href="/test2"><span class="glyphicon glyphicon-edit"></span>   &nbsp; Register</a></li> -->
+
+
+{%endif%}
+             <li>+60&#51; 2856 7257  </li>
+<!-- <li>+6011 1005 9626</li> -->
+             <li>102-106, Jalan Imbi, Bukit Bintang, 55100 Kuala Lumpur</li>
+      </ul>
+      </div>
+
+
+    <div class="container-fluid">
+    <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+        <ul class="nav navbar-nav">
+        <li>
+      <a class="navbar-brand" href="https://innbparkhotel.com/"><img class="logoimg"  src="/static/images/innbparklogo3.png"></a>
+      </li>
+      </ul>
+    </div> 
+
+    <a href=""><div class="navbar-special"> <strong>Book Now</strong></div></a>
+
+
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+      <ul class="nav navbar-nav">
+
+<!--         <li><a href="{% url 'rooms' %}">Our Story</a></li> -->
+        <li><a href="{% url 'rooms' %}">Our Rooms</a></li>
+<!--         <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li> -->
+<!--         <li><a href="#">Dining</a></li> -->
+        <li><a href="{% url 'events' %}">Events</a></li>
+        <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+
+        <li><a href="{% url 'blogmainpage' %}">Blog</a></li>
+
+
+
+
+
+
+        {% if user55 %}
+
+
+        <li class="showmobileonly"><a href={% url 'logout_customer_view' %}>Logout</a></li>
+        <li class="showmobileonly"><a href={% url 'customerportal' %}>{{user55.first_name}}</a></li>
+
+        
+        {% else %}
+        
+        
+        
+        <li class="showmobileonly"><a href={% url 'customerlogin' %}>Customer Login</a></li>
+        <li class="showmobileonly"><a href={% url 'customerregister' %}>Register</a></li>
+        
+        
+        {%endif%}
+
+
+
+
+
+        
+
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right"> 
+     <li><a style="border:0px; padding:0px; margin:50px 20px 0px 0px; background: transparent;" href="https://www.instagram.com/innbpark/?hl=en" ><img width="30px"  height="30px" src="/static/images/instagram4.png" /></a></li> 
+      <li><a style="border:0px; padding:0px; margin:50px 10px 0px 0px; background: transparent;" href="https://www.facebook.com/Innbparkhotel/" ><img width="30px" height="30px" src="/static/images/ico_facebook.png" /></a></li> 
+      <li> <a href="{% url 'addbooking' %}" >Book Now</a></li>
+        
+      </ul> 
+
+    </div>  
+    </div>
+    </div>
+    </nav>
+
+
+
+
+
+
+
+<!-- 
+
+<div class="container hovermenu2">Kuala Lumpur&nbsp;<span id="tick"> time</span>&nbsp; | &nbsp;{{weather}} &nbsp;{{temperature}}</div>
+ -->
+<div>
+    <div class="container hovermenu">
+     
+      <form class="form" role="form" method="GET" action="">
+
+        <div class="form-group"> 
+        <div style="margin-top:30px; margin-left:7%; margin-bottom:-5px; font-size:19px; font-family:'Raleway', sans-serif"><strong>CHECK AVAILABILITY</strong></div>
+        {% for field in dateform %}
+        {% if field.errors %} 
+        <div class="control-group error">
+            <div style= "margin:10px;"></div>
+            <label style="font-family:'Raleway', sans-serif" class="control-label col-sm-12 form5">{{ field.label }}</label> 
+              <div class="col-sm-12">{{ field }}</br>
+                <span class="help-inline">
+                  {% for error in  field.errors %}{{ error }}{% endfor %}
+                </span>
+              </div>
+        </div>
+        {% else %}
+        <div class="control-group">
+          <div style= "margin:10px;"></div>
+            <label style="font-family:'Raleway', sans-serif" class="control-label col-sm-12 form5">{{ field.label }}</label> 
+              <div class="col-sm-12 ">{{ field }}
+                {% if field.help_text %}
+                  <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                    {% endif %}
+              </div>
+        </div>
+            {% endif %}
+        {% endfor %}
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-primary" >BOOK</button>
+      </div>
+
+      </form>
+    </div>
+    </div>
+  <br>
+<!--   <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+<!--     <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol> --> 
+
+    <!-- Wrapper for slides -->
+<!--     <div class="carousel-inner special" role="listbox">
+      <div class="item active ">
+        <img class="carouselstyle" src="/static/images/Park_Hotel_Clarke_Quay_-_Club_Premier_Room.jpg" alt="Chania" >
+        <div class="carousel-captionrighttop">
+        <h1>Hotel booking</h1>
+        testeteststsetsetset
+        </div>
+      </div>
+
+      <div class="item special">
+        <img class="carouselstyle" src="/static/images/Park_Hotel_Clarke_Quay_-_Club_Premier_Room.jpg" alt="Chania"  >
+      </div>
+    
+      <div class="item special">
+        <img class="carouselstyle" src="/static/images/Park_Hotel_Clarke_Quay_-_Club_Premier_Room.jpg" alt="Flower"  >
+      </div>
+
+      <div class="item special">
+        <img class="carouselstyle" src="/static/images/Park_Hotel_Clarke_Quay_-_Club_Premier_Room.jpg" alt="Flower" >
+                <div class="carousel-captionrighttop">
+        <h1>Hotel booking</h1>
+        testeteststsetsetset
+        </div>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+<!--     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" >
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" >
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
+      <span class="sr-only">Next</span>
+    </a> -->
+  
+  <div class="specia123l">
+
+
+
+     <div class="newimg41 image5"><img class="newimg41" src="https://innbparkhotel.com/img/{{img1}}"  >
+
+<div class="col-sm-12 hovertext"><a href="https://innbparkhotel.com/addbooking/"><span class="hoverlink">Book directly on our website for the best prices</span></a></div>
+
+
+       <!-- <div class="col-sm-6 carouseltext">The Green Building Experience</div> --></div> 
+
+    <div class="newimg31 image4"> <img class="newimg31" src="https://innbparkhotel.com/img/{{img2}}"    >
+    <div class="col-sm-12 hovertext"><a href="https://innbparkhotel.com/addbooking/"><span class="hoverlink">Audio-visual facilities for meetings and events</span></a>
+
+
+    </div></div>   
+   <div class="newimg21 image3"><img class="newimg21" src="https://innbparkhotel.com/img/{{img3}}"   >
+
+   <div class="col-sm-12 hovertext"><a href="https://innbparkhotel.com/addbooking/"><span class="hoverlink">
+
+    Superior Queen Room</span></a></div> </div>
+
+
+
+  <div class="newimg11 image2"><img class="newimg11" src="https://innbparkhotel.com/img/{{img4}}"   > 
+  <div class="col-sm-12 hovertext"><a href="https://innbparkhotel.com/addbooking/"><span class="hoverlink">
+    Best service, highest standard of cleanliness at the lowest price</span></a></div>  </div>
+<!--   <img class="newimg image1" src="https://innbparkhotel.com/img/{{img5}}" alt="Chania" >
+ -->
+
+<!--   <div class="carouselbtn">
+  <button class="b"> </button>
+  </div> -->
+  
+<div class="col-sm-12 hoverarrow2">Scroll down for more</div>
+
+
+<div class="col-sm-12 hoverarrow"><span class="glyphicon glyphicon-triangle-bottom"></span></div>
+
+
+
+
+  </div>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="margin">
+<div class="row">
+<div class="col-sm-12 custom-containerhome4" style="margin-left:1.5%; width:97%; margin-bottom:50px; margin-top:10px; border:solid 1px #d49e3f;" >
+
+<div class="col-sm-12" style=" padding-bottom:2%">
+
+
+<strong>
+We apologise for the inconvenience as we are currently experiencing technical issues with our normal phone number. To contact us please call us on this temporary number +6011 1005 9626 or +6011 1041 9945
+</strong>
+
+
+</div>
+
+</div>
+</div>
+</div>
+ -->
+
+
+
+
+<div class="margin">
+<div class="row">
+<div class="col-sm-12 custom-containerhome5" style=" margin-bottom:50px; margin-top:10px;" >
+<div class="col-sm-2"></div>
+<div class="col-sm-8" style=" padding-bottom:2%">
+</br>
+
+<h2 style="text-align:center; font-size:50px;">
+The Hotel</h2>
+<hr></hr>
+<span style="line-height:200%;font-size: 17px;">
+<!-- From the moment you step into the hotel, the marble lobby and hanging chandelier brings you away from the ambience of the city and into another realm of comfort and tranquility. 
+Our attentive staff will ensure you enjoy a memorable experience witnessing the colours of Kuala Lumpur with a breath of fresh air.
+</br></br>
+InnB Park Hotel is located within Kuala Lumpur's Golden Triangle, allowing convenient access to famous locations like the Petronas Twin Towers, the KL tower or the Pavillion. It is the perfect place for both tourists and business people to meet and stay. Famous shopping centres near Bukit Bintang (Star Hill), including the Low Yat Plaza, Lot 10, Imbi Plaza, Sungei Wang Plaza, BB Plaza and Berjaya Times Square are just a few steps away.  -->
+
+
+
+{{description1|safe}}
+</br>
+</span>
+
+<br>
+<br>
+
+</div>
+<div class="col-sm-2"></div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div style="background-color:#3e3e3e; color:#d49e3f; min-height:50vh; padding-bottom:5vh; font-family:'Raleway', sans-serif">
+<div class="margin">
+<div class="row">
+<div class="col-sm-2"></div>
+<div class="col-sm-8" style="text-align:center; color:#d49e3f;padding-top:4vh;padding-bottom:4vh;" >
+
+<h2>FACILITIES</h2>
+</div>
+<div class="col-sm-2"></div>
+</div>
+
+
+
+
+<div class="row">
+
+<div class="col-sm-12" style="text-align:center; color:#d49e3f;" >
+
+  <div class="col-sm-2 iconsp" style="padding-top:5vh;"><img src="/static/images/nosmoking2.png" /></br></br>Smoke-free</div>
+  <div class="col-sm-2 iconsp" style="padding-top:5vh;"><img src="/static/images/aircond.png" /></br></br>Air-conditioned</div>
+
+  <div class="col-sm-2 iconsp" style="padding-top:5vh; "><img src="/static/images/coffee.png" /></br></br>Coffee Facilities </div>
+    <div class="col-sm-2 iconsp" style="padding-top:5vh; padding-bottom:5vh"><img src="/static/images/wifi.png" /></br></br>Free Wi-Fi</div>
+
+
+
+
+  <div class="col-sm-2 iconsp" style="padding-top:5vh; padding-bottom:5vh"><img src="/static/images/luggage.png" /></br></br>Luggage Storage</div>
+  <div class="col-sm-2 iconsp" style="padding-top:5vh; padding-bottom:5vh"><img src="/static/images/transfer.png" /></br></br>Airport Transfer</div>
+
+
+</div>
+</div>
+<div class="row">
+
+<div class="col-sm-12 " style="text-align:center; color:#d49e3f;" >
+  <div class="col-sm-2 iconsp" style="padding-top:5vh; padding-bottom:5vh"><img src="/static/images/morningcall.png" /></br></br>Wake-up Call</div>
+
+  <div class="col-sm-2 iconsp" style="padding-top:5vh; padding-bottom:5vh"><img src="/static/images/safe.png" /></br></br>Storage Safe</div>
+  <div class="col-sm-2 iconsp" style="padding-top:5vh; padding-bottom:5vh"><img src="/static/images/shower.png" /></br></br>Shower</div>
+    <div class="col-sm-2 iconsp" style="padding-top:5vh; padding-bottom:5vh"><img src="/static/images/24.png" /></br></br>24 Hour Front desk </div>
+  <div class="col-sm-2 iconsp" style="padding-top:5vh; padding-bottom:5vh"><img src="/static/images/ironing.png" /></br></br>Hair Dryer, Iron and Board</div>
+  <div class="col-sm-2 iconsp" style="padding-top:5vh; padding-bottom:5vh"><img src="/static/images/celebratory.png" /></br></br>Celebratory Package</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="margin">
+<div class="row">
+<div class="col-sm-12 custom-containerhome4" style="margin-left:1.5%; width:97%; margin-bottom:50px; margin-top:10px; border:solid 1px #d49e3f;" >
+
+<div class="col-sm-12" style=" padding-bottom:2%">
+
+
+<h2>
+Important Notice to all guests</h2>
+<br>
+
+
+The Royal Malaysian Custom Department ("RMCD") is imposing a tourism tax (TTx) of RM10 per room per night for stays at accommodation premises in Malaysia. The tax will apply from and on 1 September 2017. This tax will apply no matter if the booking was made before or after the announcement, as stipulated in the Tourism Tax Act 2017 
+<br>
+<br>
+As a registered hotel operator, InnB Park Hotel will be required by law to collect this levy amount from all tourists living on the premise, under the TTx registration number 141-2017-10000713. For more information on the tourism tax, please refer to the Tourism Tax Act 2017 or visit the RMCD's website on www.myttx.customs.gov.my
+
+<br>
+<br>
+<div class="row" style="margin-top:20px;">
+
+<div class="col-sm-2" style="text-align:center;min-width:150px; min-height:150px; padding:20px;">
+<img align="middle" style="max-width:100px;" src="https://innbparkhotel.com/static/images/nosmoking.png"></img></div>
+<div class="col-sm-10" style="padding:20px;">
+<br>
+THIS IS A NON-SMOKING HOTEL. To ensure all our customers enjoy the best air quality during their stay at the hotel, smoking is strictly prohibited. This is also in line with our policy to achieve and maintain the particle count of 0.3µ particle size at less than 100K.
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="row">
+<div class="col-sm-12 d-flex align-items-center" style="padding:0;height:45vh 
+ -ms-flex-align: center!important;
+  align-items: center!important;  display: -ms-flexbox!important;
+  display: flex!important; font-family:'Raleway', sans-serif
+
+">
+<div class="col-sm-5" style="padding:0;">
+<img width="100%" src="/static/images/cardpic.jpg">
+
+</div>
+
+<div class="col-sm-7 " style=" padding:2%">
+</br>
+
+<h2 style="text-align:center; font-size:50px;">
+Hosting your events</h2>
+<hr></hr>
+<span style="line-height:200%;">
+If you are planning a meeting, conference, wedding or any other special events, come to the InnB Park Hotel events venue for good service and convenience.
+
+</br>
+</span>
+
+<br>
+<br>
+
+</div>
+
+</div>
+</div>
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+<div style="margin-top:5vh; color:#7e7464;font-family:'Raleway', sans-serif">
+<div class="row">
+  <div class="col-sm-2"></div>
+<div class="col-sm-8" style=" padding-bottom:2%">
+<h2 style="text-align:center; font-size:50px;">What's Happening</h2>
+<hr>
+</hr>
+</div>
+  <div class="col-sm-2"></div>
+</div>
+<div class="row">
+  <div class="col-sm-1"></div>
+ <div class="col-sm-10 custom-containerhome5">
+
+
+
+
+{% for aasd in pages135 %}
+
+<div class=" col-md-4 " style="overflow:hidden; margin-bottom:20px;">
+
+
+  {% if aasd.pages_image %}
+  <img class="cardrespimg" src="/static/images/upload/{{aasd.pages_image}}">
+{% else %}
+<div class="cardrespimg" style="text-align:center;">
+  <span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
+<img style="vertical-align: middle;" src="/static/images/innbparklogo3.png">
+</div>
+{% endif %}
+
+
+
+
+<div class="cardtext" >
+<strong>{{aasd.pages_title}}</strong>
+<hr> {{aasd.page_short_description}}
+</br>
+</br>
+<a href="/hotelinnbpark/pages/{{aasd.pk}}/"> Read More</a>
+</div>
+</div>
+
+{% endfor %}
+
+
+</div>
+ <div class="col-sm-1"></div>
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row" style="background-color:#3e3e3e; color:#d49e3f ;font-family:'Raleway', sans-serif">
+<div class="col-sm-4 reviewcard">
+
+  <h1>Customer Reviews </h1>
+</br>
+
+
+<div id='widgetContainerBox' data-isaddnofollow='true'></div>
+
+<div class="awardWidgetContainer" style="position:relative;top:0;right:0;bottom:0;left:0;display:inline-block;margin:auto;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Lucida Grande&quot;,sans-serif;width:152px;height:152px"><a href="https://ms.hotels.com/hotel/details.html?pos=HCOM_MY&amp;locale=ms_MY&amp;eds=false&amp;hotel-id=698262#section-reviews" target="_blank" style="position:relative;width:inherit;height:inherit;z-index:900;" rel="nofollow"></a><img src="https://apps.expediapartnercentral.com/lodging/content/award/static/images/bg7/Hotels/award_Light_Square.png?0.8949207169676745" width="152" style="position:relative"><img src="https://apps.expediapartnercentral.com/lodging/content/award/static/aw/Square/Hotels/Light_1c050467-47cc-4b2f-83c5-cd60f1d1cc95.png?0.28504487958130653" width="138" height="78" style="position:absolute;top:7px;left:7px;"><span class="widgetLink" style="position:absolute;display:table;text-align:center;font-family:Helvetica;color:#fff;top:91px;left:7px;width:138px;height:32px;line-height:15px;font-size:11px;"><span style="display:table-cell;vertical-align:middle;">Awarded to <a rel="nofollow" class="hotelName mcard-ignore" title="InnB Park Hotel" style="text-decoration: underline;color:#fff;" href="javascript:void(0)">InnB Park Hotel</a></span></span></div>
+
+</div>
+<div class="col-sm-8">
+
+
+<div id="myCarousel" class="carousel slide  flexiblecont" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active" style="box-shadow: 0 1px 2px rgba(0, 0, 0, .6);"></li>
+    <li data-target="#myCarousel" data-slide-to="1" style="box-shadow: 0 1px 2px rgba(0, 0, 0, .6);"></li>
+    <li data-target="#myCarousel" data-slide-to="2" style="box-shadow: 0 1px 2px rgba(0, 0, 0, .6);"></li>
+    <li data-target="#myCarousel" data-slide-to="3" style="box-shadow: 0 1px 2px rgba(0, 0, 0, .6);"></li>   
+    <li data-target="#myCarousel" data-slide-to="4" style="box-shadow: 0 1px 2px rgba(0, 0, 0, .6);"></li> 
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" style="margin-bottom:4vh;  margin-top:4vh; overflow:hidden;">
+    
+
+
+<div class="item active">
+<div style="margin-top:20px;">
+<div class="row" style="min-height:110px">
+<div class="col-sm-1"></div>
+<div class="col-sm-6" >
+<img width="48px"src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png"></br>
+</br>
+Reviewed 4 months ago
+</div>
+<div class="col-sm-4" style="text-align:center;">
+<h2 style="font-size:35px">5/5 </h2>
+Exceptional
+</div>
+<div class="col-sm-1"></div>
+</div>
+<div class="row" style="margin-top:20px; min-height:200px">
+<div class="col-sm-1">
+</div>
+<div class="col-sm-10 carouseltext1">
+The stay in InnB Park hotel has been memorable! The room was explicit as well as its cleanliness. The presentation and layout of the room was exactly as how it was perceived to be on Agoda website as well as on the official hotel's website. This value-for-money hotel certainly did make my stay a satisfying one, and has definitely garnered my loyalty in staying with them for my next holiday in Bukit Bintang area.
+Thank you InnB Park Hotel, for making my holiday an enjoyable one!
+</div>
+<div class="col-sm-1">
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="item">
+<div style="margin-top:20px;">
+<div class="row" style="min-height:110px">
+<div class="col-sm-1"></div>
+<div class="col-sm-6" >
+  <img width="100px"src="/static/images/Agoda_logo.png"></br>
+</br>
+Reviewed December 4, 2019
+</div>
+<div class="col-sm-4" style="text-align:center;">
+  <h2 style="font-size:35px">8.0 </h2>
+Very Good
+</div>
+<div class="col-sm-1"></div>
+</div>
+<div class="row" style="margin-top:20px; min-height:200px">
+<div class="col-sm-1">
+</div>
+<div class="col-sm-10  carouseltext1">
+  KL最大そばの最小価格の最高のホテル!!
+  ロケーションは、KL最大の繁華街ブッキビンタンのそばで、近くには五つ星も点在するにもかかわらず、かなりリーズナブルで、スタッフも親切。 レイトチェックアウトも前日でOK、更に追加料金も安い。 モノレール、地下鉄の駅も近い。 伊勢丹もそば。 ショッピングモールもそば。 KL最大の屋台街、アロー通りもそば。 両替所も多数ありレートも良い。
+</div>
+<div class="col-sm-1">
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="item">
+      <div style="margin-top:20px;">
+      <div class="row" style="min-height:110px">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6" >
+        <img width="100px"src="/static/images/Agoda_logo.png"></br>
+      </br>
+      Reviewed July 11, 2017
+      </div>
+      <div class="col-sm-4" style="text-align:center;">
+        <h2 style="font-size:35px">8.0 </h2>
+      Very Good
+      </div>
+      <div class="col-sm-1"></div>
+      </div>
+      <div class="row" style="margin-top:20px; min-height:200px">
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-10  carouseltext1">
+      
+        位置便利，員工非常熱心
+        位置便利，過馬路到對面就是大樹頭蘇記和新峰肉骨茶，附近還有許多24小時的印度餐店。飯店員工服務非常好且非常熱心，櫃檯協助叫車搭到機場一小時75元超便宜  </div>
+      
+      <div class="col-sm-1">
+      </div>
+      
+      
+          </div>
+      </div>
+</div>
+
+
+<div class="item">
+    <div style="margin-top:20px;">
+    <div class="row" style="min-height:110px">
+        <div class="col-sm-1"></div>
+            <div class="col-sm-6" >
+              <img width="100px"src="/static/images/Agoda_logo.png"></br>
+            </br>
+            Reviewed July 11, 2019
+            </div>
+            <div class="col-sm-4" style="text-align:center;">
+              <h2 style="font-size:35px">10.0 </h2>
+            Exceptional
+            </div>
+            
+            <div class="col-sm-1"></div>
+            </div>
+            
+            
+            <div class="row" style="margin-top:20px; min-height:200px">
+            
+            
+             
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-10  carouseltext1">
+              "Exceptional"
+              The staff at InnB Park were wonderful. Very happy and friendly. They are efficient and extremely helpful. We felt very welcome here. 
+              Great customer service. The hotel is very clean and in a great location. 
+              <br>Thank you InnB for a wonderful stag in Kuala Lumper.
+            <div class="col-sm-1">
+            </div>
+                </div>
+            </div>
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="item">
+
+
+
+<div style="margin-top:20px;">
+<div class="row" style="min-height:110px">
+
+
+<div class="col-sm-1"></div>
+<div class="col-sm-6" >
+  <img width="100px"src="/static/images/Agoda_logo.png"></br>
+</br>
+Reviewed May 04, 2019
+</div>
+<div class="col-sm-4" style="text-align:center;">
+  <h2 style="font-size:35px">10.0 </h2>
+
+Exceptional
+
+</div>
+
+<div class="col-sm-1"></div>
+
+</div>
+
+
+<div class="row" style="margin-top:20px; min-height:200px">
+
+
+ 
+<div class="col-sm-1">
+</div>
+
+<div class="col-sm-10  carouseltext1">
+
+  "Value-for-Money Place in a Prime Location with All Necessary Amenities”
+
+  The hotel is in a prime location in Bukit Bintang, with landmarks, attractions, and shopping malls being close to it. The reception desk is 24/7, and the staff were very helpful in checking us in even at 3 am in the night. The rooms have all necessary amenities, and were very clean. The staff members also catered to a special request of ours, by keeping my father's insulin in their refrigerator. The elevator will take you to your floor, only after you have punched the keycard, so the place is very secure. Overall, it was a very pleasant stay.
+</div>
+
+<div class="col-sm-1">
+</div>
+    </div>
+</div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="background-image:None;">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next" style="background-image:None;">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+<div class="col-sm-12 custom-containerhome5" style="min-height:50vh; margin-left:1.5%; width:97%; margin-bottom:20px; margin-top:10vh;" >
+<div class="col-sm-4" style="overflow:hidden">
+
+<img class="cardrespimg" src="/static/images/cardpic4.jpg">
+<div class="cardtext">
+<strong>Hosting your events</strong>
+<hr>
+If you are planning a meeting, conference, wedding or any other special events, come to the InnB Park Hotel events venue for good service and convenience. 
+
+</br>
+</br>
+<a href="https://innbparkhotel.com/events/"> Read More</a>
+</div>
+
+</div>
+
+
+
+
+<div class="col-sm-4" style="overflow:hidden">
+<img class="cardrespimg" src="/static/images/klcity.jpg">
+<div class="cardtext">
+<strong>Clean air in the city</strong>
+<hr>
+While staying at our hotel, we guarantee you would be breathing in clean air through our high tech air conditioning system free from pollutants or any bad odour. 
+</br>
+</br>
+<a href="https://www.innbparkhotel.com/hotelinnbpark/pages/3/"> Read More</a>
+</div>
+
+</div>
+
+<div class="col-sm-4" style="overflow:hidden">
+
+<img class="cardrespimg" src="/static/images/solar.jpg">
+<div class="cardtext">
+<strong>The smart and green hotel</strong>
+<hr>
+In the design of the InnB Park Hotel, every precaution has been taken to reduce the impact on the environment and our carbon footprint by utilising specific technologies. 
+</br>
+</br>
+<a href="https://innbparkhotel.com/hotelinnbpark/pages/4/"> Read More</a>
+</div>
+
+
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="margin">
+<div class="row">
+<div class="col-sm-12 custom-containerhome4" style="min-height:50vh; margin-left:1.5%; width:97%; margin-bottom:20px; margin-top:10px;" >
+<div class="col-sm-2"></div>
+<div class="col-sm-8" style=" padding-bottom:2%">
+</br>
+
+<h2 style="text-align:center; font-size:50px;">
+Hosting your events</h2>
+<hr></hr>
+<span style="line-height:200%;">
+If you are planning a meeting, conference, wedding or any other special events, come to the InnB Park Hotel events venue for good service and convenience. 
+</br>
+We have the ideal venues for various events from corporate functions to private weddings. With a convenient location in the city and experienced event management team we can provide personalised services to ensure your event is a success.
+
+<div style="text-align:center; margin-top:20px;">
+<a href="https://innbparkhotel.com/events/"> <span class="hoverlink2">Let us host your events</span></a>
+</div>
+</span>
+
+<br>
+<br>
+
+</div>
+<div class="col-sm-2"></div>
+</div>
+</div>
+</div>
+
+ -->
+
+<!-- <div class="row">
+<div class="col-sm-12 " style="min-height:50vh;" >
+<div class="col-sm-3 smallhide" style="overflow:hidden">
+
+
+<img style="min-width:100%; min-height:50vh" src="/static/images/image4.jpg">
+
+
+
+
+</div>
+<div class="col-sm-5 smallhide"  style="overflow:hidden; padding-bottom:2%">
+
+
+<img style="min-width:100%; min-height:50vh" src="/static/images/cardpic4.jpg">
+
+</div>
+<div class="col-sm-4" style="overflow:hidden">
+<img style="min-width:100%; min-height:50vh" src="/static/images/image2.jpg">
+
+
+</div>
+</div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row" style="background-color:#3e3e3e; color:#d49e3f ;font-family:'Raleway', sans-serif; padding-top:10vh;padding-bottom:12vh; margin-bottom:50px; text-align:center; min-height:300px;">
+<div class="col-sm-2"></div>
+<div class="col-sm-8 carouseltext1" >
+<h2>All About You</h2>
+</br>
+
+<!-- With great service at affordable price, our staff are always attentive to your needs to provide the best care during your stay. We are committed to provide our guests with the best personalised service to ensure you feel comfortable during your visit with us. We also utilise advanced technology and innovations at our hotel to improve your hotel experience to new levels. -->
+{{description2|safe}}
+
+
+
+</div>
+<div class="col-sm-2"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+<div class="row flexmed" style="margin-bottom:20px;">
+<div class="col-sm-3 flexmed" style=" max-height:50vh; overflow:hidden;text-align:center;">
+
+<img class="fleximg responsive"  src="/static/images/image4.jpg">
+</div>
+<div class="col-sm-6 flexmed" style=" max-height:50vh; margin-left:15px; padding-left:0px; padding-right:0px; margin-right:15px; background-color:#3e3e3e;">
+<video width="100%" height="100%" controls>
+  <source src="https://innbparkhotel.com/static/carpark.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+</div>
+<div class="col-sm-3 flexmed" style="max-height:50vh; overflow:hidden; text-align:center;">
+
+<img class="fleximg responsive" src="/static/images/image5-1.jpg">
+</div>
+</div>
+
+
+
+<!-- 
+
+
+<div class="margin">
+<div class="row">
+<div class="col-sm-12 custom-containerhome4" style="min-height:50vh; margin-left:1.5%; width:97%; margin-bottom:20px; margin-top:10px;" >
+<div class="col-sm-2"></div>
+<div class="col-sm-8" style=" padding-bottom:2%">
+</br>
+
+
+
+
+
+<h2 style="text-align:center; font-size:50px;">
+Smart and Green</h2>
+<hr></hr>
+<span style="line-height:200%;">
+In the design of the InnB Park Hotel, every precaution has been taken to reduce the impact on the environment and our carbon footprint by utilising specific technologies. 
+While staying at our hotel, we guarantee you would be breathing in clean air through our high tech air conditioning system free from pollutants or any bad odour. 
+
+<div style="text-align:center; margin-top:20px;">
+<a href="https://innbparkhotel.com/hotelinnbpark/pages/4/"> <span class="hoverlink2">Going Smart Going Green
+</span></a>
+
+<a href="https://innbparkhotel.com/hotelinnbpark/pages/3/"> <span class="hoverlink2">Clean air in the city</span></a>
+
+</div>
+<div style="text-align:center; margin-top:20px;">
+
+</div>
+</span>
+
+<br>
+<br>
+
+</div>
+<div class="col-sm-2"></div>
+</div>
+</div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<div class="row">
+<div class="col-sm-12 " style="min-height:50vh;" >
+<div class="col-sm-5 " style="overflow:hidden">
+
+
+<img style="min-width:100%; height:50vh" src="/static/images/klcity.jpg">
+
+
+
+
+</div>
+<div class="col-sm-7 smallhide" style="overflow:hidden; max-height:50vh;padding-bottom:2%">
+
+
+<img style="min-width:100%; min-height:50vh" src="/static/images/solar.jpg">
+
+</div>
+
+
+</div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="row" >
+  <div class="col-sm-6" style="margin-top:40px; padding:20px; text-align:right">
+  <h1>InnB Park Hotel <br>Automated Parking System</h1>
+  </div>
+  <div class="col-sm-6" style="margin-top:40px; padding:20px;">
+  <video width="100%" controls>
+    <source src="https://innbparkhotel.com/static/carpark.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <p style="text-align:right;  margin-top:20px;"><a title="Flight Booking by Traveloka MY" href="https://www.traveloka.com/en-my/InnB-Park-Hotel"><img src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2018/01/26/1516952406639-3a59104a08eb6c762100cf325d733f3d.png" alt="" width="300" height="120" /></a></p>
+  </div>
+
+  </div> -->
+
+
+
+
+
+</div>
+</div>
+
+
+<!-- 
+  <p style="text-align:right;  margin-top:20px;"><a title="Flight Booking by Traveloka MY" href="https://www.traveloka.com/en-my/InnB-Park-Hotel"><img src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2018/01/26/1516952406639-3a59104a08eb6c762100cf325d733f3d.png" alt="" width="300" height="120" /></a></p>
+
+
+ -->
+
+
+
+
+
+<!-- 
+<div id='widgetContainerBox' data-isaddnofollow='false'></div>
+<script src='https://apps.expediapartnercentral.com/lodging/content/award/static/js/1c050467-47cc-4b2f-83c5-cd60f1d1cc95/18558082/Hotels-Light-Square-ms_MY.js?widgetName=Loved by Guests award 2019 - guest rating 8.2&hotelName=InnB Park Hotel&noFollow=false'></script>
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="nooverflow">
+
+
+<input type="checkbox" id="showblock">
+<div id="slideout">
+  <label id="slideout_tab" for="showblock" title="Admin Slider">
+    <img src="/static/images/feedback.png" alt="Feedback" />  </label>
+    <div class="slideoutcover">
+  <div id="slideout_inner">
+
+
+<div class ="margin" style="margin-top:10px; padding-top:10px; padding-bottom:60px; ">
+  <form method="POST" action="{% url 'feedback' %}">
+
+<div class = "row">
+<div class = "col-sm-6">
+<div style ="padding-left:20px; padding-right:20px; ">  
+      <div style="font-size:20px"><strong >Feedback Form</strong></div>
+<div style=" margin-bottom:5px;">
+Name:
+</div>
+{{feedbackform.contactname}}
+<div style="margin-top:10px; margin-bottom:5px;">
+Contact Number:</div>
+{{feedbackform.contactno}}
+<div style="margin-top:10px; margin-bottom:5px;">
+Contact Email:</div>
+{{feedbackform.contactemail}}
+<input type="text" name="contactaddress" class="formfield0">
+
+
+
+</div>
+
+</div>
+<div class = "col-sm-6">
+<div style ="margin-top:25px; padding-left:20px; padding-right:20px">
+  <div style="margin-bottom:5px">
+Tell us in a few words what your feedback is about:</div>
+{{feedbackform.description}}
+<button type="submit" class="btn btn-primary" >Submit</button>{% csrf_token%}
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="container-fluid dark ">
+
+    <div class="row">
+
+
+      <ul class="navbar-nav2">
+<!--         <li><a href="{% url 'rooms' %}">InnB Park Hotel operated by Apocity Sdn Bhd 1126214W</a></li> -->
+        <li><a href="#aboutus">About Us</a></li>
+        <li><a href="{% url 'contactus'%}">Contact Us</a></li>
+        <li><a href="{% url 'privacypolicy' %}">Privacy Policy</a></li>
+        <li><a href="{% url 'termscond' %}">Terms & Condition</a></li>
+        <li><a href="{% url 'hotelpolicies' %}">Hotel Policy</a></li>
+        {% if user.get_username %}
+                 <li><a href="{% url 'detail' %}">Dashboard</a></li>
+        {% else %}
+
+
+        <li><a href="{% url 'loginauth' %}">Staff Login</a></li>   
+        {% endif %}
+
+
+
+
+
+
+
+
+            <li ><a style="border:0px; padding: 10px 00px 0 0; margin:00px 10px 0px 0px; background: transparent;" href="https://www.facebook.com/Innbparkhotel/" ><img width="25px" height="25px" src="/static/images/ico_facebook.png" /></a></li>
+                        <li ><a style="border:0px;  padding: 10px 00px 0 0; margin:0px 10px 0px 0px; background: transparent;" href="https://www.instagram.com/innbpark/?hl=en" ><img width="25px"  height="25px" src="/static/images/instagram4.png" /></a></li>
+        <li class="navbar-nav2right">Copyright 2016 &#169; InnB Park Hotel operated by Apocity Sdn Bhd 198401014712 (127268-X)</li>
+
+      </ul>
+
+
+  
+
+    </div>  
+    </div>
+    </div>
+
+  </body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96614982-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <script>
+    function updateClock() {
+    var now = new Date(), 
+        test = now.getUTCHours()
+        test =test + 8 
+        if (test>24){
+          test = test-12
+        }
+        else if (test==24){
+          test = 00
+        }
+        test2 = now.getUTCMinutes();
+        if(test2<10){
+          test2 = "0" + test2
+        }
+        time = test + ':' + test2; 
+    // document.getElementById("tick").innerHTML = time;
+    setTimeout(updateClock, 1000);
+}
+updateClock(); // initial call
+    </script>
+
+</html>
+
+
+
+

@@ -1,0 +1,76 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+{% load tz %}
+
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+<h2 class="sub-header">Bookings</h2>
+
+
+          <div class="table-responsive">
+            <table id ="myTable" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Staff</th>
+                  <th>Reference Number</th>
+                  <th>Description</th>
+
+                                                                   
+                </tr>
+              </thead>
+              <tbody class="infinite-container">
+              	{% for customer in allbookings %}
+                <tr class="infinite-item">
+
+                    <td>{% timezone "Asia/Kuala_Lumpur" %}{{ customer.created_on }}{% endtimezone %}</td>
+                    <td>{{ customer.staff }}</td>
+                  <td>{{ customer.referenceno }}</td>
+                  <td> {{ customer.description|truncatechars:155 }}</td>
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+            </div>
+
+
+
+
+<div class="row">
+<div class="col-sm-10" id="basic-waypoint"></div>
+<div class="pagination col-sm-2 ">
+
+        {% if allbookings.has_next %}
+            <a class="infinite-more-link" href="?page={{ allbookings.next_page_number }}&order={{order}}">Loading ... </a>
+        {% endif %}
+    </span>
+</div>
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+  <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.loading').hide();
+      }
+    });
+</script>
+
+
+{% endblock %}
