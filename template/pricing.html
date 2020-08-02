@@ -1,0 +1,79 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div>
+<form method="POST" action="" >
+    {{ pricingform.as_p }}
+    <input type='submit' value='Add'>{% csrf_token%} </form>
+</div>
+<br>
+<br>
+<div>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Discount percentage</th>
+			<th>Fixed Discount</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+
+{% for p in pricing1 %}
+<tr><td>
+{{p.pricingname}}</td>
+<td>{{p.discountper}}</td>
+<td>{{p.discountfix}}</td>
+<td>{{p.start_date}}</td>
+<td>{{p.end_date}}</td>
+
+<td>{{p.description}}</td>
+<td><a href={% url 'delete_13' p.pk %}>delete </a></td>
+</tr>
+
+{% endfor %}
+</table>
+</div>
+
+
+
+
+
+      <div class ="col-sm-12">
+                                <h2>Pricing of hotels on {{todaydate}}</h2>
+            <div class="row">
+    <div class="col-sm-4">
+      <table>
+              {% for hot in hotel %}
+      <tr>
+        <td>
+      {{hot}}
+    </td>
+    </tr>
+      {%endfor%}
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <table>
+
+      {% for p in prices%}
+<tr>
+  <td>
+      MYR {{p}}
+    
+    </td></tr>
+
+      {% endfor %}
+  </table>
+<br><br>
+  Average: {{average}}
+</div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

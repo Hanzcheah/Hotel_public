@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+
+    
+    <div style="margin-left:5%; margin-top:20px;">
+    <img src='http://innbparkhotel.com/static/innbparklogo.png' width="200px"></img>
+    <br>
+    <Br>    
+<strong>Your Booking Details</strong>
+<br><br>Dear Customer,
+<br><br>
+Thank you for booking your stay with InnB Park Hotel. 
+<br>
+<strong>TTx will be waived from 1/7/2020 until 30/6/2021</strong>
+<br>
+
+Please see your booking details below:
+<br>
+<br>
+            <strong>Name: </strong>{{first_name}} {{last_name}}
+
+            <br><br>
+                        <strong>Booking Number: </strong>{{referenceno}}
+
+            <br><br>
+           <strong> Check-in: </strong>{{checkindate}}
+            <br><br>
+           <strong> Check-out:</strong> {{checkoutdate}}
+            <br><br>
+           <strong> Total:</strong> {{total}}
+            <br><br>
+            <strong>Room Type: </strong>
+            {% for d in booking %}
+            {{d.room_type_name}} &nbsp;{%endfor%}
+            <br><br>
+            <strong>Number of people: </strong>{{nop}}
+            <br><br>
+            <strong>Additional Comments: </strong>{{addcomments}}
+            <br><br>
+
+    <br>
+    <br>
+    Please feel free to contact us if you have any queries:
+    <br>
+    <br>
+    <img src='http://innbparkhotel.com/static/innbparklogo2.gif' width="120px"></img>
+    <br>
+    Address: 102-106, Jalan Imbi, Bukit Bintang, 55100 Kuala Lumpur
+    <br>
+    Email: admin@innbparkhotel.com
+    <br>
+    Contact Number: +603 2856 7257
+     </div>
+     <br>
+     
+     <br>
+
+
+     
+
+    <br>
+    <br>
+    <br>
+    </body>
+</html>

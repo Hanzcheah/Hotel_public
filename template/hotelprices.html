@@ -1,0 +1,39 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+<h2 class="sub-header">Nearby Prices</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Hotel</th>
+                  <th>Time</th>
+                  <th>Prices</th>
+                  <th>Average</th>
+                  <th>Phone Number</th>
+                  <th>Country</th>
+                  <th>Attaching Documents</th>                                                                      
+                </tr>
+              </thead>
+              <tbody>
+              	{% for hot in hotprice %}
+                <tr>
+                  <td><a href=#> {{ hot.hotel }}</a></td>
+                  <td><a href=#> {{ hot.datetime }}</a></td>
+                  <td><a href=#> {{ hot.prices }}</a></td>
+                  <td><a href=#> {{ hot.average }}</a></td>
+
+<!--                   <td><a href={% url 'edit_1' customer.pk %}>Edit</a></td>  
+                  <td><a href={% url 'delete_1' customer.pk %}>Delete</a></td> -->
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+            </div>
+</div>
+{% endblock %}

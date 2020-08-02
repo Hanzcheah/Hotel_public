@@ -1,0 +1,62 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+Front Page
+<br>
+<br>
+<div class="col-sm-12" style="border:solid 1px; padding:22px; margin-bottom:20px;">
+{% for f in cardfront %}
+
+{{f.id}}
+{{f.title}}
+<br>
+{{f.description}}
+{{f.link}}
+<div>
+{% if f.image %}
+<img src="http://innbparkhotel.com/{{f.image.url}}/">
+
+{% endif %}
+</div>
+
+<!-- <a href={% url 'delete_4' f.pk %}>Delete</a> -->
+<a href={% url 'edit_2' f.pk %}>Edit</a></br></br>
+
+{% endfor %}
+</div>
+
+<div class="col-sm-12" style="border:solid 1px; padding:22px; margin-bottom:20px;">
+
+<div class="col-sm-12">
+{% for i in frontimg %}
+{{i.id}}
+</br>
+{% if i.image %}
+<img width="800px" src="http://innbparkhotel.com/{{i.image.url}}/">
+{% endif %}
+</br>
+<!-- <a href={% url 'delete_5' i.pk %}>Delete</a> -->
+<a href={% url 'edit_3' i.pk %}>Edit</a>
+</br>
+</br>
+{% endfor %}
+</div>
+
+</div>
+
+
+<div class="col-sm-12" style="border:solid 1px; padding:22px; margin-bottom:20px;">
+{% for j in frontdesc %}
+{{j.id}}
+{{j.description}}
+<a href={% url 'edit_4' j.pk %}>Edit</a>
+
+<br>
+<br>
+{% endfor %}
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,332 @@
+{% extends 'booking/base2.html' %}
+{% block content %}   
+{% load tz %}
+
+<style>
+  body{
+    background: url('/static/images/customerbackground.jpg') no-repeat center center fixed !important;
+  background-size: cover !important;
+  background-repeat:no-repeat;
+  min-width:100%;
+  min-height:100%;
+  color:#d49e3f !important; 
+  }
+</style>
+<body >
+<!-- <img src="/static/images/customerbackground.jpg"></img> -->
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+<!-- <div style="background-image: url('/static/images/customerbackground.jpg') !important;"> -->
+<div class="row">
+
+
+
+
+
+  <div class="col-lg-12" style="font-family:'Raleway', sans-serif;  margin-bottom:50px; padding-left:40px; padding-right:40px;padding-bottom:70px; padding-top:20px;border-bottom:solid 1px #d49e3f;">
+<div class="col-lg-12 col-centered h" style="font-family:'Raleway', sans-serif;  margin-top:10px; padding-left:40px; padding-right:40px;padding-bottom:0px; text-align:center;">
+
+  <div style="font-family: 'Berkshire Swash', cursive; color:#d49e3f; ">
+
+<h2 style=" font-size:40px;background: url('/static/images/gold_glitter_.gif') repeat; background-size: auto;background-position: center;
+-webkit-background-clip: text; color: transparent;">{{user55.first_name}}  {{user55.last_name}}</h2>
+</div>
+<div style="font-size:17px; color:#d49e3f">
+<br>
+
+{{user55.email}}
+<br>
+<br>
+<!-- <a href="">Edit Details</a> -->
+</div>
+</div>
+
+</div>
+
+<div class="row">
+  <div class="col-lg-1">
+  </div>
+<div class="col-lg-4">
+<div class="col-lg-12" style="font-family:'Raleway', sans-serif;  background-color:#d49e3f; margin-top:10px; padding-left:40px; padding-top:10px; padding-right:40px;padding-bottom:20px; color:white;text-align:center; border-radius:6px; ">
+
+<div style="margin-bottom:-5px; text-align:left;">
+  <h3 style="margin-top:20px;">Points</h3>
+</div>
+
+
+<div style="font-size:600%; font-family:arial; text-align:center;">{{user55.numbertime}}
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="col-lg-12" style="padding: 0;margin-top: 20px; margin-bottom:20px;">
+
+<a href="https://innbparkhotel.com/addbooking/"> <span class="hoverlink2" style="width:100%; margin:0px; border-radius:6px; font-size:18px; padding:11px; height:50px;">Book Now  <span style="float:right;" class="glyphicon glyphicon-chevron-right"></span></span> </a>
+
+</div>
+</div>
+
+
+<div class="col-lg-1">
+</div>
+<div class="col-lg-6" style="font-family:'Raleway', sans-serif;  margin-top:10px; padding-left:10px; padding-right:10px;padding-bottom:70px; color:#d49e3f;text-align:center;">
+  <h3 style="margin-top:21px; text-align:left;">Rewards</h3>
+<table style="text-align:left">
+
+
+{% for offer in offers%}
+  <tr>
+    <td style="padding:5px; padding-right:15px;">{{offer.description}}</td> <td>{{offer.points}} points</td>
+  </tr>
+
+{% endfor %}
+
+
+<!--   <tr>
+    <td style="padding:5px; padding-right:15px;">RM10 off final payment price</td> <td>3 points</td>
+  </tr>
+
+  <tr>
+    <td style="padding:5px;padding-right:15px;">Complimentary room upgrade - subject to room availability</td> <td>4 points</td>
+  </tr><tr>
+    <td style="padding:5px;padding-right:15px;">Complimentary breakfast for 1 night</td> <td>6 points</td>
+  </tr><tr>
+    <td style="padding:5px;padding-right:15px;">Free late check out of up to 2 hours</td> <td>8 points</td>
+  </tr><tr>
+    <td style="padding:5px;padding-right:15px;">5% off your total booking amount</td> <td>10 points</td>
+  </tr><tr>
+    <td style="padding:5px;padding-right:15px;">1 Free night for any booking of 2 nights or more</td> <td>15 points</td>
+  </tr>
+ -->
+</table>
+
+
+
+</div>
+</div>
+
+
+
+
+<!-- <div class="col-lg-10 col-centered h" style="font-family:'Raleway', sans-serif;  margin-top:50px; padding-left:40px; padding-right:40px;padding-bottom:70px; text-align:center;">
+
+	<div class="row" style="margin-bottom:30px; color:">Get a discount on your 10th stay
+	</div>
+<div class="col-sm-1">
+</div>
+
+
+{% for j in nuber3 %}
+
+<div class="col-sm-1">
+
+<i class="fa fa-bed" style="font-size:25px; color:#d49e3f; "></i>  
+</div>
+
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+{% for i in nuber %}
+
+<div class="col-sm-1">
+
+<i class="fa fa-bed" style="font-size:25px; "></i>  
+</div>
+
+
+
+{% endfor %}
+
+
+
+
+
+{% if staron == "yes" %}
+<div class="col-sm-1">
+<i class="far fa-star" style="font-size:25px; color:#d49e3f; "></i> 
+
+</div>
+</div>
+{%else%}
+<div class="col-sm-1">
+<i class="far fa-star" style="font-size:25px;"></i>  
+</div>
+</div>
+
+
+
+ {% endif%}
+
+
+<div class="col-sm-1">
+</div> -->
+
+
+
+</span>
+<div class="col-lg-12" style="border-top:solid 1px #d49e3f;"></div>
+<div class="col-lg-1">
+</div>
+
+
+
+<div class="col-lg-10" style="font-family:'Raleway', sans-serif;  margin-top:50px; padding-left:40px; padding-right:40px;padding-bottom:70px; padding-top:20px;">
+
+<h2>My bookings</h2>
+
+<div class="row" style="margin-top:40px;">
+
+
+
+
+
+
+
+{% for cusa in custid %}
+
+{% for c in cusa.customerbooking %}
+
+
+
+
+
+
+<div class="col-sm-6" style="border: 1px solid #f5f5f5; padding:20px; margin:20px;">
+
+
+
+
+
+
+Reference Number: {{c.referenceno}}
+
+<br>
+Total:  RM{{c.total}}
+{% if c.paid %}
+
+{% if c.paid1 %}
+
+<div style="color:red">Deposit Pending</div>
+
+
+
+
+{% else %}
+<div style="color:red">Payment Pending</div>
+
+
+
+
+
+
+{% endif %}
+{%else%}
+
+
+<div style="color:green">Paid
+<br>Payment method: 
+{{c.Paymentmethod}}</div>
+
+<br>
+
+
+
+{% endif %}
+
+<br>
+
+
+
+                {% for t in c.room%}
+<div class="row">
+<div class="col-sm-12">
+    <ul>
+    <strong><li>{{ t.room_type_name }}{% if t.familyroom is True  %}
+&nbsp;(Family Room) 
+{% endif %}
+</li></strong>
+            <li>{{ t.room_number }}
+                <li>   {{ t.checkin_date}} - {{ t.checkout_date }}
+                   </li>
+              </ul>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+                {% endfor %}
+
+
+
+
+</div>
+
+
+{% empty %}
+
+You do not have any bookings at the moment. 
+
+{% endfor %}
+{% empty %}
+
+You do not have any bookings at the moment. 
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+<div class="col-lg-1">
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+</body>
+{% endblock %}

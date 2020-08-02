@@ -1,0 +1,241 @@
+{% extends 'booking/base2.html' %}
+{% block content %}   
+
+<body>
+
+
+<div class="container">
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12" >
+
+<div style="padding:20px">
+
+
+{% if success %}
+<div style="margin-top:20%;padding:10px">
+
+{{success}}
+</div>
+
+
+{% else %}
+
+
+<h1>Feedback</h1>
+
+<div>
+<br>
+<br>
+<form role="form" method="POST" action="">
+
+<strong>What is the purpose of your visit?</strong><br>
+
+<input type="text" name="purpose" class="formfield0">
+
+  <input type="radio" name="purpose" value="Business" checked> Business<br>
+  <input type="radio" name="purpose" value="Holiday"> Holiday function<br>
+
+  <input type="radio" name="purpose" value="Other"> Others:&nbsp;<input type="text" class="formfield1" name="Other"><br>
+
+
+<br>
+<br>
+
+
+
+<table>
+<strong>Staff</strong>
+<tr>
+<td style="padding:10px">
+Hospitality</td>
+<td style="padding:10px">
+<input type="radio" name="hospitality" value="1"> 1</td>
+  <td style="padding:10px">
+  <input type="radio" name="hospitality" value="2" > 2</td>
+  <td style="padding:10px">
+  <input type="radio" name="hospitality" value="3"> 3</td>
+  <td style="padding:10px">
+  <input type="radio" name="hospitality" value="4" > 4</td>
+  <td style="padding:10px">
+  <input type="radio" name="hospitality" value="5"> 5</td>
+</tr>
+<tr>
+<td style="padding:10px">
+Service</td>
+<td style="padding:10px"><input type="radio" name="service" value="1"> 1</td>
+<td style="padding:10px"><input type="radio" name="service" value="2" > 2</td>
+<td style="padding:10px"><input type="radio" name="service" value="3"> 3</td>
+<td style="padding:10px"><input type="radio" name="service" value="4" > 4</td>
+<td style="padding:10px"><input type="radio" name="service" value="5"> 5</td>
+</tr>
+
+
+<tr>
+<td style="padding:10px">
+Efficiency</td>
+<td style="padding:10px">
+<input type="radio" name="efficiency" value="1"> 1</td>
+<td style="padding:10px">  <input type="radio" name="efficiency" value="2" > 2</td>
+ <td style="padding:10px">   <input type="radio" name="efficiency" value="3"> 3</td>
+<td style="padding:10px">    <input type="radio" name="efficiency" value="4" > 4</td>
+ <td style="padding:10px">   <input type="radio" name="efficiency" value="5"> 5</td>
+</tr>
+  <tr>
+<td style="padding:10px">
+Knowledgeable<br>
+<td style="padding:10px"><input type="radio" name="knowledgeable" value="1"> 1</td>
+ <td style="padding:10px"> <input type="radio" name="knowledgeable" value="2" > 2</td>
+<td style="padding:10px">  <input type="radio" name="knowledgeable" value="3"> 3</td>
+ <td style="padding:10px"> <input type="radio" name="knowledgeable" value="4" > 4</td>
+<td style="padding:10px">  <input type="radio" name="knowledgeable" value="5"> 5</td>
+  <br>
+  </tr>
+  </table>
+
+
+<br>
+<table>
+  <strong>Room</strong>
+<br>
+<tr>
+<td style="padding:10px">
+Comfort<br></td>
+<td style="padding:10px"><input type="radio" name="comfort" value="1"> 1</td>
+<td style="padding:10px">  <input type="radio" name="comfort" value="2" > 2</td>
+<td style="padding:10px">  <input type="radio" name="comfort" value="3"> 3</td>
+<td style="padding:10px">  <input type="radio" name="comfort" value="4"> 4</td>
+<td style="padding:10px">  <input type="radio" name="comfort" value="5"> 5</td>
+</tr>
+<tr>
+<td style="padding:10px">
+Cleanliness<br></td>
+<td style="padding:10px"><input type="radio" name="cleanliness" value="1"> 1</td>
+<td style="padding:10px">  <input type="radio" name="cleanliness" value="2" > 2</td>
+<td style="padding:10px">  <input type="radio" name="cleanliness" value="3"> 3</td>
+<td style="padding:10px">  <input type="radio" name="cleanliness" value="4" > 4</td>
+<td style="padding:10px">  <input type="radio" name="cleanliness" value="5"> 5</td>
+
+<tr>
+<td style="padding:10px">
+
+Atmosphere<br></td>
+<td style="padding:10px"><input type="radio" name="atmosphere" value="1"> 1<br></td>
+<td style="padding:10px">  <input type="radio" name="atmosphere" value="2" > 2<br></td>
+<td style="padding:10px">  <input type="radio" name="atmosphere" value="3"> 3<br></td>
+<td style="padding:10px">  <input type="radio" name="atmosphere" value="4" > 4<br></td>
+<td style="padding:10px">  <input type="radio" name="atmosphere" value="5"> 5<br></td>
+
+</tr>
+
+
+<tr>
+<td style="padding:10px">
+Bathroom<br></td>
+<td style="padding:10px"><input type="radio" name="bathroom" value="1"> 1<br></td>
+<td style="padding:10px">  <input type="radio" name="bathroom" value="2" > 2<br></td>
+<td style="padding:10px">  <input type="radio" name="bathroom" value="3"> 3<br></td>
+<td style="padding:10px">  <input type="radio" name="bathroom" value="4" > 4<br></td>
+<td style="padding:10px">  <input type="radio" name="bathroom" value="5"> 5<br></td>
+</tr>
+</table>
+
+
+<br>
+<br>
+<table>
+  <strong>Breakfast</strong>
+
+<tr>
+<td style="padding:10px">
+Quality
+</td>
+
+<td style="padding:10px"><input type="radio" name="quality" value="1"> 1<br></td>
+ <td style="padding:10px"> <input type="radio" name="quality" value="2" > 2<br></td>
+ <td style="padding:10px"> <input type="radio" name="quality" value="3"> 3<br></td>
+ <td style="padding:10px"> <input type="radio" name="quality" value="4"> 4<br></td>
+ <td style="padding:10px"> <input type="radio" name="quality" value="5"> 5<br></td>
+
+
+</tr>
+
+<tr>
+<td style="padding:10px">Diversity<br></td>
+<td style="padding:10px"><input type="radio" name="diversity" value="1"> 1<br></td>
+ <td style="padding:10px"> <input type="radio" name="diversity" value="2" > 2<br></td>
+ <td style="padding:10px"> <input type="radio" name="diversity" value="3"> 3<br></td>
+ <td style="padding:10px"> <input type="radio" name="diversity" value="4" > 4<br></td>
+<td style="padding:10px">  <input type="radio" name="diversity" value="5"> 5<br></td>
+</tr>
+
+<Tr>
+<td style="padding:10px">
+Value<br></td>
+<td style="padding:10px"><input type="radio" name="value" value="1"> 1<br></td>
+  <td style="padding:10px"><input type="radio" name="value" value="2" > 2<br></td>
+  <td style="padding:10px"><input type="radio" name="value" value="3"> 3<br></td>
+  <td style="padding:10px"><input type="radio" name="value" value="4" > 4<br></td>
+  <td style="padding:10px"><input type="radio" name="value" value="5"> 5<br></td>
+</Tr>
+<tr>
+ <td style="padding:10px">
+Service<br>
+ <td style="padding:10px"><input type="radio" name="service2" value="1"> 1<br></td>
+   <td style="padding:10px"><input type="radio" name="service2" value="2" > 2<br></td>
+   <td style="padding:10px"><input type="radio" name="service2" value="3"> 3<br></td>
+   <td style="padding:10px"><input type="radio" name="service2" value="4" > 4<br></td>
+  <td style="padding:10px"> <input type="radio" name="service2" value="5"> 5<br>
+</td>
+</tr>
+</table>
+
+
+<br>
+  <strong>Others</strong>
+<br>
+<table>
+<tr>
+<td style="padding:10px">
+Price-quality ratio<br></td>
+<td style="padding:10px"><input type="radio" name="pricerat" value="1"> 1<br>
+  <td style="padding:10px"><input type="radio" name="pricerat" value="2" > 2<br>
+  <td style="padding:10px"><input type="radio" name="pricerat" value=" 3"> 3<br>
+ <td style="padding:10px"> <input type="radio" name="pricerat" value="4" > 4<br>
+  <td style="padding:10px"><input type="radio" name="pricerat" value="5"> 5<br>
+</tr>
+
+<tr>
+<td style="padding:10px">
+Location<br></td>
+<td style="padding:10px"><input type="radio" name="locat" value="1"> 1<br></td>
+  <td style="padding:10px"><input type="radio" name="locat" value="2" > 2<br></td>
+  <td style="padding:10px"><input type="radio" name="locat" value=" 3"> 3<br></td>
+  <td style="padding:10px"><input type="radio" name="locat" value="4" > 4<br></td>
+  <td style="padding:10px"><input type="radio" name="locat" value="5"> 5<br>
+</td>
+</tr>
+</table>
+
+Comments:<br>
+<input type="textarea" name="comments" class="formfield1"></input>
+
+
+    <br>
+  <input type="submit" class="btn btn-primary"  value="Submit">{% csrf_token%}
+  </form>
+  </div>
+
+{% endif%}
+
+
+
+  </div>
+  </div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+{% endblock %}

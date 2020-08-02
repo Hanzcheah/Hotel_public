@@ -1,0 +1,43 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+<h2 class="sub-header">Customers</h2>
+{{afirst}}
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>First name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Country</th>
+<!--                   <th>Reference no</th> -->
+                  <th>Attaching Documents</th>                                                                      
+                </tr>
+              </thead>
+              <tbody>
+<!--                 {{results}}
+                {{results.value}} -->
+              	{% for c in results %}
+                <tr>
+<!--                   <td><a href=#> {{ customer }}</a></td> -->
+                  <td><a href=""> {{ c.first_name }}</a></td>
+                  <td><a href=""> {{ c.last_name }}</a></td>
+                  <td><a href="/delete1/{{c.pk}}"> Delete {{ c.pk }}</a></td>
+
+           
+
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+            </div>
+</div>
+{% endblock %}

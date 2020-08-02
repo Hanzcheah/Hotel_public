@@ -1,0 +1,53 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="table-responsive">
+            <h2 class="sub-header">Room Type &nbsp &nbsp &nbsp          <a href="{% url 'editroomtype' %}" class="btn btn-primary" >Create</a></h2>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Room Type</th>
+                  <th>Room Max Adult</th>
+                  <th>Room Price Monday</th>
+                  <th>Room Price Tuesday</th>
+                  <th>Room Price Wednesday</th>
+                  <th>Room Price Thursday</th>
+                  <th>Room Price Friday</th>
+                  <th>Room Price Saturday</th>
+                  <th>Room Price Sunday</th>
+
+                  <th>Room Type Description</th>
+                                    {% if roomtypes.room_image %}
+                  <th>Room Image</th>
+                                    {% endif %}    
+                </tr>
+              </thead>
+              <tbody>
+              {% if all_roomtypes %}
+                {% for roomtypes in all_roomtypes %}
+                <tr>
+                  <td><a href={% url 'edit_5' roomtypes.pk %}> {{ roomtypes.room_type_name }}</a></td>
+                  <td><a href={% url 'edit_5' roomtypes.pk %}> {{ roomtypes.room_max_people }}</a></td>
+                  <td><a href={% url 'edit_5' roomtypes.pk %}>$ {{ roomtypes.room_price0}}</a></td>
+                  <td><a href={% url 'edit_5' roomtypes.pk %}>$ {{ roomtypes.room_price1}}</a></td>
+                  <td><a href={% url 'edit_5' roomtypes.pk %}>$ {{ roomtypes.room_price2}}</a></td>
+                  <td><a href={% url 'edit_5' roomtypes.pk %}>$ {{ roomtypes.room_price3}}</a></td>
+                  <td><a href={% url 'edit_5' roomtypes.pk %}>$ {{ roomtypes.room_price4}}</a></td>
+                  <td><a href={% url 'edit_5' roomtypes.pk %}>$ {{ roomtypes.room_price5}}</a></td>
+                  <td><a href={% url 'edit_5' roomtypes.pk %}>$ {{ roomtypes.room_price6}}</a></td>
+                  <td><a href={% url 'edit_5' roomtypes.pk %}> {{ roomtypes.room_type_description|truncatechars:10}}</a></td>
+                  
+                  {% if roomtypes.room_image %}
+                  <td><a href={% url 'edit_5' roomtypes.pk %}> {{ roomtypes.room_image.url |truncatechars:10}}</a></td>
+                  {% endif %}
+                  <td><a href={% url 'delete_2' roomtypes.pk %}>Delete</a></td>                                    
+                </tr>
+                {% endfor %}
+                {% endif %}
+               </tbody>
+            </table>
+
+</div>
+</div>
+
+{% endblock %}

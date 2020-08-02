@@ -1,0 +1,69 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+
+<script>
+
+
+jQuery(document).ready(function($) {
+	$('#id_paymentprice').on('input', function() {
+		var newvalue;
+		var value = $('#id_paymentprice').val();
+		console.log(value);
+
+		if($('#GST_include').prop('checked')){
+			newvalue = value/1.06*0.06
+		}else{
+			newvalue = value*0.06
+		}
+		$('#GST').val(newvalue.toFixed(2));
+
+	});
+
+	$('#GST_include').change(function() {
+			var newvalue;
+			var value = $('#id_paymentprice').val();
+			console.log(value);
+
+			if($('#GST_include').prop('checked')){
+				newvalue = value/1.06*0.06
+			}else{
+				newvalue = value*0.06
+			}
+			$('#GST').val(newvalue.toFixed(2));
+
+	});
+
+
+
+
+
+
+});
+
+
+
+
+
+
+</script>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div>
+<form method="POST" action="" enctype="multipart/form-data">
+    {{ extra_item_form.as_p }}
+
+    <input type="checkbox" id="GST_include" name="GST_include">GST included</input>
+    <br><br>
+    <strong>GST:</strong> <input name="GST" id="GST"></input>
+
+    <br>
+<!--         {{ frondest.description }} -->
+        <br>
+    <input type='submit' value='Add'>{% csrf_token%} </form>
+</div>
+
+
+</div>
+{% endblock %}

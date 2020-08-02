@@ -1,0 +1,35 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="table-responsive">
+            <h2 class="sub-header">Rooms    &nbsp &nbsp &nbsp          <a href="{% url 'editrooms' %}" class="btn btn-primary" >Create</a></h2>
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Room ID</th>
+                  <th>Room Number</th>
+                  <th>Hidden</th>                  
+                  <th>Room Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for room in all_rooms %}
+                <tr>
+                  <td><a href={% url 'edit_6' room.pk %}> {{ room.pk }}</a></td>
+                  <td><a href={% url 'edit_6' room.pk %}> {{ room.room_number }}</a></td>
+                  <td><a href={% url 'edit_6' room.pk %}> {% if room.hidden is True %}Hidden{% endif %}</a></td>                  
+                  <td><a href={% url 'edit_6' room.pk %}>$ {{ room.room_type_name }}</a></td>
+                  <td><a href={% url 'delete_3' room.pk %}>Delete</a></td>
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+
+</div>
+
+
+
+{% endblock %}

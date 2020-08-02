@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Dashboard InnB Park Hotel</title>
+
+        <script src="/static/js/jquery-2.1.1.min.js">
+</script>
+<script src="/static/js/jquery.waypoints.min.js"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/dashboard1.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--<link href="/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
+
+    <!-- Custom styles for this template -->
+<!--     <link href="static/css/dashboard.css" rel="stylesheet"> -->
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--<script src="/static/js/ie-emulation-modes-warning.js"></script>-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+<script>
+$(window).on('load', function () {      //Do the code in the {}s when the window has loaded 
+  $(".loader").fadeOut("slow");  //Fade out the #loader div
+});
+</script>
+
+<div class="loader">
+<div id="fountainG">
+  <div id="fountainG_1" class="fountainG"></div>
+  <div id="fountainG_2" class="fountainG"></div>
+  <div id="fountainG_3" class="fountainG"></div>
+  <div id="fountainG_4" class="fountainG"></div>
+  <div id="fountainG_5" class="fountainG"></div>
+  <div id="fountainG_6" class="fountainG"></div>
+  <div id="fountainG_7" class="fountainG"></div>
+  <div id="fountainG_8" class="fountainG"></div>
+</div>
+</div>
+
+
+
+
+
+
+  <body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <div class="container-fluid">
+       <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="{% url 'detail' %}">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'scomments' %}">Special Requests</a></li>
+<!--             <li><a href="{% url 'srequestsf' %}">Add special requests</a></li> -->
+            <li><a href="{% url 'bookingdetail2' %}">Booking Details</a></li>
+            <li><a href="{% url 'allbookings' %}">All Bookings</a></li>
+             <li><a href="{% url 'manualbook' %}">Manual Booking</a></li>  
+                                                               <li><a href="{% url 'portal3' %}">Checkout Deposit</a></li>         
+<!--             <li><a href="/qroom">Booking by rooms</a></li>
+            <li><a href="/qdate">Rooms by date</a></li> -->
+          </ul>
+          <ul class="nav nav-sidebar">
+                        <li><a href="{% url 'customerall' %}">All Registered Customers</a></li>
+            <li><a href="{% url 'roomsbackend' %}">Rooms</a></li>
+            <li><a href="{% url 'roomtype' %}">Room Type</a></li>
+            <li><a href="{% url 'variablepricing1' %}">Room Pricing</a></li> 
+           <li><a href="{% url 'maintenance' %}">Maintenance</a></li>             
+<!--             <li><a href="{% url 'pricing' %}">Pricing Rules</a></li> --> 
+            <li><a href="{% url 'feedbackbackend' %}">Feedback</a></li>
+            <li><a href="{% url 'addpromo' %}">Promo Code</a></li> 
+           <li><a href="{% url 'eventsback' %}">Events</a></li>  
+                  
+               
+<!--             <li><a href="">Another nav item</a></li>
+            <li><a href="">More navigation</a></li> -->
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="{% url 'front' %}">Front Page</a></li>
+            <li><a href="{% url 'pagesout' %}">Blog Pages</a></li>
+            <li><a href="{% url 'upload_image' %}">Media Library</a></li>
+<!--             <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li> -->
+          </ul>
+
+          <ul class="nav nav-sidebar">
+            <li><a href="{% url 'dateform' %}">Home</a></li>
+                        <li><a href="{% url 'logout_view' %}">Logout</a></li>
+<!--             <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li> -->
+          </ul>          
+        </div> 
+
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+
+
+
+
+
+          <div><h2 class="page-header">Dashboard  <a style="float :right" href={% url 'logout_view' %}> {{ user.get_username }}  &nbsp; | &nbsp; Logout</a></h2></div>
+
+
+ <form class="form" role="form" method="GET" action="{% url 'querycust' %}">
+<div class="row">
+<div class="col-sm-4">
+  Name:
+  <input type="text" name="firstname" >
+  <br><br>
+  </div>
+<!-- <div class="col-sm-4">  
+  Last name:
+  <input type="text" name="lastname" >
+  <br><br>
+  </div>
+<div class="col-sm-4">  
+  Email:
+  <input type="text" name="email" >
+  <br><br>
+</div>
+  <div class="col-sm-3">
+  Phone:
+  <input type="text" name="phno" >
+  <br><br>
+  </div> -->
+<div class="col-sm-4">
+Reference Number:
+  <input type="text" name="referenceno" >  
+  <br><br>
+  </div>
+      <div class="col-sm-5" style="margin-top:-5px;">
+        <button type="submit" class="btn btn-primary" >Search</button>
+      </div>
+      </div>
+
+      </form>
+        
+        <div class="row" style="padding:3%; margin-top:40px; margin-bottom:10px; border:1px solid;">
+        <div class="col-sm-3">
+        Check-in today:
+{{date_customers4}}
+
+
+        </div>
+        <div class="col-sm-3">
+        Check-out today: {{date_customers5}}
+        </div>
+        <div class="col-sm-3">
+        Rooms already occupied:
+        {{date_customers3}}
+        </div>
+                <div class="col-sm-3">
+        Rooms vacant:
+        {{date_customers6}}
+        </div>
+        </div>
+
+
+
+        <div class="row">
+          <div style="float :right" >
+
+
+<a href="/whiteboard" class="btn btn-default">Tasks</a>
+        </div>
+            {% if gottask is True %}
+
+            <div style="float :right; background-color:red; margin-right:-60px; margin-top:-10px; color:white; border-radius: 25px; width:20px; text-align:center;">{{Tasknumber}}</div>
+            {% endif %}
+
+</div>
+<!--           <h2 class="sub-header">Bookings</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Telephone</th>
+                  <th>Email</th>
+                  <th>Room</th>
+                  <th>Check-in date</th>
+                  <th>Check-out date</th>
+                </tr>
+              </thead>
+              <tbody>
+              	{% for customer in all_customers %}
+                <tr>
+                  <td><a href=#> {{ customer }}</a></td>
+                  <td><a href=#> {{ customer.phone_number }}</a></td>
+                  <td><a href=#> {{ customer.email }}</a></td>
+                  <td><a href=#> {{ customer.room_number }}</a></td>
+                  <td><a href=#> {{ customer.checkin_date }}</td>
+                  <td><a href=#> {{ customer.checkout_date }}</a></td>
+                  <td><a href=#> {{ customer.created_on }}</a></td>
+                  <td><a href=#> {{ customer.booking_success }}</a></td>
+                  <td><a href=#> {{ customer.referenceno }}</a></td>
+                  <td><a href=#> ${{ customer.paymentprice }}</a></td>             
+                  <td><a href={% url 'edit_1' customer.pk %}>Edit</a></td>  
+                  <td><a href={% url 'delete_1' customer.pk %}>Delete</a></td>
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+            </div> -->
+</br>
+</br>
+
+
+                      <div class="table-responsive">
+            <table class="table table-striped">
+            <h2>Check in on {{todaydate}}</h2>
+
+
+
+            <div id = "sre"></div>
+              <thead>
+                <tr>
+                <th>Name</th>
+                  <th>Room Number</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Special request</th>
+                  <th>Status</th>
+<!--                   <th>Room</th>
+                  <th>Check-in date</th>
+                  <th>Check-out date</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                {% for customer in date_customers1 %}
+                <tr>
+                  <td><a href="/customer/?pk={{customer.cust33.pk}}"> {{ customer.cust33.first_name }} {{customer.cust33.last_name}}</a></td>
+                  <td> {% if customer.room_number is None%}{%if customer.room_type_name.pk is 22 %}Extra Bed{%elif customer.room_type_name.pk is 23%}Breakfast{%endif%}{%else%}{{ customer.room_number }}{%endif%}</td>
+                  <td>{{ customer.email }}</td>
+                  <td> {{ customer.phone_number }}</td> 
+                  <td id="zczc"> {% if customer.additional_comments %}<a href="{% url 'edit_1' customer.pk %}" onmouseover="tefun4('{{customer.additional_comments}}')"  onmouseout="tefun14()">Yes</a>{%endif%}</td> 
+                  <td>{% if customer.checkedin1 is not None %} Checked in {% else %} Not yet checked in{% endif %}</td>            
+                  <td><a href={% url 'edit_1' customer.pk %}>Edit</a></td>  
+                  <td><a href={% url 'delete_1' customer.pk %}>Delete</a></td>
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+            </div>
+
+        </br>
+    </br>
+
+
+                          <div class="table-responsive">
+            <table class="table table-striped">
+            <h2>Check out on {{todaydate}}</h2>
+              <thead>
+                <tr>
+                <th>Name</th>
+                  <th>Room Number</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Special Request</th>
+                  <th>Status</th>
+<!--                   <th>Room</th>
+                  <th>Check-in date</th>
+                  <th>Check-out date</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                {% for customer in date_customers2 %}
+                <tr>
+                  <td><a href="/customer/?pk={{customer.cust33.pk}}"> {{ customer.cust33.first_name }} {{customer.cust33.last_name}}</a></td>
+                  <td> {% if customer.room_number is None%}{%if customer.room_type_name.pk is 22 %}Extra Bed{%elif customer.room_type_name.pk is 23%}Breakfast{%endif%}{%else%}{{ customer.room_number }}{%endif%}</td>
+                  <td>{{ customer.email }}</td>
+                  <td> {{ customer.phone_number }}</td> 
+                  <td id="zczc"> {% if customer.additional_comments %}<a href={% url 'edit_1' customer.pk %}  onmouseover="tefun4('{{customer.additional_comments}}')"  onmouseout="tefun14()">Yes</a>{%endif%}</td> 
+                  <td>{% if customer.checkedout1 is not None %} Checked out {% else %} Not yet checked out{% endif %}</td>            
+                  <td><a href={% url 'edit_1' customer.pk %}>Edit</a></td>  
+                  <td><a href={% url 'delete_1' customer.pk %}>Delete</a></td>
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+            </div>
+
+
+
+ <div class="table-responsive">
+            <table class="table table-striped">
+            <h2>Breakfast Today {{breakfastno}}</h2>
+              <thead>
+                <tr>
+                <th>Name</th>
+                <th>Room</th>
+                <th>Check-in Date</th>
+                <th>Check-out Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for customer in breakfast %}
+                <tr>
+                  <td><a href="/customer/?pk={{customer.cust33.pk}}"> {{ customer.first_name }} {{customer.last_name}}</a></td>
+                  <td> {{ customer.room_number}}</td>
+                    <td> {{ customer.checkin_date}}</td>
+                   <td> {{ customer.checkout_date}}</td>
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+            </div>
+
+ <div class="table-responsive">
+            <table class="table table-striped">
+            <h2>Complimentary Breakfast Today  {{breakfast2no}}</h2>
+              <thead>
+                <tr>
+                <th>Name</th>
+                <th>Room</th>
+                <th>Check-in Date</th>
+                <th>Check-out Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for customer in breakfast2 %}
+                <tr>
+                  <td><a href="/customer/?pk={{customer.cust33.pk}}"> {{ customer.first_name }} {{customer.last_name}}</a></td>
+                                    <td> {{ customer.room_number}}</td>
+                    <td> {{ customer.checkin_date}}</td>
+                   <td> {{ customer.checkout_date}}</td>
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+            </div>
+
+
+
+
+
+
+
+<!-- 
+                                      <div class="table-responsive">
+            <table class="table table-striped">
+            <h2>Not Yet Checked In</h2>
+              <thead>
+                <tr>
+                <th>Name</th>
+                  <th>Room Number</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Special Request</th>
+                  <th>Status</th> -->
+<!--                   <th>Room</th>
+                  <th>Check-in date</th>
+                  <th>Check-out date</th> -->
+<!--                 </tr>
+              </thead>
+              <tbody>
+                {% for customer in noshow %}
+                <tr>
+                  <td><a href="/customer/?pk={{customer.cust33.pk}}"> {{ customer.cust33.first_name }} {{customer.cust33.last_name}}</a></td>
+                  <td> {% if customer.room_number is None%}Extra Bed{%else%}{{ customer.room_number }}{%endif%}</td>
+                  <td>{{ customer.email }}</td>
+                  <td> {{ customer.phone_number }}</td> 
+                  <td> {% if customer.additional_comments %}<a href={% url 'edit_1' customer.pk %}>Yes</a>{%endif%}</td> 
+                  <td>{% if customer.checkedout1 is not None %} Checked out {% else %} Not yet checked out{% endif %}</td>            
+                  <td><a href={% url 'edit_1' customer.pk %}>Edit</a></td>  
+                  <td><a href={% url 'delete_1' customer.pk %}>Delete</a></td>
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+            </div> -->
+
+<!--     <div class="table-responsive">
+            <h2 class="sub-header">Rooms    &nbsp &nbsp &nbsp          <a href="{% url 'editrooms' %}" class="btn btn-primary" >Create</a></h2>
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Room ID</th>
+                  <th>Room Number</th>
+                  <th>Room Type</th>
+                </tr>
+              </thead>
+              <tbody>
+              	{% for room in all_bookings %}
+                <tr>
+                  <td><a href=#> {{ room.pk }}</a></td>
+                  <td><a href=#> {{ room.room_number }}</a></td>
+                  <td><a href=#>$ {{ room.room_type_name }}</a></td>
+                  <td><a href={% url 'delete_3' room.pk %}>Delete</a></td>
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+
+</div>
+<div class="table-responsive">
+            <h2 class="sub-header">Room Type &nbsp &nbsp &nbsp          <a href="{% url 'editroomtype' %}" class="btn btn-primary" >Create</a></h2>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Room Type</th>
+                  <th>Room Max People</th>
+                  <th>Room Price</th>
+                  <th>Room Type Description</th>
+                  <th>Room Image</th>    
+                </tr>
+              </thead>
+              <tbody>
+                {% for roomtypes in all_roomtypes %}
+                <tr>
+                  <td><a href=#> {{ roomtypes.room_type_name }}</a></td>
+                  <td><a href=#> {{ roomtypes.room_max_people }}</a></td>
+                  <td><a href=#>$ {{ roomtypes.room_price}}</a></td>
+                  <td><a href=#> {{ roomtypes.room_type_description}}</a></td>
+                  {% if roomtypes.room_image %}
+                  <td><a href=#> {{ roomtypes.room_image.url}}</a></td>
+                  {% endif %}
+                  <td><a href={% url 'delete_2' roomtypes.pk %}>Delete</a></td>                                    
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+
+</div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   <script>
+   function tefun4(event){
+
+        // if(document.getElementById('sre').innerHTML == ""){
+    document.getElementById('sre').innerHTML ="Special Request: " + event ;
+    console.log("work");
+        document.getElementById('sre').style.visibility = 'visible';
+        // } else{
+        // document.getElementById('sre').innerHTML ="";
+
+        //     console.log("empty work");
+        //     document.getElementById('sre').style.visibility = 'hidden';
+        // }
+   }
+
+   function tefun14(){
+    document.getElementById('sre').style.visibility = 'hidden';
+    document.getElementById('sre').innerHTML ="";
+    console.log("empty work");
+   }
+
+//    var e = document.getElementById('zczc');
+// e.onmouseover = function() {
+//   document.getElementById('sre').style.visibility = 'visible';
+// }
+// e.onmouseout = function() {
+//   document.getElementById('sre').style.visibility = 'hidden';
+// }
+   </script>
+    <script>window.jQuery || document.write('<script src="/static/js/jquery.min.js"><\/script>')</script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="/static/js/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+ <!--    <script src="/static/js/ie10-viewport-bug-workaround.js"></script>-->
+<!--         <script src="/static/js/bootstrap.js"></script>     
+      <script src="/static/js/holder.min.js"></script>           
+      <script src="/static/js/jquery-ui.js"></script>
+      <script src="/static/js/jquery.ui.datepicker.validation.js"></script>    --> 
+  </body>
+
+
+</html>
+
+
+
+

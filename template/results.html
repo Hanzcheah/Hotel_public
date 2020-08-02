@@ -1,0 +1,867 @@
+{% extends 'booking/base2.html' %}
+{% block content %}   
+
+<script>
+$(window).on('load', function () {      //Do the code in the {}s when the window has loaded 
+  $(".loader").fadeOut("slow");  //Fade out the #loader div
+});
+</script>
+<div class="loader">
+<div id="fountainG">
+      <div class="fountaine">Finding the best pricing...</div>
+  <div id="fountainG_1" class="fountainG"></div>
+  <div id="fountainG_2" class="fountainG"></div>
+  <div id="fountainG_3" class="fountainG"></div>
+  <div id="fountainG_4" class="fountainG"></div>
+  <div id="fountainG_5" class="fountainG"></div>
+  <div id="fountainG_6" class="fountainG"></div>
+  <div id="fountainG_7" class="fountainG"></div>
+  <div id="fountainG_8" class="fountainG"></div>
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+
+    <div class = "col-sm-4 custom-container-result">
+
+<div style="color:#7e7464">
+
+<span style="color:#d49e3f; font-size:18px">&nbsp;Your booking:</span>
+<div style="margin-top:8px"></div>
+
+<table>
+
+<tr><td style="padding:2px"><strong>Arrival:</strong> &nbsp;{{qin_date1}} </td></tr> 
+<tr><td style="padding:2px"><strong>Depature:</strong> &nbsp;{{qout_date1}}</td></tr>
+<tr><td style="padding:2px"><small><a href="{% url 'addbooking' %}" onclick="testfunction();">Change Booking Dates</a></small></td></tr>
+</table>
+
+<hr style="border-top: 1px solid #d49e3f; margin-top:5px;margin-bottom:0"></hr>
+
+
+
+{% if bookedroom_ %}
+
+
+  
+
+<br>
+<br>
+<table>
+     {% for i, t in bookr %}
+   <tr>
+    <td class="col-sm-1">
+   <div style="font-size:14px"> <strong>{{i.room_type_name}}</strong>&nbsp; x &nbsp; {{noofdays}}        </div></td>
+   
+    <td class="col-sm-1 tdright">
+
+        {{t}}
+    </td>
+    </tr>
+    <tr>
+        <td class="col-sm-1">
+            <small><a href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}&remove1={{i.pk}}&ce={{cod}}">remove</a></small>
+        </td>
+        </tr>
+        <tr>
+        </tr>
+         {% endfor %}
+                  {%if cod %}
+<tr><td class="col-sm-1">
+
+{{desc}}
+</td>
+            <td class="col-sm-1 tdright">
+
+        -{{totaldiscount123}}
+    </td>
+</tr>
+    <tr>
+        <td class="col-sm-1">
+            <small><a href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}">remove</a></small>
+        </td>
+
+
+
+
+
+
+        </tr>
+
+{%endif%}
+{% if sech %}
+
+<tr>   </tr>
+ <tr>
+    <td class="col-sm-1" style="margin-top:15px; padding-top:25px">
+   <div style="font-size:14px"> 6% SST </div></td>
+   
+    <td class="col-sm-1 tdright" style="margin-top:15px; padding-top:25px">
+
+        {{sech}}
+    </td>
+    </tr>
+
+
+
+{% endif %}
+</table>
+
+<!-- 
+
+{%if cod %}
+{{desc}}
+
+{%endif%} -->
+
+<hr style="margin-top:5px">
+<table style="margin-top:-10px; margin-bottom:-10px;">
+<tr><td class="col-sm-1">TOTAL</td>
+    <td class="col-sm-1">
+        <div><strong>RM&nbsp;{{bookedroomtotal}}</strong></div>
+
+        </td></tr>
+
+</table>
+<hr style="margin-bottom:5px;">
+
+<div style="padding:0px">
+<!-- <div style="margin-left:0; margin-top:5px; width:30%; float:left;">
+Promo Code:</div><div style="float:left; width:40%;margin-left:10px"> <input type="text" name="code" id="ce" class="formfield1">
+</div>
+
+
+        <a href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}&remove1={{i.pk}}"></a>
+      <div style="margin-left:10px; width:20%;float:left;margin-top:-10px">
+        <button class="btn btn-primary" onclick="myFunction();">Verify</button>
+        <button id="myBtn">Open Modal</button>
+
+      </div> -->
+
+{%if cod %}
+{% else %}
+<button class="btn btn-primary" onclick="modal3appear()" id="myBtn">Enter Promo Code</button>
+{%endif%}
+
+{% if error %}
+<div style="color:red">
+{{error}}
+</div>
+<!-- <button id="myBtn">Open Modal</button> -->
+{% endif %}
+
+</div>
+</div>
+
+<div>
+{% if cod %}
+         <div><a href="{% url 'form' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}&tac={{tac}}&ce={{cod}}" class="btn btn-primary" >Proceed to Book</a></div>
+        <!--  <div><a href="#" class="btn btn-primary" onclick="myFu()">Proceed to Book</a></div> -->
+         
+{% else %}
+         <div><a href="{% url 'form' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}&tac={{tac}}" class="btn btn-primary" >Proceed to Book</a></div>
+<!-- <div><a href="#" class="btn btn-primary" onclick="myFu()" >Proceed to Book</a></div> -->
+
+{% endif %}
+
+{% else %}
+</br>
+&nbsp;<span style="font-size:20px;">Please select a room</span>
+
+
+ {% endif %}
+ <div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+    <div class = "col-sm-8 topmargin">
+{% if cd %}
+{% for each in cd %}
+	<div class = "col-sm-12 custom-room-container">
+    <div class="row">
+
+        
+        <div class="col-sm-5 custom-left img-responsive hidemid">
+            <img id="{{each.room_type_name}}2" class="img-responsive" src ="https://innbparkhotel.com/static/images/upload/{{each.room_type_name__room_image}}">
+
+
+<div class="cardimg" >
+                          <a href="javascript:void(0)" onclick="imageswap2('{{each.room_type_name__room_image2}}', '{{each.room_type_name}}');" style="margin:0; padding:0;">
+                           <img class="img-responsive btmthumb"  src="https://innbparkhotel.com/static/images/upload/{{each.room_type_name__room_image2}}">
+                           </a>
+                           </div>
+                           <div class="cardimg"  >
+                          <a href="javascript:void(0)"  onclick="imageswap2('{{each.room_type_name__room_image3}}','{{each.room_type_name}}');" style="margin:0; padding:0;">
+                           <img class="img-responsive btmthumb" src="https://innbparkhotel.com/static/images/upload/{{each.room_type_name__room_image3}}">
+                           </a>
+                           </div>         
+                  <div class="cardimg"  >
+                 <a href="javascript:void(0)"  onclick="imageswap2('{{each.room_type_name__room_image4}}','{{each.room_type_name}}');" style="margin:0; padding:0;">
+
+                           <img class="img-responsive btmthumb" src="https://innbparkhotel.com/static/images/upload/{{each.room_type_name__room_image4}}">
+                           </a>
+                  </div>
+
+
+        </div>      
+        <div class="col-lg-7 showmid" style="padding-top:5px;">
+            <div class="col-sm-12 roomtitle">{{each.room_type_name__room_type_name}}</div>   
+            <br>
+<div class="col-sm-12">
+        <table>
+        <tr>
+        <td style="padding-right:10px; padding-bottom:10px">
+            Rates 
+</td>
+<td style="padding-right:10px; padding-bottom:10px">
+RM{{each.room_type_name__room_price}} per night
+</td>
+</tr>
+<tr>
+        <td style="padding-right:10px; padding-bottom:10px">
+            Occupancy
+</td>
+<td style="padding-right:10px; padding-bottom:10px">
+{{each.room_type_name__room_max_people}} 
+</td>
+</tr>
+
+<tr>
+        <td style="padding-right:10px; padding-bottom:10px">
+            Beds
+</td>
+<td style="padding-right:10px; padding-bottom:10px">
+{{each.room_type_name__bedsize}} &nbsp; &nbsp; &nbsp; &nbsp; 
+{% if each.room_type_name__addbed is True %}
+         {% if exc > 0  %}
+
+        <a href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}-22&ce={{cod}}"> + Add Mattress</a>
+
+{% endif %}
+         {% if exc == 0  %}
+
+         {% if not ttw %}
+
+<a href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw=-{{each.room_type_name__pk}}-22&ce={{cod}}"> + Add Mattress</a>
+
+         {% else %}
+        <a href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}-{{each.room_type_name__pk}}-22&ce={{cod}}"> + Add Mattress</a>
+         {%endif%}
+         {% endif %}
+ {% endif %}
+</td>
+
+</tr>
+
+<tr >
+  <td style="padding-right:10px; padding-bottom:10px" colspan="2">
+
+    <a href="#" onclick="testfunction3('{{each.room_type_name__room_type_name}}');">Additional Details</a>
+  </td>
+</tr>
+
+
+
+</table>
+</div>
+<!--         <div class="col-sm-6">
+            <a href="#" onclick="testfunction3('{{each.room_type_name__room_type_name}}');">Additional Details</a>
+</div> -->
+
+
+
+<div class="col-sm-6 " style="padding-right:5px !important;padding-left:5px!important">
+{% if each.room_type_name__room_max_people is 2 %}
+
+
+         {% if not ttw %}
+
+<a  class="btn btn-primary space" href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw=-{{each.room_type_name__pk}}-23-23&ce={{cod}}">
+
+         {% else %}
+        <a class="btn btn-primary space"  href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}-{{each.room_type_name__pk}}-23-23&ce={{cod}}"> 
+         {%endif%}
+
+
+
+    {% elif each.room_type_name__room_max_people is 4 %}
+
+         {% if not ttw %}
+
+<a  class="btn btn-primary space" href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw=-{{each.room_type_name__pk}}-23-23-23-23&ce={{cod}}">
+
+         {% else %}
+        <a class="btn btn-primary space"  href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}-{{each.room_type_name__pk}}-23-23-23-23&ce={{cod}}"> 
+         {%endif%}
+
+
+
+         {%else %}
+
+         {% if not ttw %}
+
+<a  class="btn btn-primary space" href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw=-{{each.room_type_name__pk}}-23&ce={{cod}}">
+
+
+
+
+         {% else %}
+        <a class="btn btn-primary space"  href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}-{{each.room_type_name__pk}}-23&ce={{cod}}"> 
+         {%endif%}
+
+         {%endif%}
+
+Book Room & Breakfast</a>
+
+
+</div>
+
+<div class="col-sm-6" style="padding-left:5px !important; padding-right:5px !important;">
+         {% if not ttw %}
+         <a href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw=-{{each.room_type_name__pk}}&ce={{cod}}" class="btn btn-primary space">Book Room</a>
+
+         {% else %}
+
+         <a href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}-{{each.room_type_name__pk}}&ce={{cod}}" class="btn btn-primary space" >Book Room</a>
+         {%endif%}
+
+
+
+
+
+
+</div>
+
+            <br>
+
+<!--             <a href="#" onclick="testfunction3('{{each.room_type_name__room_type_name}}');">Additional Details</a> -->
+
+
+
+
+
+<!--         <h3>${{each.room_type_name__room_price}} per night</h3> {{each.room_type_name__room_max_people}} -->
+<!--          {% if not ttw %}
+         <div class="col-sm-12"><a href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw=-{{each.room_type_name__pk}}&ce={{cod}}" class="btn btn-primary space">BOOK</a></div>
+
+         {% else %}
+
+         <div class="col-sm-12"><a href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}-{{each.room_type_name__pk}}&ce={{cod}}" class="btn btn-primary" >BOOK</a></div>
+         {%endif%} -->
+
+
+       </div>
+
+
+        </div>
+        </div>
+	{% endfor %}
+    {% else %}
+
+    Sorry, we do not have any rooms for the selected dates. Please give us a call and we will try to arrange.
+
+    <a href="#" onclick="testfunction();">Change arrival and departure date</a>
+
+
+    {% endif %}
+<!-- {% for each in de %}
+	{{ each.room_type_name }}    {{each.room_type_name.room_max_people}}</br>	
+
+{% endfor %} -->
+
+<!-- {{ test }} -->
+{% for each in cd %}
+
+<div id="{{each.room_type_name__room_type_name}}" class="modal4">
+     <div class="modal-content4">
+     <script>
+     function imageswap(event,event2){
+//   var img = document.createElement("IMG");
+// img.src = "https://innbparkhotel.com/static/images/upload/" + event;
+// var oldImg = document.getElementById('oldimg');
+var test = document.getElementById(event2);
+console.log(event);
+url = '/img/' + event 
+test.src=url;
+console.log(test);
+}
+
+
+
+ function imageswap2(event,event2){
+
+ 	var tempScrollTop = $(window).scrollTop();
+//   var img = document.createElement("IMG");
+// img.src = "https://innbparkhotel.com/static/images/upload/" + event;
+// var oldImg = document.getElementById('oldimg');
+var test = document.getElementById(event2+"2");
+console.log(event);
+url = '/img/' + event 
+test.src=url;
+console.log(test);
+$(window).scrollTop(tempScrollTop);
+}
+
+     </script>
+         <div class="modal-header4">
+         <span onclick="testfunction4('{{each.room_type_name__room_type_name}}');" class="close4">&times;</span>
+         </br>
+         </div>
+         <div class="modal-body4">
+<!--             <div style="float:left; width:20%;">
+               {{each.room_type_name__room_type_description}}</div>
+                <div style="float:left; width:40%;margin-left:10%"> <input type="text" name="code" id="ce" class="formfield1">
+                </div>
+
+                <div style="margin-left:10%; width:20%;float:left;margin-top:-10px">
+            <button class="btn btn-primary" onclick="myFunction();">Verify</button>
+                </div> -->
+     
+
+              <div class="col-sm-6">
+                  <div class="col-sm-12">
+
+ <img id={{each.room_type_name}} class="img-responsive" src="https://innbparkhotel.com/static/images/upload/{{each.room_type_name__room_image2}}">
+
+
+
+                  </div>  
+                  <div class="row">
+                          <div class="col-sm-12">
+                          <div class="cardimg" >
+                          <a href="javascript:void(0)" onclick="imageswap('{{each.room_type_name__room_image2}}', '{{each.room_type_name}}' );" style="margin:0; padding:0;">
+                           <img class="img-responsive btmthumb"  src="https://innbparkhotel.com/static/images/upload/{{each.room_type_name__room_image2}}">
+                           </a>
+                           </div>
+                           <div class="cardimg"  >
+                          <a href="javascript:void(0)"  onclick="imageswap('{{each.room_type_name__room_image3}}','{{each.room_type_name}}');" style="margin:0; padding:0;">
+                           <img class="img-responsive btmthumb" src="https://innbparkhotel.com/static/images/upload/{{each.room_type_name__room_image3}}">
+                           </a>
+                           </div>         
+                  <div class="cardimg"  >
+                 <a href="javascript:void(0)"  onclick="imageswap('{{each.room_type_name__room_image4}}','{{each.room_type_name}}');" style="margin:0; padding:0;">
+
+                           <img class="img-responsive btmthumb" src="https://innbparkhotel.com/static/images/upload/{{each.room_type_name__room_image4}}">
+                           </a>
+                  </div>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="col-sm-12 roomtitle">{{each.room_type_name__room_type_name}}</div> 
+<br>
+  <div class="col-sm-12 ">      {{each.room_type_name__room_type_description}}</div>
+
+ <div class="col-sm-12 " style="margin-top:20px">       <strong>Facilities:</strong>
+ <br>{{each.room_type_name__facilities}}</div>
+        </div>
+        </div>
+        </div>
+
+      </div>
+
+
+  
+</div>
+
+{% endfor %}
+
+
+
+
+
+<!-- 
+    <a href="#" onclick="discountappearfunction();">Additional Details</a> -->
+
+
+<div id="myModal3" class="modal3">
+
+  <!-- Modal content -->
+  <div class="modal-content3">
+    <div class="modal-header3">
+      <span class="close">&times;</span>
+  </br>
+<!--       <h2>Modal Header</h2> -->
+    </div>
+    <div class="modal-body3">
+
+    <div class="row">
+    <div class="col-sm-3">
+
+
+Promo Code:
+</div>
+<div class="col-sm-9">
+
+ <input type="text" name="code" id="ce" class="formfield1">
+</div>
+
+
+<!--         <a href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}&remove1={{i.pk}}"></a> -->
+<div class="col-sm-8">
+</div>
+<div class="col-sm-4" style="margin-top:10px">
+        <button class="btn btn-primary" onclick="myFunction();">Verify</button>
+    </div>
+</div>
+</div>
+<!--     <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div> -->
+  </div>
+
+</div>
+  
+</div>
+<div id="myModal2" class="modal2">
+
+  <!-- Modal content -->
+  <div class="modal-content2">
+    <div class="modal-header2">
+      <span class="close2">&times;</span>
+
+    </div>
+    
+    <div class="modal-body2">
+
+     
+      <form class="form" role="form" method="GET" action="/results/">
+
+        <div class="form-group"> 
+        <div style="margin-top:30px; margin-left:2%; margin-bottom:-5px; font-size:20px"><strong>Check for Availability</strong></div>
+        {% for field in dateform %}
+        {% if field.errors %} 
+        <div class="control-group error">
+            <div style= "margin:10px;"></div>
+            <label class="control-label col-sm-12 form5">{{ field.label }}</label> 
+            <div class="col-sm-12">{{ field }}</br>
+                <span class="help-inline">
+                  {% for error in  field.errors %}{{ error }}{% endfor %}
+                </span>
+            </div>
+        </div>
+        {% else %}
+        <div class="control-group">
+          <div style= "margin:10px;"></div>
+            <label class="control-label col-sm-12 form5">{{ field.label }}</label> 
+              <div class="col-sm-12 ">{{ field }}
+                {% if field.help_text %}
+                  <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                    {% endif %}
+              </div>
+        </div>
+            {% endif %}
+        {% endfor %}
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-primary" >BOOK</button>
+      </div>
+      </div>
+      </form>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="myModal5" class="modal3">
+
+
+  <div class="modal-content3">
+    <div class="modal-header3">
+      <span id="close14" class="close">&times;</span>
+  </br>
+
+    </div>
+    <div class="modal-body3">
+
+    <div class="row">
+    <div class="col-sm-12">
+
+
+<span style="font-family:'Raleway', sans-serif; font-size:22px;">Register with us to get discounts:</span>
+
+
+</div>
+
+</div>
+    <div class="row" style="margin-top:40px;">
+<div class="col-sm-6 "><a class="btn btn-primary" href="{% url 'customerregister' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}">
+Register
+</a>
+</div>
+<div class="col-sm-6">
+  <a class="btn btn-primary" href="{% url 'customerlogin' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}">
+Login
+</a>
+</div>
+
+</div>
+
+
+</div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="myModal4" class="modal3">
+
+
+  <div class="modal-content01">
+    <div class="modal-header3">
+      <span id="close13" class="close">&times;</span>
+  </br>
+
+    </div>
+    <div class="modal-body3">
+
+    <div class="row">
+    <div class="col-sm-12">
+
+
+<span style="font-family:'Raleway', sans-serif; font-size:19px;">You are eligible for the discounts below:</span>
+
+
+</div>
+
+</div>
+    <div class="row" style="margin-top:30px;">
+{% for mb in memberdiscount %}
+<div class="col-sm-12">
+  <a class="btn btn-primary" href="{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}&ce={{mb.code}}">
+    {{mb.description}}
+</a>
+</div>
+{% endfor %}
+</div>
+
+
+</div>
+
+  </div>
+
+</div>
+
+<script>
+  console.log("totalnoofdays: {{total132nofodays}}");
+  console.log("{{memberdiscount}}");
+  console.log("{{user55}}")
+</script>
+
+
+
+<!-- {% if user55 %}
+
+<script>
+console.log("{{cod}}");
+</script>
+
+{%if total132nofodays > 9 %}
+
+{% if not cod%}
+
+
+
+{% if ttw %}
+<script>
+var modal4 = document.getElementById('myModal4');
+
+
+function discountappearfunction()  {
+    modal4.style.display = "block";
+}
+
+discountappearfunction();
+</script>
+
+{% endif %}
+{% endif %}
+
+
+{% endif %}
+{% else %}
+{% if not cod%}
+{% if ttw %}
+{%if total132nofodays > 9 %}
+<script>
+var modal5 = document.getElementById('myModal5');
+
+
+function discountappearfunction2()  {
+    modal5.style.display = "block";
+}
+
+discountappearfunction2();
+
+</script>
+{% endif %}
+{% endif %}
+
+{% endif %}
+{% endif %}
+ -->
+
+
+
+
+
+
+<script>
+
+// function imageswap(event){
+// //   var img = document.createElement("IMG");
+// // img.src = "https://innbparkhotel.com/static/images/upload/" + event;
+// // var oldImg = document.getElementById('oldimg');
+// var test = document.getElementById('change1');
+// test.style.display = "none";
+// console.log(img.src)
+// }
+
+
+
+function myFu() {
+    alert("Sorry, all our rooms are unavailable at the moment, please contact us on +603 2856 7257");
+}
+
+
+
+
+
+function myFunction(){
+var ce = document.getElementById('ce').value;
+window.location = '{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}&ce='+ce;
+}
+
+var modal3 = document.getElementById('myModal3');
+var modal2 = document.getElementById('myModal2');
+var modal4 = document.getElementById('myModal4');
+var modal5 = document.getElementById('myModal5');
+var btn = document.getElementById("myBtn");
+
+
+var span = document.getElementsByClassName("close")[0];
+var span2 = document.getElementsByClassName("close2")[0];
+var span13 = document.getElementById("close13");
+var span14 = document.getElementById("close14");
+// var span13 = document.getElementById("close23");
+
+
+function modal3appear() {
+    modal3.style.display = "block";
+}
+
+
+function discountappearfunction()  {
+    modal4.style.display = "block";
+}
+function testfunction() {
+    modal2.style.display = "block";
+}
+
+function testfunction3(event) {
+  console.log(event);
+  var test = document.getElementById(event);
+  test.style.display = "block";
+}
+
+function testfunction4(event)
+{
+
+var test = document.getElementById(event);
+test.style.display = "none";
+
+}
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal3.style.display = "none";
+
+}
+
+span2.onclick = function() {
+
+    modal2.style.display = "none";
+}
+
+
+
+span13.onclick = function(){
+    modal4.style.display = "none";
+  }
+ span14.onclick = function(){
+    modal5.style.display = "none";
+  } 
+// span4.onclick = function(event) {
+// var test = document.getElementById(event);
+//     test.style.display = "none";
+// }
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal3) {
+        modal3.style.display = "none";
+      
+    }
+    else if(event.target == modal2){
+            modal2.style.display = "none"; 
+}
+}
+
+</script>
+
+
+{% if memberdiscount %}
+<script>
+discountappearfunction();
+</script>
+
+{% endif %}
+
+
+
+
+
+{% endblock %}

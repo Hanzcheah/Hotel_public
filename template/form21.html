@@ -1,0 +1,32 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<Br>
+<br>
+<div>
+<form method="POST" action="" enctype="multipart/form-data">
+<!--     {{ eform.as_p }}
+    <br> -->
+<!--         {{ frondest.description }} -->
+
+Extension number of days: <input type="number" name ="noday" min="1" max="20">&nbsp; &nbsp;
+<br>
+<br>
+<input type="checkbox" name="late" value="late">Late Checkout<br><br>
+Discount
+{%if per > 0 %}
+<input type="number"  step="0.01" name ="disct" min="0" max="100" value={{per}}> %
+{% else %}
+<input type="number" step="0.01" name ="disct" min="0" max="100" > %
+{%endif %}
+<br >
+<br>
+
+
+<input type='submit' value='Add'>{% csrf_token%} </form>
+</div>
+
+
+</div>
+{% endblock %}

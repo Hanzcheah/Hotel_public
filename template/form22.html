@@ -1,0 +1,73 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<Br>
+<br>
+
+<h1>
+<div style="width:25%; border:solid 2px; position:fixed; right:0px; top:0px; padding:20px" id="pricet">
+	0.00
+</div></h1>
+
+
+<div>
+<form method="POST" action="" enctype="multipart/form-data">
+<!--     {{ eform.as_p }}
+    <br> -->
+<!--         {{ frondest.description }} -->
+
+<!-- Upgrade to roomtype: <select name ="rtn" class="formfield2" id="roomtypes">
+{% for s in rts %}
+<option value="{{s.pk}}">{{s.room_type_name}}</option>
+{% endfor %}
+</select> -->
+
+
+
+
+Upgrade room type to:<select name ="rtn" class="formfield2" id="roomtypes2">
+{% for s in rts %}
+<option value="{{s.pk}}">{{s.room_type_name}}</option>
+{% endfor %}
+</select>
+
+
+
+<br><br>
+Room Number <select name ="rnn2" class="formfield2" id="selectId3">
+<option value="0">None</option>
+</select>
+
+<br><br>
+
+Upgrade from: &nbsp;
+<input class="datepicker" name="date1"  id="cind1" value="{{qdate1}}">
+</input>
+<br><br>
+
+Upgrade to: &nbsp;
+<input class="datepicker" name="date2" id="coutd1" value="{{qout1}}">
+</input>
+<br><br>
+Discount
+{%if per > 0 %}
+<input type="number"  id="dddd" step="0.01" name ="disct" min="0" max="100" value={{per}}> %
+{% else %}
+<input type="number" id="dddd" step="0.01" name ="disct" min="0" max="100" value="0"> %
+{%endif %}
+<br>
+<br>
+<input type='submit' value='Add'>{% csrf_token%} </form>
+</div>
+
+
+
+</div>
+
+
+
+{% endblock %}

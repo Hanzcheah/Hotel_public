@@ -1,0 +1,36 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="table-responsive">
+            <h2 class="sub-header">Pages    &nbsp &nbsp &nbsp          <a href="{% url 'pagesform' %}" class="btn btn-primary" >Create</a> &nbsp;&nbsp; <a href="https://innbparkhotel.com/edit4/3/" class="btn btn-primary" >Edit About</a></h2>
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Description</th>
+                   <th>id</th>
+                  <th>url</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                {% for p in pages %}
+                <tr>
+                  <td><a href={% url 'edit_7' p.pk %}> {{ p.pages_title}}</a></td>
+                  <td><a href={% url 'edit_7' p.pk %}> {{ p.pages_content|truncatechars:80}}</a></td>
+                  <td><a href={% url 'edit_7' p.pk %}>   {{ p.id }}</a></td>
+                  <td><a href={% url 'pages' p.pk %}>  Url</a></td>
+                  <td><a href={% url 'delete_14' p.id %}>Delete</a></td>
+                </tr>
+                {% endfor %}
+               </tbody>
+            </table>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+    <script src="/static/js/jquery-ui.js"></script>
+    <script src="/static/js/jquery.ui.datepicker.validation.js"></script> 
+        <link href="/static/css/jquery-ui.css" rel="stylesheet">  
+            <script type="text/javascript">
+      $(function () {
+                $('.datepicker').datepicker();
+         });
+        </script> 
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="col-sm-12">
+ <div class="row"> 
+
+  <div class="col-sm-3">
+<form method="GET" action="{% url 'portal5' %}">
+From:
+<input class="datepicker" name="startdate">
+</input><br><br>
+Time:
+<input name="startime" placeholder="00:00">
+</input>
+</div>
+<div class="col-sm-3" >
+To:
+<input class="datepicker" name="enddate">
+</input><br><br>
+Time:
+<input name="endtime" placeholder="00:00">
+</input>
+</div>
+
+
+<div class="col-sm-2">  
+    <input type='submit' value='Check'> 
+</div>
+</form>
+
+</div>
+</div>
+<div class="col-sm-12" style="margin-top:20px;margin-bottom:20px;">
+<div class="row">
+
+<form method="GET" action="{% url 'invoicemonth' %}">
+  <div class="col-sm-3">
+Invoice Number:
+<input name="invoice11">
+</input>
+</div>
+
+<div class="col-sm-2">  
+    <input type='submit' value='Invoice Check'> 
+</div>
+</form>
+</div>
+</div>
+</br>
+</br>
+
+<hr>
+
+<h2 class="sub-header">Invoices</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Invoice Number</th>
+                  <th>Name</th>
+                  <th>Invoice Total</th>
+
+                  <th>Discounts</th>
+                  <th>Total Paid</th>
+                  <th>Cash Paid</th>
+                  <th>Credit Card Paid</th>
+                     <th>Deposit Cash</th>
+                                       <th>Deposit Card</th>    
+                                                                              <th>Booking Type</th>    
+                                                                                                                     <th>Checkin Time</th>    
+                </tr>
+              </thead>
+              <tbody>
+                {% for customer in table %}
+                <tr>
+                  <td> {{ customer.invoiceno }}</td>
+                  <td> <a href= "/customer/?pk={{customer.email.pk}}">{{ customer.email }}</a></td>
+                  <td> {{ customer.total }}</td>
+                  <td> {{ customer.description }}</td>
+                  <td> {{ customer.totalpaid}}</td>
+                  <td>{{ customer.cashpaid}}</td>
+                                    <td> {{ customer.ccpaid}}</td>
+      
+                                  <td>{{ customer.depositcash}}</td> 
+                                 <td>{{ customer.depositcc}}</td> 
+                                                                                                                                                                                 <td>{{ customer.referral}}</td> 
+                                                                                                                                                <td>{{ customer.checkedin1}}</td> 
+
+<!--                                     <td>{{ customer.servicetax}}</td>  -->                                                                           
+                  <td><a href={% url 'edit_8' customer.pk %}> {{ customer.pk }}</a></td>                         
+<!--                   <td><a href={% url 'edit_1' customer.pk %}>Edit</a></td>  
+                  <td><a href={% url 'delete_1' customer.pk %}>Delete</a></td> -->
+                </tr>
+                {% endfor %}
+                <tr>
+                <td><Strong>TOTAL</Strong></td>
+                <td></td>
+                <td>{{total}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash}}</td>
+                <td>{{cc}}</td>
+                <td>{{dc}}</td>
+                <td>{{dcc}}</td>
+                </tr>
+               </tbody>
+            </table>
+            </div>
+
+<a href="http://innbparkhotel.com/portal2/?startdate={{qin_date1}}&enddate={{qout_date1}}" class="btn btn-default">Generate Report</a>
+
+{% endblock %}

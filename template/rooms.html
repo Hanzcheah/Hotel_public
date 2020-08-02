@@ -1,0 +1,224 @@
+{% extends 'booking/base2.html' %}
+{% block content %}   
+
+<body>
+<!--  {{cd}} -->
+
+<script>
+$(window).on('load', function () {      //Do the code in the {}s when the window has loaded 
+  $(".loader").fadeOut("slow");  //Fade out the #loader div
+});
+</script>
+<div class="loader">
+<div id="fountainG">
+      <div class="fountaine">Loading.. please wait</div>
+  <div id="fountainG_1" class="fountainG"></div>
+  <div id="fountainG_2" class="fountainG"></div>
+  <div id="fountainG_3" class="fountainG"></div>
+  <div id="fountainG_4" class="fountainG"></div>
+  <div id="fountainG_5" class="fountainG"></div>
+  <div id="fountainG_6" class="fountainG"></div>
+  <div id="fountainG_7" class="fountainG"></div>
+  <div id="fountainG_8" class="fountainG"></div>
+</div>
+</div>
+
+<div class="container">
+<div class="container-fluid">
+{% for each in cd %}
+	<div class = "col-sm-12 custom-room-container">
+        <div class = "row">
+
+        
+        <div class="col-sm-4 custom-left hee2 ">  
+            <img class="img-responsive hee" src ="https://innbparkhotel.com/img/{{each.room_image}}">
+            <img class="img-responsive hee3" src ="https://innbparkhotel.com/img/{{each.room_image2}}">
+        </div>      
+        <div class="col-sm-5 " >
+        <div style="padding:20px; padding-bottom:0; margin-left:-10px">
+            <h2 style="margin-top:10px;">{{ each.room_type_name}}</h2>  
+            <br> 
+            {{each.room_type_description|truncatechars:190}}
+            <a href="#" onclick="testfunction3('{{each.room_type_name}}');">Additional Details</a>
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-3" style="padding:20px; padding-bottom:0;">
+          <div style=" margin-left:5px;padding-bottom:5px; margin-top:25px;"><font face="Helvetica">From RM{{each.room_price}} per night</font face> </div>
+        <br>
+        <div style="margin-left:5px; padding-bottom:5px;">Occupancy: {{each.room_max_people}} Adults {% if each.room_kids %}{{each.room_kids}} Children{% endif %}</div>
+
+       <br>
+
+                <div style="margin-left:5px; margin-right:5px;"><a style="padding-left:5px; padding-right:5px;" href="{% url 'addbooking' %}" class="btn btn-primary space" >Check availability</a>
+        </div>
+
+
+        </div>
+
+        </div>
+    </div>
+	{% endfor %}
+<!-- {% for each in de %}
+	{{ each.room_type_name }}    {{each.room_type_name.room_max_people}}</br>	
+
+{% endfor %} -->
+
+<!-- {{ test }} -->
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+{% for each in cd %}
+
+<div id="{{each.room_type_name}}" class="modal4">
+     <div class="modal-content4">
+     <script>
+     function imageswap(event,event2){
+//   var img = document.createElement("IMG");
+// img.src = "http://innbparkhotel.com/static/images/upload/" + event;
+// var oldImg = document.getElementById('oldimg');
+var test = document.getElementById(event2);
+console.log(event);
+url = '/img/' + event 
+test.src=url;
+console.log(test);
+}
+
+
+
+     </script>
+         <div class="modal-header4">
+         <span onclick="testfunction4('{{each.room_type_name}}');" class="close4">&times;</span>
+         </br>
+         </div>
+         <div class="modal-body4">
+<!--             <div style="float:left; width:20%;">
+               {{each.room_type_name__room_type_description}}</div>
+                <div style="float:left; width:40%;margin-left:10%"> <input type="text" name="code" id="ce" class="formfield1">
+                </div>
+
+                <div style="margin-left:10%; width:20%;float:left;margin-top:-10px">
+            <button class="btn btn-primary" onclick="myFunction();">Verify</button>
+                </div> -->
+     
+
+              <div class="col-sm-6">
+                  <div class="col-sm-12">
+
+ <img id={{each.pk}} class="img-responsive" src="https://innbparkhotel.com/static/images/upload/{{each.room_image2}}">
+
+
+
+                  </div>  
+                  <div class="row">
+                          <div class="col-sm-12">
+                          <div class="cardimg" >
+                          <a href="javascript:void(0)" onclick="imageswap('{{each.room_image2}}', '{{each.pk}}' );" style="margin:0; padding:0;">
+                           <img class="img-responsive btmthumb"  src="https://innbparkhotel.com/static/images/upload/{{each.room_image2}}">
+                           </a>
+                           </div>
+                           <div class="cardimg"  >
+                          <a href="javascript:void(0)"  onclick="imageswap('{{each.room_image3}}','{{each.pk}}');" style="margin:0; padding:0;">
+                           <img class="img-responsive btmthumb" src="https://innbparkhotel.com/static/images/upload/{{each.room_image3}}">
+                           </a>
+                           </div>         
+                  <div class="cardimg"  >
+                 <a href="javascript:void(0)"  onclick="imageswap('{{each.room_image4}}','{{each.pk}}');" style="margin:0; padding:0;">
+
+                           <img class="img-responsive btmthumb" src="https://innbparkhotel.com/static/images/upload/{{each.room_image4}}">
+                           </a>
+                  </div>
+</div>
+</div>
+</div>
+<div class="col-sm-6" style="color:#7e7464">
+<font face="Raleway">
+<div class="col-sm-12 roomtitle">{{each.room_type_name}}</div> 
+<br>
+  <div class="col-sm-12 ">      {{each.room_type_description}}</div>
+
+ <div class="col-sm-12 " style="margin-top:20px">       <strong>Facilities:</strong>
+ <br>{{each.facilities}}</div>
+
+</font face>
+        </div>
+        </div>
+        </div>
+
+      </div>
+
+
+  
+</div>
+
+{% endfor %}
+
+
+
+
+</body>
+
+<Script>
+
+
+
+
+
+function myFunction(){
+var ce = document.getElementById('ce').value;
+window.location = '{% url 'results' %}?checkin_date={{qin_date1}}&checkout_date={{qout_date1}}&otw={{ttw}}&ce='+ce;
+}
+
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+var span2 = document.getElementsByClassName("close2")[0];
+// var span4 = document.getElementsByClassName("close4")[0];
+// When the user clicks the button, open the modal 
+
+function testfunction() {
+    modal2.style.display = "block";
+}
+
+function testfunction3(event) {
+  console.log(event);
+  var test = document.getElementById(event);
+  console.log(test)
+  test.style.display = "block";
+}
+
+function testfunction4(event)
+{
+var test = document.getElementById(event);
+test.style.display = "none";
+
+}
+// When the user clicks on <span> (x), close the modal
+
+// window.onclick = function(event) {
+//     if (event.target == modal4) {
+//         modal4.style.display = "none";
+      
+//     }
+// }
+
+
+</script>
+</html>
+
+{% endblock %}

@@ -1,0 +1,181 @@
+{% extends 'booking/base5.html' %}
+{% block content %} 
+
+
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+          <h2 class="sub-header">Room {{roomnumber}} </h2>
+<div class= "row" >   
+
+          <form method="GET" action="{% url 'detailbyroom' %}">
+<div class="col-sm-3">
+From:
+  <select name="month">
+      <option value="1">January</option>
+    <option value="2">February</option>
+          <option value="3">March</option>
+    <option value="4">April</option>
+          <option value="5">May</option>
+    <option value="6">June</option>
+          <option value="7">July</option>
+    <option value="8">August</option>
+          <option value="9">September</option>
+    <option value="10">October</option>
+          <option value="11">November</option>
+    <option value="12">December</option>
+</select>
+</div>
+<div class="col-sm-3" >
+Year:
+<input name="year">
+</input>
+</div>
+<div class="col-sm-3" >
+Room Number:
+<input style="width:80px" name="roomnumber">
+</input>
+</div>
+
+<div class="col-sm-2">  
+    <input type='submit' value='Check'> 
+</div>
+</form>
+</br>
+</br>
+          <div style="width:100%; overflow:hidden; margin-top:50px">
+
+
+                                            
+             <div style="row">
+             {% if eee == 6 %} 
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+{% for key, value in calendar_.items %}  
+            <div style="margin-right:2% ; width:12%; float:left"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; padding:5px;height:50px;"><strong>{{ key }}</strong></div><div style="padding:20px;">{{value}}</div></div>
+
+            {% endfor %}
+            {%endif %}
+
+
+                         {% if eee == 5 %} 
+
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+{% for key, value in calendar_.items %}  
+            <div style="margin-right:2% ; width:12%; float:left"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; padding:5px;height:50px;"><strong>{{ key }}</strong></div><div style="padding:20px;">{{value}}</div></div>
+
+            {% endfor %}
+            {%endif %}
+
+
+                                     {% if eee == 4 %} 
+
+
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+{% for key, value in calendar_.items %}  
+            <div style="margin-right:2% ; width:12%; float:left"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; padding:5px;height:50px;"><strong>{{ key }}</strong></div><div style="padding:20px;">{{value}}</div></div>
+
+            {% endfor %}
+            {%endif %}
+
+
+
+{% if eee == 3 %} 
+
+
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+{% for key, value in calendar_.items %}  
+            <div style="margin-right:2% ; width:12%; float:left"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; padding:5px;height:50px;"><strong>{{ key }}</strong></div><div style="padding:20px;">{{value}}</div></div>
+
+            {% endfor %}
+            {%endif %}            
+
+{% if eee == 2 %} 
+
+
+
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:20px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:20px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+{% for key, value in calendar_.items %}  
+            <div style="margin-right:2% ; width:12%; float:left"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; padding:5px;height:50px;"><strong>{{ key }}</strong></div><div style="padding:20px;">{{value}}</div></div>
+
+            {% endfor %}
+            {%endif %}
+
+
+{% if eee == 1 %} 
+
+
+
+
+<div style="margin-right:2%; width:12%; float:left;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; height:10px; padding:15px"><strong></strong></div><div style="padding:28px;"></div></div>
+{% for key, value in calendar_.items %}  
+            <div style="margin-right:2% ; width:12%; float:left"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; padding:5px;height:50px;"><strong>{{ key }}</strong></div><div style="padding:20px;">{{value}}</div></div>
+
+            {% endfor %}
+            {%endif %}
+               
+{% if eee == 0 %} 
+
+
+
+{% for key, value in calendar_.items %}  
+            <div style="margin-right:2% ; width:12%; float:left; margin-bottom:50px;"><div style="background-color:#428bca;margin-bottom:10px;color:#ffffff; padding:5px;height:50px;"><strong>{{ key }}</strong></div><div style="padding:20px;">{{value}}</div></div>
+
+            {% endfor %}
+            {%endif %}
+
+
+               </div>
+
+            </div>
+
+
+
+
+<!--           <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>{{datedisplay0}}</th>                
+                  <th>{{datedisplay1}}</th>
+                  <th>{{datedisplay2}}</th>
+                  <th>{{datedisplay3}}</th>
+                  <th>{{datedisplay4}}</th>
+                  <th>{{datedisplay5}}</th>
+                  <th>{{datedisplay6}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ day__0 }}</a></td>
+                  <td>{{ day__1 }}</a></td>                  
+                  <td>{{ day__2 }}</a></td>
+                  <td>{{ day__3 }}</a></td>
+                  <td>{{ day__4 }}</a></td>
+                  <td>{{ day__5 }}</a></td>
+                  <td>{{ day__6 }}</a></td>
+
+
+                </tr>
+
+               </tbody>
+            </table>
+            </div> -->
+    		</div>
+            </div>
+        </div>
+{% endblock %}

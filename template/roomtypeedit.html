@@ -1,0 +1,13 @@
+{% extends 'booking/base2.html' %}
+{% block content %} 
+
+
+    <div class="container" >
+<form method="POST" action="" enctype="multipart/form-data">
+    {{ editroomtypeform.as_p }}
+    <div class="col-sm-12 specialbutton ">
+        <input type="submit" value="Submit" class="btn btn-primary rightt" ></input>{% csrf_token%}
+    </div>
+
+
+{% endblock %}

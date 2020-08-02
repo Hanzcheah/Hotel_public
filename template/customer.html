@@ -1,0 +1,572 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+{% load tz %}
+<div id="loader1" style="margin-top:20px">Loading...</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+
+<h2 class="sub-header">{{customerno.last_name}} &nbsp;{{customerno.first_name}}  <a style="margin-left:20px" class="btn btn-primary" href={% url 'edit_9' customerno.pk %} >Edit</a> &nbsp;&nbsp;&nbsp;<a href="/manualbook/?cus={{customerno.pk}}" class="btn btn-default"> Add booking to this customer</a> </strong></h2>  
+
+First Name: {{customerno.first_name}}
+<Br>
+Last Name: {{customerno.last_name}} 
+</br>
+
+E-mail : {{customerno.email}}
+</br>
+
+Phone Number : {{customerno.phone_number}}
+
+</br>
+Country : {{customerno.country}} &nbsp; &nbsp; {% if customerno.vc is True %}<h1> <p style="color:red;"> VISA REQUIRED </p></h1>{%endif%}
+
+<br>
+
+ {% if customerno.filevs is False %} <span style="color:red">* NO FILES ATTACHED YET</span>{%else%}<a href="/download1/?pk={{customerno.pk}}">Attached Files</a>{%endif%}
+<br>
+
+<form method="POST" action="" enctype="multipart/form-data">
+
+Attach documents:
+<Br>
+{{customerform.attachingdocuments}}
+<br>
+                      <input type="submit" value="Attach" ></input>{% csrf_token%}
+
+</form>
+
+
+<br>
+<br>
+
+
+Invoice number(s): 
+<br>
+
+
+
+
+{% for c in customerbooking %}
+
+
+<strong><a href="{% url 'generatepdf' %}?referenceno={{c.referenceno}}">{{c.referenceno}}</a>  &nbsp;&nbsp;&nbsp;<a href="/manualbook/?rb={{c.referenceno}}" class="btn btn-default"> Add booking to this invoice</a>  &nbsp;&nbsp;&nbsp;
+
+
+
+
+{% if c.ttax %}
+{% if c.ttax > 0%}
+<a href="javascript:void(0)" onclick="testfun6('{{c.referenceno}}', '{{c.pk}}')" class="btn btn-default">Remove Tourism Tax</a> 
+{% else %}
+<a href="javascript:void(0)" onclick="testfun5('{{c.referenceno}}', '{{c.pk}}')" class="btn btn-default">Add Tourism Tax</a> 
+{%endif%}
+{% else %}
+<a href="javascript:void(0)" onclick="testfun5('{{c.referenceno}}', '{{c.pk}}')" class="btn btn-default">Add Tourism Tax</a> 
+
+
+{%endif%}
+
+<a href="{% url 'generatepdf3'  %}?referenceno={{c.referenceno}}" class="btn btn-default">Invoice with tourism tax</a>{% csrf_token%}
+</strong>
+
+
+
+</br>
+
+</br>
+
+{% if c.guestname%}
+<div style="color:blue">Guest name:  {{c.guestname}}</div>
+{% endif %}
+
+
+
+
+<br>
+Rooms: {{c.roomno}}
+<br>
+{% if c.staffbook%}
+<div style="color:red">Booked by {{c.bookedby}}</div>
+{% endif %}
+Referral: {{c.referral}}<br>
+{% if c.paid %}
+
+{% if c.paid1 %}
+
+<div style="color:red">Deposit Not Paid</div>
+
+
+<a href="/pinvp/?id={{c.referenceno}}" class="btn btn-default">Pay Deposit </a>{% csrf_token%}
+
+
+
+{% else %}
+<div style="color:red">Not Paid</div>
+
+
+<a href="/pinvp/?id={{c.referenceno}}" class="btn btn-default">Pay </a>{% csrf_token%}
+
+
+
+
+{% endif %}
+{%else%}
+
+
+<div style="color:green">Paid
+<br>Payment method: 
+{{c.Paymentmethod}}</div>
+
+<br>
+
+{% if c.check %}
+
+
+
+
+<a href="javascript:void(0)" onclick="testfun3('{{c.referenceno}}', '{{c.pk}}')" class="btn btn-default">Check In</a>{% csrf_token%}
+<br>
+&nbsp;&nbsp; {% if c.ttax %}
+{% if c.ttax > 0%}Passport Number: <input id="jest" name="jest"></input>{%endif%}{%endif%}
+<br>
+{% endif %}
+
+{% if c.latecheck %}
+<a href="javascript:void(0)" onclick="testfun3('{{c.referenceno}}', '{{c.pk}}')" class="btn btn-default">LateCheck In</a>{% csrf_token%}<br>
+&nbsp;&nbsp; {% if c.ttax %}
+{% if c.ttax > 0%}Passport Number: <input id="jest" name="jest"></input>{%endif%}{%endif%}
+<br>
+{% endif %}
+
+{% if c.checkout %}
+<a href="javascript:void(0)" onclick="testfun4('{{c.referenceno}}', '{{c.pk}}')" class="btn btn-default">Check Out</a>{% csrf_token%}
+<br>
+{% endif %}
+
+{% if c.check1 %}
+<div style="color:green">Checked-In
+<br>
+{% timezone "Asia/Kuala_Lumpur" %}
+{{c.checkedin1}}
+{% endtimezone %}
+</div>
+{% endif %}
+
+
+{% if c.checkout1 %}
+<br>
+<div style="color:green">Checked-Out
+<br>{% timezone "Asia/Kuala_Lumpur" %}
+{{c.checkedout1}}{% endtimezone %}
+</div>
+{% endif %}
+<br>
+<br>
+<a href={% url 'withold' c.pk %} class="btn btn-default">Deposit deduct</a>{% csrf_token%}
+<br>
+
+
+{% endif %}
+<br>
+<br>
+<a href={% url 'add_invoice_item' c.referenceno %} class="btn btn-default">Add Invoice Item</a>{% csrf_token%}
+<br>
+<br>
+
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+
+              <thead>
+                <tr>
+                  <th>Room Type</th>
+                  <th>Room Number</th>
+                  <th>Check-in Date</th>
+                  <th>Check-out Date</th>
+                  <th style="text-align:right; margin-right:15px">Price</th>                                                                     
+                </tr>
+              </thead>
+              <tbody>
+              	{% for t in c.room%}
+                <tr>
+<!--                   <td><a href=#> {{ customer }}</a></td> -->
+                  <td>{{ t.room_type_name }}
+
+{% if t.familyroom is True  %}
+&nbsp;(Family Room) 
+{% endif %}
+                  </td>
+                  <td>{{ t.room_number }}</td>
+                  <td> {{ t.checkin_date}}</td>
+                  <td>{{ t.checkout_date }}</td>                  
+                  <td style="text-align:right; margin-right:15px">{{ t.actualpay }}</td>
+                  <td style="padding-left:20px; width:60px;"><a href="{% url 'edit_1' t.pk %}">edit</a></td>
+<!--                   <td style="width:50px"><a href="https://innbparkhotel.com/addextension/?refno={{c.referenceno}}&bookpk={{t.pk}}">Extension</a></td> -->
+
+                  {% if t.upgrade%}
+                   <td style="width:50px;"><a href="https://innbparkhotel.com/upgrade/?refno={{c.referenceno}}&bookpk={{t.pk}}">Upgrade</a></td> 
+
+                 {%else%}
+                  <td></td>      
+                  {% endif%}            
+                  <td><a href="https://innbparkhotel.com/delete1/{{t.pk}}">Delete</a></td>                  
+
+           
+
+                </tr>
+                {% endfor %}
+
+                {% for g in c.extraitems%}
+
+                <tr>
+<!--                   <td><a href=#> {{ customer }}</a></td> -->
+                  <td>{{ g.description }}
+
+                  </td>              
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td style="text-align:right; margin-right:15px">{{ g.paymentprice }}</td>
+   <td></td>  <td></td>  
+                  <td><a href="https://innbparkhotel.com/delete22/{{g.pk}}">Delete</a></td>                  
+<!--               <td></td><td></td> -->
+           
+
+                </tr>
+
+
+
+
+
+                {% endfor %}
+
+
+
+
+
+
+                {% if c.discount1 %}
+
+                                                <tr>
+                <td>{{c.description}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right; margin-right:5px">-{{c.discount1}} </td>
+                <td></td>                <td></td>                <td></td> <td></td>
+                </tr>  
+                {% endif %}
+
+                <tr>
+                <td>GST:</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right; margin-right:5px">{{c.gst}}</td>
+                <td></td>  <td></td>                <td></td><td></td>
+                </tr> 
+
+              
+                <tr>
+                <td><strong>Total:</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right; margin-right:5px">{{c.total}}</td>
+                <td></td>  <td></td>                <td></td><td></td>
+                </tr>
+               </tbody>
+            </table>
+            </div>
+
+<br>
+
+{% if c.depforminfo %}
+<div class="col-sm-12">
+
+
+<strong>Deposit deducted</strong>
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+
+                  <th>Item name</th>
+                  <th>Price</th>
+                                                                     
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in c.depforminfo %}
+                <tr>
+                  <td> {{ i.itemname }}</td>
+
+                  <td> {{ i.itemprice }}</td>
+          
+                  <td><a href={% url 'delete_15' i.pk %}> delete</a></td>                         
+
+                </tr>
+                {% endfor %}
+
+               </tbody>
+            </table>
+            </div>
+            </div>
+{%endif%}
+
+
+<br>
+
+
+
+ {% if c.rtacomm is not None %}
+<a href="{% url 'generatepdf2' %}?referenceno={{c.referenceno}}" class="btn btn-default">OTA Invoice</a>  &nbsp;&nbsp;&nbsp;
+<a href="/edit24/{{c.pk}}" class="btn btn-default">Change Address</a>&nbsp;&nbsp;&nbsp;
+</br>
+</br>
+{% endif %}
+</br>
+</br>
+{% endfor %}
+
+
+
+
+
+<!-- 
+<form method="POST" action="" enctype="multipart/form-data">
+
+Attach documents:
+<Br>
+{{customerform.attachingdocuments}}
+</form> -->
+</div>
+
+<script>
+function testfun3(event, test){
+// ev.preventDefault();
+
+       // console.log(date);
+
+// var countr = "{{customerno.country}}" ;
+
+
+
+
+
+if(!$('input[name="jest"]').length){
+
+
+
+var jest = "";
+
+
+
+var url = "https://innbparkhotel.com/apiapi2/";
+var method = "POST";
+var postData = JSON.stringify({
+        "bk": event,
+        "pw": test,
+        "jest":jest
+        })
+
+var request = new XMLHttpRequest();
+request.onload = function () {
+   var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   var data = request.responseText; // Returned data, e.g., an HTML document.
+console.log(status);
+}
+
+request.open(method, url, true);
+console.log(postData);
+
+request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+// Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+// Or... whatever
+
+// test =$('meta[name="token"]').attr('content')
+// request.setRequestHeader("X-CSRFToken", test);
+// Actually sends the request to the server.
+request.send(postData);
+document.getElementById("loader1").style.visibility = "visible";
+setTimeout(function(){
+    window.location.reload();
+},1000); 
+
+
+
+
+
+
+}else{
+
+// }
+// if(jest == ""){
+//   howmany32= 0;
+// }
+
+var jest = document.getElementById("jest").value;
+var url = "https://innbparkhotel.com/apiapi2/";
+var method = "POST";
+var postData = JSON.stringify({
+        "bk": event,
+        "pw": test,
+        "jest":jest
+        })
+
+var request = new XMLHttpRequest();
+request.onload = function () {
+   var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   var data = request.responseText; // Returned data, e.g., an HTML document.
+console.log(status);
+}
+
+request.open(method, url, true);
+console.log(postData);
+
+request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+// Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+// Or... whatever
+
+// test =$('meta[name="token"]').attr('content')
+// request.setRequestHeader("X-CSRFToken", test);
+// Actually sends the request to the server.
+request.send(postData);
+document.getElementById("loader1").style.visibility = "visible";
+setTimeout(function(){
+    window.location.reload();
+},1000); 
+}
+}
+
+
+
+
+
+
+function testfun4(event, test){
+
+       // console.log(date);
+var url = "https://innbparkhotel.com/apiapi3/";
+var method = "POST";
+var postData = JSON.stringify({
+        "bk": event,
+        "pw": test,
+        })
+
+var request = new XMLHttpRequest();
+request.onload = function () {
+   var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   var data = request.responseText; // Returned data, e.g., an HTML document.
+console.log(status);
+}
+
+request.open(method, url, true);
+console.log(postData);
+
+request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+// Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+// Or... whatever
+
+// test =$('meta[name="token"]').attr('content')
+// request.setRequestHeader("X-CSRFToken", test);
+// Actually sends the request to the server.
+request.send(postData);
+document.getElementById("loader1").style.visibility = "visible";
+setTimeout(function(){
+    window.location.reload();
+},1000); 
+}
+
+
+
+
+
+function testfun5(event, test){
+// ev.preventDefault();
+
+       // console.log(date);
+var url = "https://innbparkhotel.com/apiapi10/";
+var method = "POST";
+var postData = JSON.stringify({
+        "bk": event,
+        "pw": test,
+        })
+
+var request = new XMLHttpRequest();
+request.onload = function () {
+   var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   var data = request.responseText; // Returned data, e.g., an HTML document.
+console.log(status);
+}
+
+request.open(method, url, true);
+console.log(postData);
+
+request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+// Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+// Or... whatever
+
+// test =$('meta[name="token"]').attr('content')
+// request.setRequestHeader("X-CSRFToken", test);
+// Actually sends the request to the server.
+request.send(postData);
+document.getElementById("loader1").style.visibility = "visible";
+setTimeout(function(){
+    window.location.reload();
+},1000); 
+}
+
+
+
+
+function testfun6(event, test){
+// ev.preventDefault();
+
+       // console.log(date);
+var url = "https://innbparkhotel.com/apiapi11/";
+var method = "POST";
+var postData = JSON.stringify({
+        "bk": event,
+        "pw": test,
+        })
+
+var request = new XMLHttpRequest();
+request.onload = function () {
+   var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   var data = request.responseText; // Returned data, e.g., an HTML document.
+console.log(status);
+}
+
+request.open(method, url, true);
+console.log(postData);
+
+request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+// Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+// Or... whatever
+
+// test =$('meta[name="token"]').attr('content')
+// request.setRequestHeader("X-CSRFToken", test);
+// Actually sends the request to the server.
+request.send(postData);
+document.getElementById("loader1").style.visibility = "visible";
+setTimeout(function(){
+    window.location.reload();
+},1000); 
+}
+
+
+
+
+
+
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+{% load tz %}
+
+
+
+//   <script>
+// $(document).ready(function($) 
+//     { 
+//         $("#myTable").tablesorter(); 
+//     } 
+// ); 
+    
+// </script>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+&nbsp;&nbsp; <a href="/customer/?pk={{cust}}">Back to customer page</a>
+
+<h2 class="sub-header">Attached Documents</h2>   
+
+
+
+{% for image in images %}<h3>
+<li style="margin-bottom:10px;">
+<a href="/download2/?pk={{cust}}&cust2={{cust3}}&image={{image}}">{{image}}</a></h3>
+</li>
+{% endfor %}
+
+
+
+
+</div>
+
+  <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.loading').hide();
+      }
+    });
+</script>
+
+
+{% endblock %}

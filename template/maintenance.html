@@ -1,0 +1,87 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+    <script src="/static/js/jquery-ui.js"></script>
+    <script src="/static/js/jquery.ui.datepicker.validation.js"></script> 
+        <link href="/static/css/jquery-ui.css" rel="stylesheet">  
+            <script type="text/javascript">
+      $(function () {
+                $('.datepicker').datepicker();
+         });
+        </script> 
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<h1> Maintenance</h1>
+
+</br>
+</br>
+
+<div class="row">
+<form method="POST" action="{% url 'maintenance' %}">
+<div class="col-sm-3">
+From:
+<input class="datepicker" name="startdate">
+</input>
+</div>
+<div class="col-sm-3" >
+To:
+<input class="datepicker" name="enddate">
+</input>
+</div>
+
+  <div class="col-sm-2">
+  <select name="roomno">
+  {% for i in roomtypes %}
+    <option value="{{i.room_number}}">{{i.room_number}}</option>
+    {% endfor %}
+ 
+  </select>
+  </div>
+<div class="col-sm-2">  
+    <input type='submit' value='Maintenance'> {% csrf_token%}
+</div>
+</form>
+</div>
+</br>
+</br>
+
+
+
+<div class="col-sm-12">
+
+
+
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Room</th>
+                  <th>From</th>
+                  <th>To</th>
+                                                                     
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in maintenance %}
+                <tr>
+                  <td> {{ i.room_number }}</td>
+
+                  <td> {{ i.checkin_date }}</td>
+                  <td> {{ i.checkout_date }}</td>
+                  <td> {{ customer.totalpaid}}</td>
+                                                                     
+                  <td><a href={% url 'delete_1' i.pk %}> {{ i.pk }}</a></td>                         
+
+                </tr>
+                {% endfor %}
+
+               </tbody>
+            </table>
+            </div>
+
+
+</div>
+
+
+
+{% endblock %}

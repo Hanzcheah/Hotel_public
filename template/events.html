@@ -1,0 +1,121 @@
+{% extends 'booking/base2.html' %}
+{% block content %}   
+
+<body>
+  <script>
+    $(window).on('load', function () {      //Do the code in the {}s when the window has loaded 
+      $(".loader").fadeOut("slow");  //Fade out the #loader div
+    });
+    </script>
+    <div class="loader">
+    <div id="fountainG">
+          <!-- <div class="fountaine">Loading...</div> -->
+      <div id="fountainG_1" class="fountainG"></div>
+      <div id="fountainG_2" class="fountainG"></div>
+      <div id="fountainG_3" class="fountainG"></div>
+      <div id="fountainG_4" class="fountainG"></div>
+      <div id="fountainG_5" class="fountainG"></div>
+      <div id="fountainG_6" class="fountainG"></div>
+      <div id="fountainG_7" class="fountainG"></div>
+      <div id="fountainG_8" class="fountainG"></div>
+    </div>
+    </div>
+
+<div class="container">
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-6">
+<div style="margin-top:30px;">
+
+<img style="width:100%" class="responsive" src="/static/images/cardpic4.jpg" />
+</div>
+<br>
+<div class="hiddensmall" style="margin-top:40px">
+<img style="width:100%" class="responsive" src="/static/images/eventsresized.jpg" />
+</div>
+</div>
+<div class="col-sm-6" >
+
+<div style="padding:20px">
+
+
+{% if success %}
+<div style="margin-top:20%;padding:10px">
+
+{{success}}
+</div>
+
+
+{% else %}
+
+
+<h1>Events</h1>
+
+Planning an event? Be they corporate functions, seminars, weddings or birthday celebrations, we have got you covered! Speak to our friendly events specialists who will assist you in planning the details of the venue, catering, decor, entertainment and any accomodation requirements to ensure you a personalised, hassle-free experience. 
+
+
+<div>
+<br>
+<br>
+<form role="form" method="POST" action="">
+
+First name
+{{event.first_name}}
+<br><br>
+Last name
+{{event.last_name}}
+<br><br>
+Email
+{{event.email}}
+<br><br>
+Contact Number
+{{event.contact_number}}
+<br><br>
+Number of Attendees
+{{event.number_of_attendees}}
+<br><br>
+Event Date
+{{event.date}}
+<br><br>
+Event Time
+{{event.time}}
+<br><br>
+Event Type<br>
+<input type="text" name="eventtype" class="formfield0">
+  <input type="radio" name="event_type" value="Seminar" checked> Seminar<br>
+  <input type="radio" name="event_type" value="Corporate Function"> Corporate function<br>
+    <input type="radio" name="event_type" value="Wedding"> Wedding<br>
+      <input type="radio" name="event_type" value="Birthday"> Birthday<br> 
+  <input type="radio" name="event_type" value="Other"> Others:&nbsp;<input type="text" class="formfield1" name="Other"><br>
+
+
+
+<br>
+Services
+<br>
+<input type="checkbox" name="services" value="venue hire only"> Venue hire only<br>
+  <input type="checkbox" name="services" value="catering" > Catering<br>
+  <input type="checkbox" name="services" value=" decor"> Decor<br>
+  <input type="checkbox" name="services" value="music" > Music<br>
+  <input type="checkbox" name="services" value="PA system"> PA system<br>
+  <input type="checkbox" name="services" value="projectors" > Projectors<br>
+    <input type="checkbox" name="services" value="room bookings" > Room bookings<br>
+    <br>
+  <input type="submit" class="btn btn-primary"  value="Submit">{% csrf_token%}
+  </form>
+  </div>
+
+
+{% endif%}
+
+
+
+  </div>
+  </div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+{% endblock %}

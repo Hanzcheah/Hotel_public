@@ -1,0 +1,273 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<form method="POST" action="">
+    {{ customerform2.as_p }}
+
+
+    Country
+
+
+
+
+<select name ="country" class="formfield2">
+  <option value="AF"  {% if country1 == "AF" %} selected {%endif%}>Afghanistan</option>
+  <option value="AX" {% if country1 == "AX" %} selected {%endif%}>Åland Islands</option>
+  <option value="AL" {% if country1 == "AL" %} selected {%endif%}>Albania</option>
+  <option value="DZ"  {% if country1 == "DZ" %} selected {%endif%}>Algeria</option>
+    <option value="AS" {% if country1 == "AS" %} selected {%endif%}>American Samoa</option>
+  <option value="AD" {% if country1 == "AD" %} selected {%endif%}>Andorra</option>
+  <option value="AO" {% if country1 == "AO" %} selected {%endif%}>Angola</option>
+  <option value="AI" {% if country1 == "AI" %} selected {%endif%}>Anguilla</option>
+    <option value="AQ" {% if country1 == "AQ" %} selected {%endif%}>Antarctica</option>
+  <option value="AG" {% if country1 == "AG" %} selected {%endif%}>Antigua and Barbuda</option>
+  <option value="AR" {% if country1 == "AR" %} selected {%endif%}>Argentina</option>
+  <option value="AM" {% if country1 == "AM" %} selected {%endif%}>Armenia</option>
+    <option value="AW" {% if country1 == "AW" %} selected {%endif%}>Aruba</option>
+  <option value="AU" {% if country1 == "AU" %} selected {%endif%}>Australia</option>
+  <option value="AT" {% if country1 == "AT" %} selected {%endif%}>Austria</option>
+  <option value="AZ" {% if country1 == "AZ" %} selected {%endif%}>Azerbaijan</option>
+    <option value="BS" {% if country1 == "BS" %} selected {%endif%}>Bahamas</option>
+  <option value="BH" {% if country1 == "BH" %} selected {%endif%}>Bahrain</option>
+  <option value="BD" {% if country1 == "BD" %} selected {%endif%}>Bangladesh</option>
+  <option value="BB" {% if country1 == "BB" %} selected {%endif%}>Barbados</option>
+    <option value="BY" {% if country1 == "BY" %} selected {%endif%}>Belarus</option>
+  <option value="BE" {% if country1 == "BE" %} selected {%endif%}>Belgium</option>
+  <option value="BZ" {% if country1 == "BZ" %} selected {%endif%}>Belize</option>
+  <option value="BJ" {% if country1 == "BJ" %} selected {%endif%}>Benin</option>
+    <option value="BM" {% if country1 == "BM" %} selected {%endif%}>Bermuda</option>
+  <option value="BT" {% if country1 == "BT" %} selected {%endif%}>Bhutan</option>
+  <option value="BO" {% if country1 == "BO" %} selected {%endif%}>Bolivia (Plurinational State of)</option>
+  <option value="BQ" {% if country1 == "BQ" %} selected {%endif%}>Bonaire, Sint Eustatius and Saba</option>
+    <option value="BA" {% if country1 == "BA" %} selected {%endif%}>Bosnia and Herzegovina</option>
+  <option value="BW" {% if country1 == "BW" %} selected {%endif%}>Botswana</option>
+  <option value="BV" {% if country1 == "BV" %} selected {%endif%}>Bouvet Island</option>
+  <option value="BR" {% if country1 == "BR" %} selected {%endif%}>Brazil</option>
+    <option value="IO" {% if country1 == "IO" %} selected {%endif%}>British Indian Ocean Territory</option>
+  <option value="BN" {% if country1 == "BN" %} selected {%endif%}>Brunei Darussalam</option>
+  <option value="BG" {% if country1 == "BG" %} selected {%endif%}>Bulgaria</option>
+  <option value="BF" {% if country1 == "BF" %} selected {%endif%}>Burkina Faso</option>
+    <option value="BI" {% if country1 == "BI" %} selected {%endif%}>Burundi</option>
+  <option value="CV" {% if country1 == "CV" %} selected {%endif%}>Cabo Verde</option>
+  <option value="KH"  {% if country1 == "KH" %} selected {%endif%}>Cambodia</option>
+  <option value="CM"  {% if country1 == "CM" %} selected {%endif%}>Cameroon</option>
+    <option value="CA"  {% if country1 == "CA" %} selected {%endif%}>Canada</option>
+  <option value="KY"  {% if country1 == "KY" %} selected {%endif%}>Cayman Islands</option>
+  <option value="CF"  {% if country1 == "CF" %} selected {%endif%}>Central African Republic</option>
+  <option value="TD"  {% if country1 == "TD" %} selected {%endif%}>Chad</option>
+    <option value="CL"  {% if country1 == "CL" %} selected {%endif%}>Chile</option>
+  <option value="CN"  {% if country1 == "CN" %} selected {%endif%}>China</option>
+  <option value="CX"  {% if country1 == "CX" %} selected {%endif%}>Christmas Island</option>
+  <option value="CC"  {% if country1 == "CC" %} selected {%endif%}>Cocos (Keeling) Islands</option>
+    <option value="CO"  {% if country1 == "CO" %} selected {%endif%}>Colombia</option>
+  <option value="KM"  {% if country1 == "KM" %} selected {%endif%}>Comoros</option>
+  <option value="CG"  {% if country1 == "CG" %} selected {%endif%}>Congo</option>
+  <option value="CD" {% if country1 == "CD" %} selected {%endif%}>Congo (Democratic Republic of the)</option>
+    <option value="CK" {% if country1 == "CK" %} selected {%endif%}>Cook Islands</option>
+  <option value="CR" {% if country1 == "CR" %} selected {%endif%}>Costa Rica</option>
+  <option value="HR" {% if country1 == "HR" %} selected {%endif%}>Croatia</option>
+  <option value="CU" {% if country1 == "CU" %} selected {%endif%}>Cuba</option>
+    <option value="CW" {% if country1 == "CW" %} selected {%endif%}>Curaçao</option>
+  <option value="CY" {% if country1 == "CY" %} selected {%endif%}>Cyprus</option>
+  <option value="CZ" {% if country1 == "CZ" %} selected {%endif%}>Czechia</option>
+  <option value="DK" {% if country1 == "DK" %} selected {%endif%}>Denmark</option>
+    <option value="DJ" {% if country1 == "DJ" %} selected {%endif%}>Djibouti</option>
+  <option value="DM" {% if country1 == "DM" %} selected {%endif%}>Dominica</option>
+  <option value="DO" {% if country1 == "DO" %} selected {%endif%}>Dominican Republic</option>
+  <option value="EC" {% if country1 == "EC" %} selected {%endif%}>Ecuador</option>
+    <option value="EG" {% if country1 == "EG" %} selected {%endif%}>Egypt</option>
+  <option value="SV" {% if country1 == "SV" %} selected {%endif%}>El Salvador</option>
+  <option value="GQ" {% if country1 == "GQ" %} selected {%endif%}>Equatorial Guinea</option>
+  <option value="ER" {% if country1 == "ER" %} selected {%endif%}>Eritrea</option>
+    <option value="EE" {% if country1 == "EE" %} selected {%endif%}>Estonia</option>
+  <option value="ET" {% if country1 == "ET" %} selected {%endif%}>Ethiopia</option>
+  <option value="FO" {% if country1 == "FO" %} selected {%endif%}>Falkland Islands (Malvinas)</option>
+  <option value="DZ" {% if country1 == "DZ" %} selected {%endif%}>Faroe Islands</option>
+    <option value="FJ" {% if country1 == "FJ" %} selected {%endif%}>Fiji</option>
+  <option value="FI" {% if country1 == "FI" %} selected {%endif%}>Finland</option>
+  <option value="FR" {% if country1 == "FR" %} selected {%endif%}>France</option>
+  <option value="GF" {% if country1 == "GF" %} selected {%endif%}>French Guiana</option>
+    <option value="PF" {% if country1 == "PF" %} selected {%endif%}>French Polynesia</option>
+  <option value="TF" {% if country1 == "TF" %} selected {%endif%}>French Southern Territories</option>
+  <option value="GA" {% if country1 == "GA" %} selected {%endif%}>Gabon</option>
+  <option value="GM" {% if country1 == "GM" %} selected {%endif%}>Gambia </option>
+    <option value="GE" {% if country1 == "GE" %} selected {%endif%}>Georgia</option>
+  <option value="DE" {% if country1 == "DE" %} selected {%endif%}>Germany</option>
+  <option value="GH" {% if country1 == "GH" %} selected {%endif%}>Ghana</option>
+  <option value="GI" {% if country1 == "GI" %} selected {%endif%}>Gibraltar</option>
+    <option value="GR" {% if country1 == "GR" %} selected {%endif%}>Greece</option>
+  <option value="GL" {% if country1 == "GL" %} selected {%endif%}>Greenland</option>
+  <option value="GD" {% if country1 == "GD" %} selected {%endif%}>Grenada</option>
+  <option value="GP" {% if country1 == "GP" %} selected {%endif%}>Guadeloupe</option>
+    <option value="GU" {% if country1 == "GU" %} selected {%endif%}>Guam</option>
+  <option value="GT" {% if country1 == "GT" %} selected {%endif%}>Guatemala</option>
+  <option value="GG" {% if country1 == "GG" %} selected {%endif%}>Guernsey</option>
+  <option value="GN" {% if country1 == "GN" %} selected {%endif%}>Guinea</option>
+    <option value="GW" {% if country1 == "GW" %} selected {%endif%}>Guinea-Bissau</option>
+  <option value="GY" {% if country1 == "GY" %} selected {%endif%}>Guyana</option>
+  <option value="HT" {% if country1 == "HT" %} selected {%endif%}>Haiti</option>
+  <option value="HM" {% if country1 == "HM" %} selected {%endif%}>Heard Island and McDonald Islands</option>
+    <option value="VA" {% if country1 == "VA" %} selected {%endif%}>Holy See</option>
+  <option value="HN" {% if country1 == "HN" %} selected {%endif%}>Honduras</option>
+  <option value="HK" {% if country1 == "HK" %} selected {%endif%}>Hong Kong</option>
+  <option value="HU" {% if country1 == "HU" %} selected {%endif%}>Hungary</option>
+    <option value="IS" {% if country1 == "IS" %} selected {%endif%}>Iceland</option>
+  <option value="IN" {% if country1 == "IN" %} selected {%endif%}>India</option>
+  <option value="ID" {% if country1 == "ID" %} selected {%endif%}>Indonesia</option>
+  <option value="IR" {% if country1 == "IR" %} selected {%endif%}>Iran (Islamic Republic of)</option>
+  <option value="IQ" {% if country1 == "IQ" %} selected {%endif%}>Iraq</option>
+  <option value="IE" {% if country1 == "IE" %} selected {%endif%}>Ireland</option>
+  <option value="IM" {% if country1 == "IM" %} selected {%endif%}>Isle of Man  </option>
+  <option value="IL" {% if country1 == "IL" %} selected {%endif%}>Israel</option>
+  <option value="IT" {% if country1 == "IT" %} selected {%endif%}>Italy</option>
+  <option value="JM" {% if country1 == "JM" %} selected {%endif%}>Jamaica</option>
+  <option value="JP" {% if country1 == "JP" %} selected {%endif%}>Japan</option>
+  <option value="JE" {% if country1 == "JE" %} selected {%endif%}>Jersey</option>
+  <option value="JO" {% if country1 == "JO" %} selected {%endif%}>Jordan</option>
+  <option value="KZ" {% if country1 == "KZ" %} selected {%endif%}>Kazakhstan</option>
+  <option value="KE" {% if country1 == "KE" %} selected {%endif%}>Kenya</option>
+  <option value="KP" {% if country1 == "KP" %} selected {%endif%}>Korea (Democratic People's Republic of)</option>
+  <option value="KR" {% if country1 == "KR" %} selected {%endif%}>Korea (Republic of)</option>
+  <option value="KW" {% if country1 == "KW" %} selected {%endif%}>Kuwait</option>
+  <option value="KG" {% if country1 == "KG" %} selected {%endif%}>Kyrgyzstan</option>
+  <option value="LA" {% if country1 == "LA" %} selected {%endif%}>Lao People's Democratic Republic</option>
+  <option value="LV" {% if country1 == "LV" %} selected {%endif%}>Latvia</option>
+  <option value="LB" {% if country1 == "LB" %} selected {%endif%}>Lebanon</option>
+  <option value="LS" {% if country1 == "LS" %} selected {%endif%}>Lesotho</option>
+  <option value="LR" {% if country1 == "LR" %} selected {%endif%}>Liberia</option>
+  <option value="LY" {% if country1 == "LY" %} selected {%endif%}>Libya</option>
+  <option value="LI" {% if country1 == "LI" %} selected {%endif%}>Liechtenstein</option>
+  <option value="LT" {% if country1 == "LT" %} selected {%endif%}>Lithuania</option>
+  <option value="LU" {% if country1 == "LU" %} selected {%endif%}>Luxembourg</option>
+  <option value="MO" {% if country1 == "MO" %} selected {%endif%}>Macao</option>
+  <option value="MK" {% if country1 == "MK" %} selected {%endif%}>Macedonia (the former Yugoslav Republic of)</option>
+  <option value="MG" {% if country1 == "MG" %} selected {%endif%}>Madagascar</option>
+  <option value="MW" {% if country1 == "MW" %} selected {%endif%}>Malawi</option>
+  <option value="MY"  {% if country1 == "MY" %} selected {%endif%} >Malaysia</option>
+  <option value="MV" {% if country1 == "MV" %} selected {%endif%}>Maldives</option>
+  <option value="ML" {% if country1 == "ML" %} selected {%endif%}>Mali</option>
+  <option value="MT" {% if country1 == "MT" %} selected {%endif%}>Malta</option>
+  <option value="MH" {% if country1 == "MH" %} selected {%endif%}>Marshall Islands</option>
+  <option value="MQ" {% if country1 == "MQ" %} selected {%endif%}>Martinique</option>
+  <option value="MR" {% if country1 == "MR" %} selected {%endif%}>Mauritania</option>
+  <option value="MU" {% if country1 == "MU" %} selected {%endif%}>Mauritius</option>
+  <option value="YT" {% if country1 == "YT" %} selected {%endif%}>Mayotte</option>
+  <option value="MX" {% if country1 == "MX" %} selected {%endif%}>Mexico</option>
+  <option value="FM" {% if country1 == "FM" %} selected {%endif%}>Micronesia (Federated States of)</option>
+  <option value="MD" {% if country1 == "MD" %} selected {%endif%}>Moldova (Republic of)</option>
+  <option value="MC" {% if country1 == "MC" %} selected {%endif%}>Monaco</option>
+  <option value="MN" {% if country1 == "MN" %} selected {%endif%}>Mongolia</option>
+  <option value="ME" {% if country1 == "ME" %} selected {%endif%}>Montenegro</option>
+  <option value="MS" {% if country1 == "MS" %} selected {%endif%}>Montserrat</option>
+  <option value="MA" {% if country1 == "MA" %} selected {%endif%}>Morocco</option>
+  <option value="MZ" {% if country1 == "MZ" %} selected {%endif%}>Mozambique</option>
+  <option value="MM" {% if country1 == "MM" %} selected {%endif%}>Myanmar</option>
+  <option value="NA" {% if country1 == "NA" %} selected {%endif%}>Namibia</option>
+  <option value="NR" {% if country1 == "NR" %} selected {%endif%}>Nauru</option>
+  <option value="NP" {% if country1 == "NP" %} selected {%endif%}>Nepal</option>
+  <option value="NL" {% if country1 == "NL" %} selected {%endif%}>Netherlands</option>
+  <option value="NC" {% if country1 == "NC" %} selected {%endif%}>New Caledonia</option>
+  <option value="NZ" {% if country1 == "NZ" %} selected {%endif%}>New Zealand</option>
+  <option value="NI" {% if country1 == "NI" %} selected {%endif%}>Nicaragua</option>
+  <option value="NE" {% if country1 == "NE" %} selected {%endif%}>Niger</option>
+  <option value="NG" {% if country1 == "NG" %} selected {%endif%}>Nigeria</option>
+  <option value="NU" {% if country1 == "NU" %} selected {%endif%}>Niue</option>
+  <option value="NF" {% if country1 == "NF" %} selected {%endif%}>Norfolk Island</option>
+  <option value="MP" {% if country1 == "MP" %} selected {%endif%}>Northern Mariana Islands</option>
+  <option value="NO" {% if country1 == "NO" %} selected {%endif%}>Norway</option>
+  <option value="OM" {% if country1 == "OM" %} selected {%endif%}>Oman</option>
+  <option value="PK" {% if country1 == "PK" %} selected {%endif%}>Pakistan</option>
+  <option value="PW" {% if country1 == "PW" %} selected {%endif%}>Palau</option>
+  <option value="PS" {% if country1 == "PS" %} selected {%endif%}>Palestine, State of</option>
+  <option value="PA" {% if country1 == "PA" %} selected {%endif%}>Panama</option>
+  <option value="PG" {% if country1 == "PG" %} selected {%endif%}>Papua New Guinea</option>
+  <option value="PY" {% if country1 == "PY" %} selected {%endif%}>Paraguay</option>
+  <option value="PE" {% if country1 == "PE" %} selected {%endif%}>Peru</option>
+  <option value="PH" {% if country1 == "PH" %} selected {%endif%}>Philippines</option>
+  <option value="PN" {% if country1 == "PN" %} selected {%endif%}>Pitcairn</option>
+  <option value="PL" {% if country1 == "PL" %} selected {%endif%}>Poland</option>
+  <option value="PT" {% if country1 == "PT" %} selected {%endif%}>Portugal</option>
+  <option value="PR" {% if country1 == "PR" %} selected {%endif%}>Puerto Rico</option>
+  <option value="QA" {% if country1 == "QA" %} selected {%endif%}>Qatar</option>
+  <option value="RE" {% if country1 == "RE" %} selected {%endif%}>Réunion</option>
+  <option value="RO" {% if country1 == "RO" %} selected {%endif%}>Romania</option>
+  <option value="RU" {% if country1 == "RU" %} selected {%endif%}>Russian Federation</option>
+  <option value="RW" {% if country1 == "RW" %} selected {%endif%}>Rwanda</option>
+  <option value="BL" {% if country1 == "BL" %} selected {%endif%}>Saint Barthélemy</option>
+  <option value="SH" {% if country1 == "SH" %} selected {%endif%}>Saint Helena, Ascension and Tristan da Cunha</option>
+  <option value="KN" {% if country1 == "KN" %} selected {%endif%}>Saint Kitts and Nevis</option>
+  <option value="LC" {% if country1 == "LC" %} selected {%endif%}>Saint Lucia</option>
+  <option value="MF" {% if country1 == "MF" %} selected {%endif%}>Saint Martin (French part)</option>
+  <option value="PM" {% if country1 == "PM" %} selected {%endif%}>Saint Pierre and Miquelon</option>
+  <option value="VC" {% if country1 == "VC" %} selected {%endif%}>Saint Vincent and the Grenadines</option>
+  <option value="WS" {% if country1 == "WS" %} selected {%endif%}>Samoa</option>
+  <option value="SM" {% if country1 == "SM" %} selected {%endif%}>San Marino</option>
+  <option value="ST" {% if country1 == "ST" %} selected {%endif%}>Sao Tome and Principe</option>
+  <option value="SA" {% if country1 == "SA" %} selected {%endif%}>Saudi Arabia</option>
+  <option value="SN" {% if country1 == "SN" %} selected {%endif%}>Senegal</option>
+  <option value="RS" {% if country1 == "RS" %} selected {%endif%}>Serbia</option>
+  <option value="SC" {% if country1 == "SC" %} selected {%endif%}>Seychelles </option>
+  <option value="SL" {% if country1 == "SL" %} selected {%endif%}>Sierra Leone</option>
+  <option value="SG" {% if country1 == "SG" %} selected {%endif%}>Singapore</option>
+  <option value="SX" {% if country1 == "SX" %} selected {%endif%}>Sint Maarten (Dutch part)</option>
+  <option value="SK" {% if country1 == "SK" %} selected {%endif%}>Slovakia</option>
+  <option value="SI" {% if country1 == "SI" %} selected {%endif%}>Slovenia</option>
+  <option value="SB" {% if country1 == "SB" %} selected {%endif%}>Solomon Islands</option>
+  <option value="SO" {% if country1 == "SO" %} selected {%endif%}>Somalia</option>
+  <option value="ZA" {% if country1 == "ZA" %} selected {%endif%}>South Africa</option>
+  <option value="GS" {% if country1 == "GS" %} selected {%endif%}>South Georgia and the South Sandwich Islands</option>
+  <option value="SS" {% if country1 == "SS" %} selected {%endif%}>South Sudan</option>
+  <option value="ES" {% if country1 == "ES" %} selected {%endif%}>Spain</option>
+  <option value="LK" {% if country1 == "LK" %} selected {%endif%}>Sri Lanka</option>
+  <option value="SD" {% if country1 == "SD" %} selected {%endif%}>Sudan</option>
+  <option value="SR" {% if country1 == "SR" %} selected {%endif%}>Suriname</option>
+  <option value="SJ" {% if country1 == "SJ" %} selected {%endif%}>Svalbard and Jan Mayen</option>
+  <option value="SZ" {% if country1 == "SZ" %} selected {%endif%}>Swaziland</option>
+  <option value="SE" {% if country1 == "SE" %} selected {%endif%}>Sweden</option>
+  <option value="CH" {% if country1 == "CH" %} selected {%endif%}>Switzerland</option>
+  <option value="SY" {% if country1 == "SY" %} selected {%endif%}>Syrian Arab Republic</option>
+  <option value="TW" {% if country1 == "TW" %} selected {%endif%}>Taiwan, Province of China</option>
+  <option value="TJ" {% if country1 == "TJ" %} selected {%endif%}>Tajikistan</option>
+  <option value="TZ" {% if country1 == "TZ" %} selected {%endif%}>Tanzania, United Republic of</option>
+  <option value="TH" {% if country1 == "TH" %} selected {%endif%}>Thailand</option>
+  <option value="TL" {% if country1 == "TL" %} selected {%endif%}>Timor-Leste</option>
+  <option value="TG" {% if country1 == "TG" %} selected {%endif%}>Togo</option>
+  <option value="TK" {% if country1 == "TK" %} selected {%endif%}>Tokelau</option>
+  <option value="TO" {% if country1 == "TO" %} selected {%endif%}>Tonga</option>
+  <option value="TT" {% if country1 == "TT" %} selected {%endif%}>Trinidad and Tobago</option>
+  <option value="TN" {% if country1 == "TN" %} selected {%endif%}>Tunisia</option>
+  <option value="TR" {% if country1 == "TR" %} selected {%endif%}>Turkey</option>
+  <option value="TM" {% if country1 == "TM" %} selected {%endif%}>Turkmenistan</option>
+  <option value="TC" {% if country1 == "TC" %} selected {%endif%}>Turks and Caicos Islands</option>
+  <option value="TV" {% if country1 == "TV" %} selected {%endif%}>Tuvalu</option>
+  <option value="UG" {% if country1 == "UG" %} selected {%endif%}>Uganda</option>
+  <option value="UA" {% if country1 == "UA" %} selected {%endif%}>Ukraine</option>
+  <option value="AE" {% if country1 == "AE" %} selected {%endif%}>United Arab Emirates</option>
+  <option value="GB" {% if country1 == "GB" %} selected {%endif%}>United Kingdom of Great Britain and Northern Ireland </option>
+  <option value="US" {% if country1 == "US" %} selected {%endif%}>United States of America</option>
+  <option value="UM" {% if country1 == "UM" %} selected {%endif%}>United States Minor Outlying Islands</option>
+  <option value="UY" {% if country1 == "UY" %} selected {%endif%}>Uruguay</option>
+  <option value="UZ" {% if country1 == "UZ" %} selected {%endif%}>Uzbekistan</option>
+  <option value="VU" {% if country1 == "VU" %} selected {%endif%}>Vanuatu</option>
+  <option value="VE" {% if country1 == "VE" %} selected {%endif%}>Venezuela (Bolivarian Republic of)</option>
+  <option value="VN" {% if country1 == "VN" %} selected {%endif%}>Viet Nam</option>
+  <option value="VG" {% if country1 == "VG" %} selected {%endif%}>Virgin Islands (British)</option>
+  <option value="VI" {% if country1 == "VI" %} selected {%endif%}>Virgin Islands (U.S.)</option>
+  <option value="WF" {% if country1 == "WF" %} selected {%endif%}>Wallis and Futuna</option>
+  <option value="EH" {% if country1 == "EH" %} selected {%endif%}>Western Sahara</option>
+  <option value="YE" {% if country1 == "YE" %} selected {%endif%}>Yemen</option>
+  <option value="ZM" {% if country1 == "ZM" %} selected {%endif%}>Zambia</option>
+  <option value="ZW" {% if country1 == "ZW" %} selected {%endif%}>Zimbabwe</option>
+
+
+
+
+
+</select>
+    <input type='submit' value='Make Changes'> {% csrf_token%}
+</form>
+
+</div>
+{% endblock %}

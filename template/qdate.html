@@ -1,0 +1,72 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+    <script src="/static/js/jquery-ui.js"></script>
+    <script src="/static/js/jquery.ui.datepicker.validation.js"></script> 
+        <link href="/static/css/jquery-ui.css" rel="stylesheet">  
+            <script type="text/javascript">
+      $(function () {
+                $('.datepicker').datepicker();
+         });
+        </script> 
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="col-sm-3">
+<form method="GET" action="{% url 'detailbydate' %}">
+From:
+<input class="datepicker" name="startdate">
+</input>
+</div>
+<div class="col-sm-3" >
+To:
+<input class="datepicker" name="enddate">
+</input>
+</div>
+<div class="col-sm-2">
+  <select name="book">
+    <option value="1">Book</option>
+    <option value="0">Vacancy</option>
+  </select>
+  </div>
+  <div class="col-sm-2">
+  <select name="roomtype">
+  {% for i in roomtypes %}
+    <option value="{{i.room_type_name}}">{{i.room_type_name}}</option>
+    {% endfor %}
+ 
+  </select>
+  </div>
+<div class="col-sm-2">  
+    <input type='submit' value='Check'> 
+</div>
+</form>
+
+</br>
+</br>
+
+<hr>
+
+<div class="col-sm-12">
+
+
+
+
+
+                {% for i in table %}
+
+                  <div class="col-sm-2" style="height:60px"> {{i}}</div>
+<!--                   <td><a href=#> {{ roomtypes.room_max_people }}</a></td>
+                  <td><a href=#>$ {{ roomtypes.room_price}}</a></td>
+                  <td><a href=#> {{ roomtypes.room_type_description}}</a></td>
+                  {% if roomtypes.room_image %}
+                  <td><a href=#> {{ roomtypes.room_image.url}}</a></td>
+                  {% endif %} -->
+                                 
+
+                {% endfor %}
+
+
+</div>
+
+
+
+{% endblock %}

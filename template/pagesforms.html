@@ -1,0 +1,156 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+
+    <link href="/static/css/widgEditor.css" rel="stylesheet">
+<script type="text/javascript" src="/static/js/widgEditor.js"></script>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<form method="POST" action="" enctype="multipart/form-data">
+
+
+
+
+
+
+
+
+                              <div class="col-sm-12 control-label form1">Page Name</div>
+
+   <div class="col-sm-12 control-label form1"><input id="id_pages_name" maxlength="100" name="pages_name" type="text"  value="{{pagesform.pages_name.value}}" required="" style="width:80%;margin-bottom:30px;"></div>
+
+                              <div class="col-sm-12 control-label form1">Page Title</div>
+ <div class="col-sm-12 control-label form1"><input id="id_pages_title" maxlength="100" name="pages_title" type="text" required="" style="width:80%;margin-bottom:30px;" value="{{pagesform.pages_title.value}}"></div>
+
+                              <div class="col-sm-12 control-label form1">Short Description of page</div>
+ <div class="col-sm-12 control-label form1"><input id="id_page_short_description" maxlength="100" name="page_short_description" type="text" required="" value="{{pagesform.page_short_description.value}}" style="width:80%;margin-bottom:30px;"></div>
+
+
+                              <div class="col-sm-3 control-label form1">Content</div>
+
+
+
+
+<div class="col-sm-12 label1">
+<textarea class="widgEditor" id="id_pages_content" name="pages_content" >
+
+{{pagesform.pages_content.value}}
+</textarea>
+</div>
+</br>
+
+</br>
+
+
+<div class="col-sm-12 label1" style="margin-bottom:30px;">
+
+
+	<label for="id_pages_large_image">Article large image:</label> 
+
+</br>
+
+{% if pagesform.pages_large_image.value%}
+
+
+
+
+
+
+
+Currently: <a href="/img/{{pagesform.pages_large_image.value}}">{{pagesform.pages_large_image.value}}</a>
+
+
+
+<input id="pages_large_image-clear_id" name="pages_large_image-clear" type="checkbox"> <label for="pages_large_image-clear_id">Clear</label><br>Change:
+
+
+
+{% endif %}
+
+	<input id="id_pages_large_image" name="pages_large_image" type="file">
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</br>
+
+</br>
+
+<div class="col-sm-12 label1"  style="margin-bottom:30px;"><label for="id_pages_image">Home page thumbnail:</label> 
+
+</br>
+
+
+{% if pagesform.pages_image.value%}
+
+
+Currently: <a href="/img/{{pagesform.pages_image.value}}">{{pagesform.pages_image.value}}</a>
+
+
+<input id="pages_image-clear_id" name="pages_image-clear" type="checkbox"> <label for="pages_image-clear_id">Clear</label><br>Change:
+
+{% endif %}
+
+	<input id="id_pages_image" name="pages_image" type="file">
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</br>
+
+</br>
+
+
+<div class="col-sm-12 label1" >
+    <input type='submit' value='Add'> {% csrf_token%}</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}

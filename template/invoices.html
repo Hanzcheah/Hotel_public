@@ -1,0 +1,60 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+<h2 class="sub-header">Invoice Number: {{invoiceitem.referenceno}}</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+
+
+
+<strong> {{invoiceitem.email.first_name}} {{invoiceitem.email.last_name}}</strong>
+
+<br><br>
+{%if invoiceitem.staffbooking is True %}
+<div style="color:red">Booked by staff
+</div>
+
+
+
+{%endif%}
+<Br><br>  
+
+              <thead>
+                <tr>
+                  <th>Room Type</th>
+                  <th>Room Number</th>
+                  <th>Check-in Date</th>
+                  <th>Check-out Date</th>
+                  <th>Price</th>                                                                     
+                </tr>
+              </thead>
+              <tbody>
+              	{% for c in invoice %}
+                <tr>
+<!--                   <td><a href=#> {{ customer }}</a></td> -->
+                  <td><a href="/customer/?email={{ c.email__email }}&phno={{ c.email__phone_number }}"> {{ c.room_type_name }}</a></td>
+                  <td><a href="/customer/?email={{ c.email__email }}&phno={{ c.email__phone_number }}"> {{ c.room_number }}</a></td>
+                  <td><a href="/customer/?email={{ c.email__email }}&phno={{ c.email__phone_number }}"> {{ c.checkin_date}}</a></td>
+                  <td><a href="/customer/?email={{ c.email__email }}&phno={{ c.email__phone_number }}"> {{ c.checkout_date }}</a></td>                  
+                  <td>{{ c.paymentprice }}</td>
+
+           
+
+                </tr>
+                {% endfor %}
+                <tr>
+                  <td><strong>Total</strong></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>                  
+                  <td>{{ invoiceitem.total }}</td>
+               </tbody>
+            </table>
+            </div>
+</div>
+{% endblock %}

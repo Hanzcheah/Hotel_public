@@ -1,0 +1,54 @@
+{% extends 'booking/base2.html' %}
+{% block content %}   
+<body>
+
+<div class="col-lg-5 col-centered h" style="font-family: 'Raleway', sans-serif;">
+<div id="login">
+        <form name="LoginForm" action="" method="post">
+        {% csrf_token %}
+<!--         {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %} -->
+<!--         <div class="control-group">
+            <label class="control-label form7" for="username">Email</label>
+            <div class="controls">
+                <input type="text" id="username" name="username" class="formfield1" placeholder="Email">
+            </div>
+        </div> -->
+
+{% if error %}
+        <div class="control-group" >
+            <label class="control-label form7" >{{error}}}</label>
+
+        </div>
+{% endif %}
+
+
+
+        <div class="control-group" >
+            <label class="control-label form7" for="password">Your Email</label>
+            <div class="controls">
+                <input type="text" name="password" id="password" class="formfield1" placeholder="Password">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="specialbutton">
+            <button type="submit"  class="btn btn-primary rightt" >Reset Password</button>
+            </div>
+        </div>
+        <div class="control-group" >
+<!--             <label class="control-label form7" for="staff number"></label> -->
+
+                        <div class="controls">
+            <input type="text" name="staffnumber" id="staffnumber" class="formfield0" placeholder="phone number" value="">
+            </div>
+            
+        </div>
+        </form>
+
+        {{user_ip}}
+    </div>
+</div>
+</div>
+</body>
+{% endblock %}

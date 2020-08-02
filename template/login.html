@@ -1,0 +1,43 @@
+{% extends 'booking/base2.html' %}
+{% block content %}   
+<body>
+
+<div class="col-lg-5 col-centered h">
+<div id="login">
+        <form name="LoginForm" action="" method="post">
+        {% csrf_token %}
+<!--         {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %} -->
+        <div class="control-group">
+            <label class="control-label form7" for="username">Username</label>
+            <div class="controls">
+                <input type="text" id="username" name="username" class="formfield1" placeholder="Username">
+            </div>
+        </div>
+        <div class="control-group" >
+            <label class="control-label form7" for="password">Password</label>
+            <div class="controls">
+                <input type="password" name="password" id="password" class="formfield1" placeholder="Password">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="specialbutton">
+            <button type="submit"  class="btn btn-primary rightt" >Login</button>
+            </div>
+        </div>
+        <div class="control-group" >
+            <label class="control-label form7" for="staff number">Staff access only</label>
+            <div class="controls">
+            <input type="text" name="staffnumber" id="staffnumber" class="formfield0" placeholder="staffnumber">
+            </div>
+            
+        </div>
+        </form>
+
+        {{user_ip}}
+    </div>
+</div>
+</div>
+</body>
+{% endblock %}

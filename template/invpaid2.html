@@ -1,0 +1,162 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+<div class="row">
+
+<div class="col-sm-4">
+
+<h2>
+Price: 
+{{pay.total1}}
+</h2>
+<form method="POST" id="total" action="" onsubmit="return validateyForm();">
+<!-- <br><input id="deposit" type="checkbox" name="deposit" value="Deposit" checked>Deposit<br> -->
+<div id="Dep">
+<h2>Deposit: {{pay.depositamt}}</h2>
+<br>
+  <input type="radio" name="dep" value="Cash" checked>Paid by Cash<br>
+  <input type="radio" name="dep" value="Creditcard">Paid by Credit Card<br>
+</div>
+<br>
+<h1><strong>Total:<br><br> <div id = "test"></div></strong></h1>
+</div>
+
+<div class="col-sm-4">
+<Br>
+<strong>Pay by Cash:</strong>
+<br>
+Tender Amount:
+<input type="text" name="quantity" id="quantity" onkeyup="getTotal();"> </input>
+
+<Br>
+<br>
+<a href="#" onclick="getTotal();"> Change:</a><div id="totalPrice"></div>
+</div>
+
+
+<div class="col-sm-4">
+<br>
+<strong>Pay by Card:</strong>
+<Br>
+Tender Amount:
+<input type="text"  name="cd" id="cd"  onkeyup="getTotal();">
+</input>
+
+<Br>
+<br>
+<div class="col-sm-4">
+</div>
+<div class="col-sm-4">
+</div>
+<div class="col-sm-3">
+<input type="submit" value="Submit" ></input>{% csrf_token%}
+</div>
+</div>
+
+</form>
+
+</div>
+<script>
+
+function checkdep(){
+	// var remember = document.getElementById('deposit');
+ //  if (remember.checked){
+ //  	var total=  {{pay.total1}} + {{pay.depositamt}};
+ //  document.getElementById("Dep").setAttribute('style', 'display:block !important');
+ //  document.getElementById('test').innerHTML = parseFloat(total).toFixed(2)
+
+
+ //  }else{
+    
+  document.getElementById("Dep").setAttribute('style', 'display:none !important');
+  document.getElementById('test').innerHTML = parseFloat({{pay.total1}}).toFixed(2)
+  // 
+
+
+}
+document.getElementById("deposit").onclick = checkdep;
+window.onload = checkdep;
+
+// document.getElementById("deposit").onclick = getTotal;
+
+function getTotal()
+{
+
+var theForm = document.forms["total"];
+var howmany1 = theForm.elements["quantity"];
+var howmany2 = theForm.elements["cd"];
+
+
+var howmany11 = parseFloat(howmany1.value);
+var howmany22 = parseFloat(howmany2.value);
+if(howmany2.value == ""){
+	var howmany22= 0;
+}
+
+if(howmany1.value == ""){
+	var howmany11 = 0;
+}
+
+
+console.log(howmany11);
+var total = document.getElementById('test').innerHTML
+console.log(howmany22);
+var howmany3 = howmany11 + howmany22
+var howmany = (howmany3)-parseFloat(total);
+
+
+if (howmany == 0){
+document.getElementById('totalPrice').innerHTML =
+"Correct Amount";
+}
+if (howmany < 0) {
+document.getElementById('totalPrice').innerHTML =
+"Insufficient Amount";	
+}
+
+
+if(howmany > 0){
+document.getElementById('totalPrice').innerHTML =
+Math.round(howmany * 100) / 100;
+}
+
+
+}
+getTotal();
+
+
+function validateyForm(){
+var total = document.getElementById('test').innerHTML
+var theForm = document.forms["total"];
+//Get a reference to the TextBox
+var howmany1 = theForm.elements["quantity"];
+var howmany2 = theForm.elements["cd"];
+if(howmany2.value == ""){
+	howmany2.value = 0;
+}
+if(howmany1.value == ""){
+	howmany1.value = 0;
+}
+var howmany11 = parseFloat(howmany1.value);
+var howmany22 = parseFloat(howmany2.value);
+var howmany3 = howmany11 + howmany22
+console.log(howmany3)
+var howmany = howmany3-parseFloat(total);
+console.log(howmany)
+console.log(total)
+
+
+if(howmany < 0){
+    // event.preventDefault(); 
+alert("Not Enough Cash");
+return false;
+}
+
+
+}
+</script>
+{% endblock %}

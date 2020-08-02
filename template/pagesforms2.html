@@ -1,0 +1,903 @@
+{% extends 'booking/base5.html' %}
+{% block content %}   
+
+<!-- 
+    <link href="/static/css/widgEditor.css" rel="stylesheet">
+<script type="text/javascript" src="/static/js/widgEditor.js"></script> -->
+<link href="/static/css/quill.snow.css" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript"  src="/static/js/quill.min.js"></script>
+
+
+<link  href="/static/css/cropper.min.css" rel="stylesheet">
+<script src="/static/js/cropper.min.js"></script>
+
+
+
+<script>
+
+var cropperimageurl;
+var IMGUR_API_URL = 'https://www.innbparkhotel.com/upload_image_api/';
+
+// function imageHandler(image, callback) {
+//   var data = new FormData();
+//   data.append('image', image);
+
+//   var xhr = new XMLHttpRequest();
+//   xhr.open('POST', IMGUR_API_URL, true);
+// //   xhr.setRequestHeader('Authorization', 'Client-ID ' + IMGUR_CLIENT_ID);
+//   xhr.onreadystatechange = function() {
+//     if (xhr.readyState === 4) {
+//       var response = JSON.parse(xhr.responseText);
+//       if (response.status === 200 && response.success) {
+//         callback(response.data.link);
+//       } else {
+//         var reader = new FileReader();
+//         reader.onload = function(e) {
+//           callback(e.target.result);
+//         };
+//         reader.readAsDataURL(image);
+//       }
+//     }
+//   }
+//   xhr.send(data);
+// }
+
+
+
+
+
+
+
+
+function imageHandler(image, callback) {
+
+    window.CSRF_TOKEN = "{{ csrf_token }}";
+    
+
+    let fileInput = this.container.querySelector('input.ql-image[type=file]');
+          fileInput = document.createElement('input');
+          fileInput.setAttribute('type', 'file');
+          fileInput.setAttribute(
+            'accept',
+            'image/png, image/gif, image/jpeg, image/bmp, image/x-icon'
+          );
+          fileInput.classList.add('ql-image');
+          fileInput.addEventListener('change', () => {
+            if (fileInput.files != null && fileInput.files[0] != null) {
+                console.log(fileInput.files);
+                var progBar = document.getElementById("progressbar");
+                progBar.style.display = "block";
+
+
+                var dataf = new FormData();
+                dataf.append('image_file', $('input[type=file]')[0].files[0]);
+                dataf.append("upload_file", true);
+                dataf.append("csrfmiddlewaretoken", "{{ csrf_token }}");
+                console.log(dataf);
+                    $.ajax({
+                        type: "POST",
+                        url: 'https://www.innbparkhotel.com/upload_image_api/',
+                        headers:{
+                            "X-CSRFToken": "{{ csrf_token }}"
+                        },
+                        xhr: function () {
+                            var myXhr = $.ajaxSettings.xhr();
+                            if(myXhr.upload){
+                                 myXhr.upload.addEventListener('progress',progress, false);
+                              }
+                            return myXhr;
+                        },
+                        success: function (data) {
+                            console.log("success");
+                            console.log(data);
+
+                            var progBar = document.getElementById("progressbar");
+                            progBar.style.display = "none";
+                            console.log(data.url);
+
+                            var modal = document.getElementById("imagemodal");
+                            modal.style.display = "block";
+                            var cropperdiv = document.getElementById("cropperimg");
+                            cropperimageurl=data.url;
+                            cropperdiv.innerHTML ='<img style="display:block; max-width:100%; max-height:70vh;" id="image" src="' + data.url  +  '" crossorigin>';
+                            createcropper();
+
+                            $("input.ql-image").remove();
+                            // your callback here
+                        },
+                        error: function (error) {
+                            // handle errorc
+                            console.log("fail");
+                          console.log(error);
+                            console.log(error.responseText);
+                        },
+                        async: true,
+                        data: dataf,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        timeout: 120000
+                    });
+
+
+
+
+
+
+            }
+          });
+          this.container.appendChild(fileInput);
+
+        fileInput.click();
+
+
+
+
+function progress(e){
+
+    if(e.lengthComputable){
+        var max = e.total;
+        var current = e.loaded;
+
+        var Percentage = (current * 100)/max;
+        console.log(Percentage);
+        var elem = document.getElementById("myBar");
+        elem.style.width = Percentage + "%";
+
+        if(Percentage >= 100)
+        {
+
+        }
+    }  
+ }
+
+
+
+    console.log("trigered");
+//   var data = new FormData();
+//   data.append('image', image);
+//   data.append("upload_file", true);
+
+//     $.ajax({
+//         type: "POST",
+//         url: "script",
+//         xhr: function () {
+//             var myXhr = $.ajaxSettings.xhr();
+//             if (myXhr.upload) {
+//                 myXhr.upload.addEventListener('progress', that.progressHandling, false);
+//             }
+//             return myXhr;
+//         },
+//         success: function (data) {
+//             // your callback here
+//         },
+//         error: function (error) {
+//             // handle error
+//         },
+//         async: true,
+//         data: data,
+//         cache: false,
+//         contentType: false,
+//         processData: false,
+//         timeout: 60000
+//     });
+
+
+//   IMGUR_API_URL="https://innbparkhotel.com/testpage_1/";
+//   var xhr = new XMLHttpRequest();
+//   xhr.open('POST', IMGUR_API_URL, true);
+
+//   xhr.onreadystatechange = function() {
+//     if (xhr.readyState === 4) {
+//       var response = JSON.parse(xhr.responseText);
+//       if (response.status === 200 && response.success) {
+//         callback(response.data.link);
+//       } else {
+//         // var reader = new FileReader();
+//         // reader.onload = function(e) {
+//         //   callback(e.target.result);
+//         // };
+//         // reader.readAsDataURL(image);
+//       }
+//     }
+//   }
+//   xhr.send(data);
+
+}
+
+var cropper;
+var cropper2;
+var cropper3;
+
+function createcropper(){
+  console.log("newcropper");
+  
+
+      var image = document.querySelector('#image');
+      cropper = new Cropper(image, {
+        aspectRatio: 6 / 4,
+          zoom: function (e) {
+            // var canvasData = cropper.getImageData();
+            // var cropBoxData = cropper.getCropBoxData();
+            // console.log(canvasData);
+            // console.log(cropBoxData);
+            // console.log(e.detail.ratio);
+            // if (e.detail.ratio < 1) {
+            //   console.log("zoomout")
+            //   if (canvasData.width < cropBoxData.width || canvasData.height < cropBoxData.height) {
+                e.preventDefault(); // Prevent zoom out
+              // }
+            // }
+          }
+      })
+ console.log(cropper);
+}
+
+
+
+
+function createcropper2(){
+
+      var image = document.querySelector('#image2');
+      cropper2 = new Cropper(image, {
+        aspectRatio: 6 / 4,
+          zoom: function (e) {
+
+                e.preventDefault(); // Prevent zoom out
+
+          }
+
+
+
+      })
+
+ console.log(cropper2);
+}
+
+
+
+function createcropper3(){
+
+      var image = document.querySelector('#image3');
+      cropper3 = new Cropper(image, {
+        aspectRatio: 6 / 4,
+          zoom: function (e) {
+                e.preventDefault(); // Prevent zoom out
+          }
+
+      })
+
+ console.log(cropper3);
+}
+
+
+function sendimage2(){
+
+    console.log(cropper2.getData());
+    var xcrop = (cropper2.getData()).x;
+    var ycrop = (cropper2.getData()).y;
+    var widthcrop = (cropper2.getData()).width;
+    var heightcrop = (cropper2.getData()).height;
+
+    document.getElementById("id_pages_large_image_x").value = xcrop;
+    document.getElementById("id_pages_large_image_y").value = ycrop;
+    document.getElementById("id_pages_large_image_width").value = widthcrop;
+    document.getElementById("id_pages_large_image_height").value = heightcrop;
+           var modal = document.getElementById("imagemodal2");
+            modal.style.display = "none";
+            cropper = "";
+  }
+
+
+
+function sendimage3(){
+
+    console.log(cropper3.getData());
+    var xcrop = (cropper3.getData()).x;
+    var ycrop = (cropper3.getData()).y;
+    var widthcrop = (cropper3.getData()).width;
+    var heightcrop = (cropper3.getData()).height;
+
+    document.getElementById("id_pages_image_x").value = xcrop;
+    document.getElementById("id_pages_image_y").value = ycrop;
+    document.getElementById("id_pages_image_width").value = widthcrop;
+    document.getElementById("id_pages_image_height").value = heightcrop;
+           var modal = document.getElementById("imagemodal3");
+            modal.style.display = "none";
+            cropper = "";
+
+  }
+
+
+
+
+  function sendimage(){
+    console.log(cropper.getData());
+    $.ajax({
+        url: "https://www.innbparkhotel.com/resize_image_api/",
+        type: "POST",
+        data: {
+                'url': cropperimageurl, 
+                'x':(cropper.getData()).x, 
+                'y':(cropper.getData()).y,
+                'width':(cropper.getData()).width, 
+                'height': (cropper.getData()).height
+              },
+        success: function (response) {
+          console.log(response);
+          var editor = document.getElementsByClassName("ql-editor")[0];
+           editor.innerHTML+="<img src='"+ response.url +"'></img>";
+           var modal = document.getElementById("imagemodal");
+            modal.style.display = "none";
+            cropper = "";
+        },
+        error: function(error) {
+
+           console.log(error);
+
+        }
+    });
+  }
+
+
+    $(document).ready(function(){ 
+    var quill = new Quill('#editor', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'],
+                ['link', 'blockquote', 'code-block', 'image'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                [{ 'font': [] }],
+                [{ 'align': [] }],
+                
+            ]
+        },
+      theme: 'snow',
+    //   imageHandler: imageHandler
+    });
+
+    quill.getModule("toolbar").addHandler("image", imageHandler);
+
+    var form = document.querySelector('form');
+    form.onsubmit = function() {
+ $(".loader").fadeIn("slow");
+      var about = document.querySelector('input[name=pages_content]');
+      about.value = quill.root.innerHTML;
+      console.log(about.value);
+
+    //   document.forms.myform.submit();
+    return true;
+    };
+
+
+
+    $("#id_pages_large_image").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+            var modal2 = document.getElementById("imagemodal2");
+            modal2.style.display = "block";
+            var cropperdiv = document.getElementById("cropperimg2");
+            cropperdiv.innerHTML ='<img style="display:block; max-width:100%; max-height:70vh;" id="image2" src="' + e.target.result  +  '" crossorigin>';
+            createcropper2();
+            }
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+
+
+    $("#id_pages_image").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+            var modal3 = document.getElementById("imagemodal3");
+            modal3.style.display = "block";
+            var cropperdiv = document.getElementById("cropperimg3");
+            cropperdiv.innerHTML ='<img style="display:block; max-width:100%; max-height:70vh;" id="image3" src="' + e.target.result  +  '" crossorigin>';
+            createcropper3();
+            }
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+
+
+
+
+
+    });
+    
+
+
+
+
+ 
+
+    // var form = document.querySelector('form');
+
+    
+    
+</script>
+<style>
+
+  .modal {
+    display: none;
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+.modal-header {
+  background-color:white;
+  border-bottom:none;
+}
+.modal-content{
+  border:0;
+  box-shadow:none;
+  border-radius:0;
+
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center; 
+  justify-content: flex-end; 
+  background-color:white;
+  border:0;
+}
+.modal-content{
+
+}
+
+
+#progressbar{
+  display:none;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 15px;
+  background-color: #4CAF50;
+}
+
+</style>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+
+
+<div class="modal" id="imagemodal">
+<div class="modal-header">
+<span id="close" class="close">&times;</span>
+          </div>
+
+
+
+  <!-- Modal content -->
+  <div class="modal-content">
+
+<div id="cropperimg" style="padding-top:20px; padding-bottom:20px;">
+  </div>
+
+
+
+  </div>
+  <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="sendimage()">Accept</button>
+          </div>
+</div>
+
+
+
+
+
+<div class="modal" id="imagemodal2">
+<div class="modal-header">
+<span class="close" id="close1">&times;</span>
+          </div>
+
+  <!-- Modal content -->
+<div class="modal-content">
+
+<div id="cropperimg2" style="padding-top:20px; padding-bottom:20px;">
+  </div>
+
+  </div>
+  <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="sendimage2()">Accept</button>
+          </div>
+</div>
+
+
+
+
+
+<div class="modal" id="imagemodal3">
+<div class="modal-header">
+<span class="close" id="close2">&times;</span>
+          </div>
+
+  <!-- Modal content -->
+<div class="modal-content">
+
+<div id="cropperimg3" style="padding-top:20px; padding-bottom:20px;">
+  </div>
+
+  </div>
+  <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="sendimage3()">Accept</button>
+          </div>
+</div>
+
+
+
+
+
+
+
+
+<form id="myform" method="POST" action="" enctype="multipart/form-data" onSubmit="return false;">
+
+
+
+
+
+
+
+
+                              <div class="col-sm-12 control-label form1">Page Name</div>
+
+   <div class="col-sm-12 control-label form1"><input id="id_pages_name" maxlength="100" name="pages_name" type="text"  {% if pagesform.pages_name.value is not None %}value="{{pagesform.pages_name.value}}"{% endif %} required="" style="width:80%;margin-bottom:30px;"></div>
+
+                              <div class="col-sm-12 control-label form1">Page Title</div>
+ <div class="col-sm-12 control-label form1"><input id="id_pages_title" maxlength="100" name="pages_title" type="text" required="" style="width:80%;margin-bottom:30px;" {% if pagesform.pages_title.value is not None %}value="{{pagesform.pages_title.value}}" {% endif %}></div>
+
+                              <div class="col-sm-12 control-label form1">Short Description of page</div>
+ <div class="col-sm-12 control-label form1"><input id="id_page_short_description" maxlength="100" name="page_short_description" type="text" required="" {% if pagesform.page_short_description.value is not None %} value="{{pagesform.page_short_description.value}}"{% endif %} style="width:80%;margin-bottom:30px;"></div>
+
+ <div class="col-sm-12 control-label form1"> Category </div>
+ <div class="col-sm-12 control-label form1"><input id="id_categories" maxlength="100" name="categories" type="text" {% if pagesform.categories.value is not None %} value="{{pagesform.categories.value}}"{% endif %} style="width:80%;margin-bottom:30px;"></div>
+
+
+ <div class="col-sm-12 control-label form1">Hide Post &nbsp;&nbsp;<input id="id_hidden" name="hidden" type="checkbox" {% if pagesform.hidden.value is True %}checked {% endif %}></div>
+
+ <div class="col-sm-12 control-label form1" style=" height: 40px;"> </div>
+
+<div class="col-sm-12 control-label form1">Featured Post &nbsp;&nbsp;<input id="id_featured" name="featured" type="checkbox" {% if pagesform.featured.value is True %}checked {% endif %}></div>
+
+  <div class="col-sm-12 control-label form1" style=" height: 40px;"> </div>
+
+ <div class="col-sm-12 control-label form1">Content</div>
+
+
+
+ <div class="col-sm-12 control-label form1" id="progressbar" style="margin-bottom:10px;">
+
+  <div class="col-sm-3">Uploading File</div>
+  <div class="col-sm-9">
+<div id="myProgress">
+<div id="myBar"></div>
+</div>
+</div>
+</div>
+
+</br>
+
+</br>
+
+
+
+
+
+
+ <!-- cropper.getCroppedCanvas().toDataURL('image/jpeg') -->
+
+
+
+
+
+
+
+
+
+
+
+
+<input name="pages_content" type="hidden">
+<div class="col-sm-12 label1" style="height:550px; margin-bottom:100px;">
+
+        <div id="editor">
+
+          {% if pagesform.pages_content.value is not None %}
+            {{pagesform.pages_content.value|safe}}
+            {% endif %}
+        </div>
+    
+    
+    </div>
+    </br>
+    
+    </br>
+    
+
+
+
+
+
+
+
+<div class="col-sm-12 label1" style="margin-bottom:30px;">
+
+
+	<label>Article large image:</label> 
+
+</br>
+
+{% if pagesform.pages_large_image.value%}
+
+
+
+
+
+
+
+Currently: <a href="/img/{{pagesform.pages_large_image.value}}">{{pagesform.pages_large_image.value}}</a>
+
+
+
+<input id="pages_large_image-clear_id" name="pages_large_image-clear" type="checkbox"> <label for="pages_large_image-clear_id">Clear</label><br>Change:
+
+
+
+{% endif %}
+
+	<input id="id_pages_large_image" name="pages_large_image" type="file">
+
+
+<input id="id_pages_large_image_x" name="id_pages_large_image_x" type="hidden">
+<input id="id_pages_large_image_y" name="id_pages_large_image_y" type="hidden">
+<input id="id_pages_large_image_width" name="id_pages_large_image_width" type="hidden">
+<input id="id_pages_large_image_height" name="id_pages_large_image_height" type="hidden">
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</br>
+
+</br>
+
+<div class="col-sm-12 label1"  style="margin-bottom:30px;"><label for="id_pages_image">Home page thumbnail:</label> 
+
+</br>
+
+
+{% if pagesform.pages_image.value%}
+
+
+Currently: <a href="/img/{{pagesform.pages_image.value}}">{{pagesform.pages_image.value}}</a>
+
+
+<input id="pages_image-clear_id" name="pages_image-clear" type="checkbox"> <label for="pages_image-clear_id">Clear</label><br>Change:
+
+{% endif %}
+
+<input id="id_pages_image" name="pages_image" type="file">
+<input id="id_pages_image_x" name="id_pages_image_x" type="hidden">
+<input id="id_pages_image_y" name="id_pages_image_y" type="hidden">
+<input id="id_pages_image_width" name="id_pages_image_width" type="hidden">
+<input id="id_pages_image_height" name="id_pages_image_height" type="hidden">
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</br>
+
+</br>
+
+
+<div class="col-sm-12 label1" >
+
+    <input type="submit" value='Add'>
+    
+    {% csrf_token%}</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<script>
+
+var span = document.getElementsByClassName("close")[0];
+var span2 = document.getElementById("close1");
+var span3 = document.getElementById("close2");
+var modal = document.getElementById("imagemodal");
+var modal2 = document.getElementById("imagemodal2");
+var modal3 = document.getElementById("imagemodal3");
+
+span.onclick = function() {
+  modal.style.display = "none";
+
+
+
+}
+
+span2.onclick = function() {
+  modal2.style.display = "none";
+
+}
+
+span3.onclick = function() {
+  modal3.style.display = "none";
+
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+    if (event.target == modal2) {
+        modal2.style.display = "none";
+      }
+        if (event.target == modal3) {
+            modal3.style.display = "none";
+          }
+
+  // }
+
+}
+
+
+
+    // window.addEventListener('DOMContentLoaded', function () {
+    //   var image = document.querySelector('#image');
+    //   var cropper = new Cropper(image, {
+    //     dragMode: 'move',
+    //     aspectRatio: 4 / 6,
+    //     autoCropArea: 1,
+    //     restore: false,
+    //     guides: false,
+    //     center: false,
+    //     highlight: false,
+    //     cropBoxMovable: false,
+    //     cropBoxResizable: false,
+    //     toggleDragModeOnDblclick: false,
+    //   });
+    // });
+  
+
+
+
+
+// window.addEventListener('DOMContentLoaded', function () {
+//       var image = document.querySelector('#image');
+//       var minAspectRatio = 0.5;
+//       var maxAspectRatio = 1.5;
+//       var cropper = new Cropper(image, {
+//         ready: function () {
+//           var cropper = this.cropper;
+//           var containerData = cropper.getContainerData();
+//           var cropBoxData = cropper.getCropBoxData();
+//           var aspectRatio = cropBoxData.width / cropBoxData.height;
+//           var newCropBoxWidth;
+
+//           if (aspectRatio < minAspectRatio || aspectRatio > maxAspectRatio) {
+//             newCropBoxWidth = cropBoxData.height * ((minAspectRatio + maxAspectRatio) / 2);
+
+//             cropper.setCropBoxData({
+//               left: (containerData.width - newCropBoxWidth) / 2,
+//               width: newCropBoxWidth
+//             });
+//           }
+//         },
+
+//         cropmove: function () {
+//           var cropper = this.cropper;
+//           var cropBoxData = cropper.getCropBoxData();
+//           var aspectRatio = cropBoxData.width / cropBoxData.height;
+
+//           if (aspectRatio < minAspectRatio) {
+//             cropper.setCropBoxData({
+//               width: cropBoxData.height * minAspectRatio
+//             });
+//           } else if (aspectRatio > maxAspectRatio) {
+//             cropper.setCropBoxData({
+//               width: cropBoxData.height * maxAspectRatio
+//             });
+//           }
+//         },
+//       });
+//     });
+  
+
+
+
+// $('#id_pages_large_image').onchange = function (evt) {
+
+
+//   console.log("test");
+//     var tgt = evt.target || window.event.srcElement,
+//         files = tgt.files;
+
+//     // FileReader support
+//     if (FileReader && files && files.length) {
+//         var fr = new FileReader();
+//         fr.onload = function () {
+//             // document.getElementById(outImage).src = fr.result;
+//                             var modal = document.getElementById("imagemodal2");
+//                             modal.style.display = "block";
+//             var cropperdiv = document.getElementById("cropperimg2");
+//             cropperimageurl=data.url;
+//             cropperdiv.innerHTML ='<img style="display:block; max-width:100%; min-height:400px;" id="image2" src="' + fr.result   +  '" crossorigin>';
+//         }
+//         fr.readAsDataURL(files[0]);
+//     }
+
+//     // Not supported
+//     else {
+//         // fallback -- perhaps submit the input to an iframe and temporarily store
+//         // them on the server until the user's session ends.
+//     }
+// }
+
+
+
+
+</script> 
+
+{% endblock %}
